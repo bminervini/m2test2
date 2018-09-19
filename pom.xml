@@ -7,6 +7,18 @@
     <groupId>univ.master2</groupId>
     <artifactId>m2test2</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <configuration>
+                    <target>
+                        <ant target="build" />
+                    </target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
