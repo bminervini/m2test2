@@ -14,5 +14,26 @@
         <module>Source/Vendor/Gestion</module>
         <module>Source/Vendor/Mailing</module>
     </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <ant target="atoum" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
 
+            </plugin>
+        </plugins>
+    </build>
 </project>
