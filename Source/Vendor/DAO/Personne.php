@@ -12,6 +12,20 @@ class Personne{
         $this->nombreCroissantAmene = 0;
     }
 
+    function getName()
+    {
+        return $this->nom;
+    }
+
+    public function getFirstName()
+    {
+        return $this->prenom;
+    }
+    function getCroissantAmount()
+    {
+        return $this->nombreCroissantAmene;
+    }
+
 
 
 }
