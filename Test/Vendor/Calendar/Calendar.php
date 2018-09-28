@@ -3,54 +3,110 @@
 namespace Calendar\tests\units
 {
     use \atoum;
-    class Chooser extends atoum
+    use mageekguy\atoum\asserters\castToString;
+
+    class SubscribersList extends atoum
     {
-
-        public function testEmptyInit( ) {
-
-            $this
-                ->if($chooser = new \Calendar\Chooser())
-                ->then
-                ->array($chooser->subscribers)
-                ->and
-                ->integer(count($chooser->subscribers))
-                    ->isEqualTo(0);
+        function mockPerson($id = 0, $croissant = 0)
+        {
+            $person = new \Mock\DAO\Personne();
+            $this->calling($person)->getId = $id;
+            $this->calling($person)->getCroissantAmount = $croissant;
+            return $person;
         }
 
-        public function testPopulatedChoice( ) {
+        function initContext()
+        {
+            $fred = $this->mockPerson(1, 1);
+            $fab = $this->mockPerson(2, 2);
+            $jub = $this->mockPerson(3, 3);
+            $clang = $this->mockPerson(4, 4);
+
+            $subs = [$fred, $fab];
+            $subs2 = [$jub, $clang];
+
+            return ['subs' => $subs, 'subs2' => $subs2];
+        }
+
+        public function testEmptyInit( )
+        {
 
             $this
-                ->given($fred = new \Mock\DAO\Personne())
-                ->and($this->calling($fred)->getFirstName = 'Efrd')
-                ->and($this->calling($fred)->getName = 'Audeda')
-                ->and($this->calling($fred)->getCroissantAmount = 8)
-                ->if($chooser = new \Calendar\Chooser([$fred]))
+                ->if($list = new \Calendar\SubscribersList())
                 ->then
-                ->object($chooser->chooseOne())
+                ->array($list->subscribers)
+                ->and
+                ->integer(count($list->subscribers))
+                    ->isEqualTo(0);
+        }
+        public function testNoSubChoice()
+        {
+
+            $this
+                ->if($list = new \Calendar\SubscribersList())
+                ->then
+                ->variable($list->chooseOne())
+                    ->isEqualTo(null);
+        }
+        public function testPopulatedChoice( )
+        {
+            $fred = $this->mockPerson(1);
+            $this
+                ->if($list = new \Calendar\SubscribersList([$fred]))
+                ->then
+                ->object($list->chooseOne())
                 ->isIdenticalTo($fred);
 
         }
 
-        public function testMultiplePersonChoice( ) {
-
+        public function testMultiplePersonChoice( )
+        {
+            $fred = $this->mockPerson(1, 8);
+            $fab = $this->mockPerson(1, 7);
+            $a = $this->mockPerson(1, 14);
+            $b = $this->mockPerson(1, 85);
             $this
-                ->given($fred = new \Mock\DAO\Personne())
-                ->and($this->calling($fred)->getCroissantAmount = 8)
-
-                ->and($fab = new \Mock\DAO\Personne())
-                ->and($this->calling($fab)->getCroissantAmount = 7)
-
-                ->and($a = new \Mock\DAO\Personne())
-                ->and($this->calling($a)->getCroissantAmount = 14)
-
-                ->and($b = new \Mock\DAO\Personne())
-                ->and($this->calling($b)->getCroissantAmount = 85)
-
-                ->if($chooser = new \Calendar\Chooser([$fred, $fab]))
+                ->given($subs = [$fred, $fab, $a, $b])
+                ->and($length = count($subs))
+                ->if($list = new \Calendar\SubscribersList($subs))
                 ->then
-                ->object($chooser->chooseOne())
-                ->isIdenticalTo($fab);
+                ->object($list->chooseOne())
+                ->isIdenticalTo($fab)
+                ->and
+                ->integer(count($list->subscribers))
+                ->isEqualTo($length);
 
+        }
+
+        public function testAddSubscribers( )
+        {
+            $context = $this->initContext();
+            $subs = $context['subs'];
+            $length = count($subs);
+            $jub = $this->mockPerson(count($subs) + 1);
+            $this
+                ->if($list = new \Calendar\SubscribersList($subs))
+                ->and($list->addSubscriber($jub))
+                ->then
+                ->integer(count($list->subscribers))
+                ->isEqualTo($length + 1);
+
+        }
+        public function testAddMultipleSubs( )
+        {
+            $context = $this->initContext();
+            $subs = $context['subs'];
+            $subs2 = $context['subs2'];
+            $length = count($subs);
+            $length2 = count($subs2);
+            $this
+                ->given()
+                ->if($list = new \Calendar\SubscribersList($subs))
+                ->and()
+                ->and($list->addSubscribers($subs2))
+                ->then
+                ->integer(count($list->subscribers))
+                ->isEqualTo($length + $length2);
         }
     }
 }

@@ -10,9 +10,10 @@ class Personne{
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->nombreCroissantAmene = 0;
+        $this->id = md5(date() + $nom + $prenom);
     }
 
-    function getName()
+    public function getName()
     {
         return $this->nom;
     }
@@ -21,12 +22,19 @@ class Personne{
     {
         return $this->prenom;
     }
-    function getCroissantAmount()
+    public function getCroissantAmount()
     {
         return $this->nombreCroissantAmene;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
 
-
+    public function incCroissantAmount($croissants)
+    {
+        $this->nombreCroissantAmene += $croissants;
+    }
 
 }
 
