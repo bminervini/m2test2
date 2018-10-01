@@ -1,14 +1,14 @@
+<?php 
 
-<?php
+namespace Mailing;
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'Lib/Exception.php';
-require 'Lib/PHPMailer.php';
-require 'Lib/SMTP.php';
-namespace MailSystem {
-
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    
+    require 'Lib/Exception.php';
+    require 'Lib/PHPMailer.php';
+    require 'Lib/SMTP.php';
+    
 
     class MailSender
     {
@@ -80,6 +80,4 @@ namespace MailSystem {
     // echo "Encoi : " . $ms->sendMail("frizzy.rastay@gmail.com");
     echo "</body>";
     echo "</html>";
-
-}
 ?>
