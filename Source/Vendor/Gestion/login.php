@@ -1,36 +1,9 @@
 <?php 
-    
-    //include("config.php");
-    //session_start();
-
-    //echo password_hash("test",PASSWORD_BCRYPT);
-
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-        /*
-        $myusername = mysqli_real_escape_string($db,$_POST['username']);
-        $mypassword = mysqli_real_escape_string($db,$_POST['password']);
-
-        
-        $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
-        $result = mysqli_query($db,$sql);
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        $active = $row['active'];
-
-        $count = mysqli_num_rows($result);
-
-        if($count == 1) {
-        */
-
-        if(!empty($_POST['username'])){
-            //session_register("myusername");
-            //$_SESSION['login_user'] = $myusername;
-            
-            header("Location: dashboard.php");
-        }else {
-            $error = "Your Login Name or Password is invalid";
-        }
-
+    use \Auth\Auth as Auth;
+ 
+    if(isset($_POST['submit'])){
+        $auth = new Auth();
+        $auth->connection($_POST['username'], $_POST['password']);
     }
 ?>
 
@@ -42,29 +15,31 @@
 <br/>
 <div class="container">
     <div class="col-md-5 col-centered">
-    <form action="" method="post">
-        <h2>Login Page</h2>
+        <form action="" method="post">
+            <h2>Login Page</h2>
 
-        <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" required="required">        	
-        </div>
-        
-        <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>
-             
-        <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Log in</button>
-        </div>
-    </form>
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">        	
+            </div>
+            
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+                
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-success btn-lg btn-block">Log in</button>
+            </div>
+        </form>
     </div>
 </div>
 
 <style>
     .col-centered{
         float: none;
-        margin: 0 auto;
-        padding: 20px;
+        margin: 100px auto;
+        padding: 35px 30px;
+        border-radius: 8px;
+        background-color: rgba(30.9%, 72.4%, 96.8%,0.3);
     }
 </style>
 
