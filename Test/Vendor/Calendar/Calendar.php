@@ -3,7 +3,6 @@
 namespace Calendar\tests\units
 {
     use \atoum;
-    use mageekguy\atoum\asserters\castToString;
 
     class SubscribersList extends atoum
     {
