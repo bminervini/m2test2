@@ -5,7 +5,7 @@ namespace DAO\tests\units
 
     use \atoum;
 
-    class TestDao extends atoum
+    class DAO extends atoum
     {
         public function testConnexion()
         {
