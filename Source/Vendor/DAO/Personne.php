@@ -5,6 +5,9 @@ class Personne{
     var $nom;
     var $prenom;
     var $nombreCroissantAmene;
+    var $disponible;
+
+
 
     function __construct($nom, $prenom){
         $this->nom = $nom;
@@ -36,6 +39,10 @@ class Personne{
         $this->nombreCroissantAmene += $croissants;
     }
 
+    public function isDisponible()
+    {
+        return $this->disponible;
+    }
 }
 
 
