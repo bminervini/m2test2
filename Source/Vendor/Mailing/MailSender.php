@@ -9,7 +9,6 @@ namespace Mailing;
     require 'Lib/PHPMailer.php';
     require 'Lib/SMTP.php';
     require 'Mail.php';
-    
 
     class MailSender
     {
@@ -20,21 +19,25 @@ namespace Mailing;
         //
         var $m_oMailer;
 
+        //Enable debug
+        var $m_bDebug = false;
+
         public function __construct($sLogin , $sPassword)
         {
             $this->m_sLogin = $sLogin;
             $this->m_sPassword = $sPassword;
 
             //Constructs the mailer object
-            echo $this->m_sLogin;
-            echo $this->m_sPassword;
             $this->m_oMailer = new PHPMailer();
             $this->configureSMTP();
         }
 
         private function configureSMTP()
         {
-            $this->m_oMailer->SMTPDebug = 2;            //< Enable verbose
+            if ($this->m_bDebug)
+            {
+                $this->m_oMailer->SMTPDebug = 2;            //< Enable verbose
+            }
             $this->m_oMailer->isSMTP();                 //< Use SMTP
             $this->m_oMailer->Host = "smtp.gmail.com";  //< Specify the SMTP
             $this->m_oMailer->SMTPAuth = true;          //< Enable the authentication of SMTP
@@ -52,14 +55,23 @@ namespace Mailing;
             $this->m_oMailer->Subject   = $oMail->getSubject();
             $this->m_oMailer->Body      = $oMail->getBody();
             $this->m_oMailer->AltBody   = $oMail->getBody();    //TOFIX: Alternative body
-            echo $this->m_oMailer->send();
+            try {
+                $this->m_oMailer->send();
+            }catch (Exception $e)
+            {
+                echo "Erreur d'envoi du mail : [" . $this->m_oMailer->ErrorInfo;
+            }
         }
 
     }
 
     $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
-    $ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , "yannis.beaux@gmail.com" , "Bonjour Arthur ! " , "Bonjour Arthur ! \r\n Je suis un mail envoye automatiquement depuis l'application \"Croissant Show\" ! \r\n Il est fort possible que tu recoives une grande quantite de mail car je peux en envoyer un a chaque appui sur F5\r\n Etant donne que ce mail est envoye depuis du code PHP \r\n Des gros bisous <3 \r\n Ton admirateur secret."));
-    echo "oklm";
+    if (isset($_GET['destinataire']))
+    {
+        $ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , $_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']));
+    }
+
+    include("./Static/formulaire.html");
 
     // $mail = new PHPMailer(true);
     //     //Server settings
