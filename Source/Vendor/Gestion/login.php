@@ -1,5 +1,6 @@
 <?php 
-    use \Auth\Auth as Auth;
+    include("Auth.php");
+    use \Auth\Auth;
  
     if(isset($_POST['submit'])){
         $auth = new Auth();

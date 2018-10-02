@@ -1,27 +1,27 @@
 <?php
 
-namespace Auth {
-
-    use \DAO\DAO as DAO;
+namespace Auth;
+    include("Source/Vendor/DAO/DAO.php");    
+    use \DAO\DAO;
 
     class Auth{
         
         private $dao;
 
-        public function __consturct(){
+        public function __construct(){
             $this->dao = new DAO();
         }
 
         public function connection($usern, $pass){
 
-            $username = \mysqli_real_escape_string($usern);
-            $password = \mysqli_real_escape_string($pass);
+            //$username = $dao->connexion->quote($usern);
+            //$password = $dao->connexion->quote($pass);
             
             if(!empty($username) && !empty($password)){
                 
                 $cryptedPassword = password_hash($password,PASSWORD_BCRYPT);
 
-                $query = "SELECT * FROM Personne WHERE nom='$username' AND password='$cryptedPassword' LIMIT 1";
+                $query = "SELECT * FROM Personne WHERE username='$username' AND password='$cryptedPassword' LIMIT 1";
                 $req = $dao->connexion->prepare($query);
                 //$req->execute(array("username"=>$username));
                 $result = $req->fetch();
@@ -38,7 +38,7 @@ namespace Auth {
             }
         }
 
-        static function isLogged(){
+        public static function isLogged(){
             if(isset($_SESSION['username']) and isset($_SESSION['pass'])){
                 //Later retrieve the user from the database to perform a verification
                 return true;
@@ -46,6 +46,6 @@ namespace Auth {
             return false;
         }
     }
-}
+
 
 ?>
