@@ -1,6 +1,6 @@
 <?php
 
-namespace DAO\tests\units {
+namespace DAO {
 
     class DAO
     {
@@ -84,5 +84,4 @@ namespace DAO\tests\units {
         }
     }
 }
-
 ?>
