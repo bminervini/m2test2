@@ -3,6 +3,8 @@
 namespace DAO {
 
     use \PDO;
+    include("../Models/Personne.php");
+    use \Models\Personne;
 
     class DAO
     {
@@ -31,7 +33,6 @@ namespace DAO {
                 $this->connexion = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             } catch (PDOException $e) {
                 echo $e->getMessage();
-                die();
                 $connexion = null;
             }
         }
@@ -44,7 +45,7 @@ namespace DAO {
         function querySQL($sql)
         {
             $query = $this->connexion->prepare($sql);
-            return $query->exec($sql);
+            return $query->exec();
         }
 
         function initialisationBD()
@@ -54,6 +55,30 @@ namespace DAO {
             $this->createTableCalendrier();
             $this->createTablePassage();
             $this->createTableDisponibilite();
+
+
+            $this->addAdmin();
+
+        }
+
+        function addAdmin()
+        {
+            $pers = new Personne("Merandat", "John", "JohnDuff", "test", "john@gmail.com", 0);
+            $this->addPersonne($pers);
+        }
+
+        function addPersonne($personne)
+        {
+            $nom = $personne->getNom();
+            $prenom = $personne->getPrenom();
+            $username = $personne->getUsername();
+            $password = $personne->getPassword();
+            $mail = $personne->getMail();
+            $admin = $personne->isADmin();
+            $sql = "INSERT INTO personne (nom, prenom, username, password, mail, admin, nbreCroissantAmene)
+                    VALUES ($nom, $prenom, $username, $password, $mail, $admin, 0)";
+            $this->connexion->exec($sql);
+
         }
 
         function getListPersonne()
@@ -61,13 +86,17 @@ namespace DAO {
 
         }
 
+
+        //Création du schéma de BDD
         function createTablePersonne()
         {
             $sql = "CREATE TABLE IF NOT EXISTS `personne`(
                `idPersonne` int(11) NOT NULL PRIMARY KEY,
                `nom` varchar(40) NOT NULL,
                `prenom` varchar(40) NOT NULL, 
-               `motDePasse` varchar(40) NOT NULL, 
+               `username` varchar(40) NOT NULL, 
+               `mail` varchar(40) NOT NULL, 
+               `password` varchar(40) NOT NULL, 
                `isAdmin` int(1) NOT NULL, 
                `participe` int(1) NOT NULL, 
                `nbreCroissantAmene` int(10) NOT NULL
@@ -137,12 +166,13 @@ namespace DAO {
                 DROP TABLE IF EXISTS `personne`;
                 DROP TABLE IF EXISTS `passage`;
                 ");
-            if ($sql->execute()){
+            if ($sql->execute()) {
                 echo " Tables supprimées ";
-            }else{
+            } else {
                 print_r($sql->errorInfo());
             };
         }
     }
+
 }
 ?>

@@ -17,9 +17,7 @@ $dao = new \DAO\DAO();
 
 if (isset($_GET["action"]) && ($_GET["action"] == "reset"))
 {
-    $dao->dropTables();
-    var_dump($dao->querySQL("SELECT Count(*) FROM INFORMATION_SCHEMA.Tables"));
-    //$dao->initialisationBD();
+    $dao->initialisationBD();
 
 }
 
