@@ -13,11 +13,14 @@
 include 'DAO.php';
 include 'Header.php';
 
-$dao = new DAO();
+$dao = new \DAO\DAO();
 
 if (isset($_GET["action"]) && ($_GET["action"] == "reset"))
 {
-    $dao->initialisationBD();
+    $dao->dropTables();
+    var_dump($dao->querySQL("SELECT Count(*) FROM INFORMATION_SCHEMA.Tables"));
+    //$dao->initialisationBD();
+
 }
 
 
