@@ -7,11 +7,26 @@ namespace DAO\tests\units
 
     class DAO extends atoum
     {
-        public function testConnexion()
+        //permet de vérifier que l'on peut accéder à la base de données
+        public function testRequestConnexion()
         {
-            $dao = new \DAO\DAO();
-            $this->$dao->getConnexion()->isNotEqualTo(null);
+            $this
+                ->given($dao = new \DAO\DAO())
+                ->then->object($dao->getConnexion())->isNotEqualTo(null);
         }
+
+        //permet de vérifier que toutes les tables sont bien supprimées
+        public function testDropTables()
+        {
+
+            $this
+                ->given($dao = new \DAO\DAO())
+                ->when($dao->dropTables())
+                ->then(float($dao->querySQL("SELECT Count(*) FROM INFORMATION_SCHEMA.Tables"))->isEqualTo(0));
+
+        }
+
+
     }
 
 

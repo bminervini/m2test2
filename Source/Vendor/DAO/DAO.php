@@ -41,9 +41,10 @@ namespace DAO {
             $connexion = null;
         }
 
-        function queryList($sql)
+        function querySQL($sql)
         {
-            return $this->connexion->exec($sql);
+            $query = $this->connexion->prepare($sql);
+            return $query->exec($sql);
         }
 
         function initialisationBD()
