@@ -1,8 +1,5 @@
-*.iml
 .idea
 .idea/*
 **/target
-**/*.iml
 cache.properties
 build
-*.iml
