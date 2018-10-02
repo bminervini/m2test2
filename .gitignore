@@ -4,3 +4,4 @@ m2test2.iml
 **/target
 cache.properties
 build
+\.vscode/tasks\.json

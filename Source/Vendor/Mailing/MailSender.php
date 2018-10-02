@@ -20,12 +20,13 @@ namespace Mailing;
         var $m_oMailer;
 
         //Enable debug
-        var $m_bDebug = false;
+        var $m_bVerbose = false;
 
-        public function __construct($sLogin , $sPassword)
+        public function __construct($sLogin , $sPassword , $bVerbose = false)
         {
             $this->m_sLogin = $sLogin;
             $this->m_sPassword = $sPassword;
+            $this->m_bVerbose = $bVerbose;
 
             //Constructs the mailer object
             $this->m_oMailer = new PHPMailer();
@@ -34,7 +35,7 @@ namespace Mailing;
 
         private function configureSMTP()
         {
-            if ($this->m_bDebug)
+            if ($this->m_bVerbose)
             {
                 $this->m_oMailer->SMTPDebug = 2;            //< Enable verbose
             }
@@ -59,26 +60,28 @@ namespace Mailing;
             
             $this->m_oMailer->Subject   = $oMail->getSubject();
             $this->m_oMailer->Body      = $oMail->getBody();
-            $this->m_oMailer->AltBody   = $oMail->getBody();    //TOFIX: Alternative body
-            try {
-                $this->m_oMailer->send();
-            }catch (Exception $e)
+            $this->m_oMailer->AltBody   = $oMail->getBody();    //TOFIX: Alternative body {
+            
+            if (!$this->m_oMailer->send())
             {
-                echo "Erreur d'envoi du mail : [" . $this->m_oMailer->ErrorInfo;
+                echo "<p>Erreur d'envoi du mail : <strong style='color:red;'>[" . $this->m_oMailer->ErrorInfo . "]</strong></p>";
+                return false;
             }
+
+            return true;
         }
 
     }
 
-    $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
-    if (isset($_GET['destinataire']))
-    {
-        $mail = new Mail($_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
-        $mail->addRecipient("frizzy.rastay@gmail.com");
-        $ms->sendMail($mail);
-    }
+    // $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
+    // if (isset($_GET['destinataire']))
+    // {
+    //     $mail = new Mail($_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
+    //     // $mail->addRecipient("frizzy.rastay@gmail.com");
+    //     $ms->sendMail($mail);
+    // }
 
-    include("./Static/formulaire.html");
+    // include("./Static/formulaire.html");
 
     // $mail = new PHPMailer(true);
     //     //Server settings
