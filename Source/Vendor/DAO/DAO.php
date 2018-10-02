@@ -1,4 +1,5 @@
 <?php
+
 namespace DAO {
 
     class DAO
@@ -8,10 +9,16 @@ namespace DAO {
 
         public function __construct()
         {
-            $this->getConnexion();
+            $this->requestConnexion();
         }
 
-        function getConnexion()
+        public function getConnexion()
+        {
+            return $this->connexion;
+        }
+
+
+        function requestConnexion()
         {
             $servername = "172.20.128.68";
             //$servername = "localhost";
