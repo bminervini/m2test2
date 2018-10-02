@@ -73,7 +73,7 @@ namespace Mailing;
     $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
     if (isset($_GET['destinataire']))
     {
-        $mail = new Mail("m2test2.croissant.show@gmail.com" , $_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
+        $mail = new Mail($_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
         $mail->addRecipient("frizzy.rastay@gmail.com");
         $ms->sendMail($mail);
     }
