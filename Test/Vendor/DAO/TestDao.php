@@ -1,13 +1,16 @@
 <?php
 
-abstract class Test extends \atoum\test {
+namespace DAO\tests\units
+{
 
-    public function __construct ( \atoum\score   $score   = null,
-                                  \atoum\locale  $locale  = null,
-                                  \atoum\adapter $adapter = null ) {
+    use \atoum;
 
-        $this->setTestNamespace('\\Test');
-
-        return parent::__construct($score, $locale, $adapter);
+    class TestDao extends atoum
+    {
+        public function testConnexion()
+        {
+            $dao = new \DAO\DAO();
+            $this->$dao->getConnexion()->isNotEqualTo(null);
+        }
     }
 }
