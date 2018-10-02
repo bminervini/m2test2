@@ -73,15 +73,15 @@ namespace Mailing;
 
     }
 
-    // $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
-    // if (isset($_GET['destinataire']))
-    // {
-    //     $mail = new Mail($_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
-    //     // $mail->addRecipient("frizzy.rastay@gmail.com");
-    //     $ms->sendMail($mail);
-    // }
+    $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
+    if (isset($_GET['destinataire']))
+    {
+        $mail = new Mail($_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
+        // $mail->addRecipient("frizzy.rastay@gmail.com");
+        $ms->sendMail($mail);
+    }
 
-    // include("./Static/formulaire.html");
+    include("./Static/formulaire.html");
 
     // $mail = new PHPMailer(true);
     //     //Server settings
