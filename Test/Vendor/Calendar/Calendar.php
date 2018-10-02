@@ -6,16 +6,28 @@ namespace Calendar\tests\units
 
     class SubscribersList extends atoum
     {
-        function mockPerson($id = 0, $croissant = 0)
+
+        var $day;
+
+
+        function mockPerson($id = 0, $croissant = 0, $disponible = true)
         {
             $person = new \Mock\DAO\Personne();
             $this->calling($person)->getId = $id;
             $this->calling($person)->getCroissantAmount = $croissant;
+            $this->calling($person)->isDisponible = $disponible;
             return $person;
+        }
+        function getTime()
+        {
+            print_r("ns : ".__NAMESPACE__);
+            return time();
         }
 
         function initContext()
         {
+
+            $day = $this->getTime();
             $fred = $this->mockPerson(1, 1);
             $fab = $this->mockPerson(2, 2);
             $jub = $this->mockPerson(3, 3);
@@ -40,20 +52,21 @@ namespace Calendar\tests\units
         }
         public function testNoSubChoice()
         {
-
+            $day = time();
             $this
                 ->if($list = new \Calendar\SubscribersList())
                 ->then
-                ->variable($list->chooseOne())
+                ->variable($list->chooseOne($day))
                     ->isEqualTo(null);
         }
         public function testPopulatedChoice( )
         {
             $fred = $this->mockPerson(1);
+            $day = $this->getTime();
             $this
                 ->if($list = new \Calendar\SubscribersList([$fred]))
                 ->then
-                ->object($list->chooseOne())
+                ->object($list->chooseOne($day))
                 ->isIdenticalTo($fred);
 
         }
@@ -64,12 +77,13 @@ namespace Calendar\tests\units
             $fab = $this->mockPerson(1, 7);
             $a = $this->mockPerson(1, 14);
             $b = $this->mockPerson(1, 85);
+            $day = $this->getTime();
             $this
                 ->given($subs = [$fred, $fab, $a, $b])
                 ->and($length = count($subs))
                 ->if($list = new \Calendar\SubscribersList($subs))
                 ->then
-                ->object($list->chooseOne())
+                ->object($list->chooseOne($day))
                 ->isIdenticalTo($fab)
                 ->and
                 ->integer(count($list->subscribers))
@@ -107,5 +121,21 @@ namespace Calendar\tests\units
                 ->integer(count($list->subscribers))
                 ->isEqualTo($length + $length2);
         }
+
+        public function testWithUndisponiblePersons()
+        {
+            $fred = $this->mockPerson(1, 8, true);
+            $fab = $this->mockPerson(1, 7, false);
+            $a = $this->mockPerson(1, 14, true);
+            $b = $this->mockPerson(1, 85, true);
+            $subs = [$fred, $fab, $a, $b];
+            $day = getTime();
+            $this
+                ->if($list = new \Calendar\SubscribersList($subs))
+                ->then
+                ->object($list->chooseOne($day))
+                ->isIdenticalTo($fred);
+        }
+
     }
 }
