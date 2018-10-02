@@ -5,30 +5,29 @@ namespace Mailing;
     class Mail
     {
 
-        var $m_sRecipient;      //< Mail's recipient
         var $m_aRecipients;     //< The array of recipients
-        var $m_sSender;         //< Mail's sender
         var $m_sSubject;        //< Mail's subject
         var $m_sBody;           //< Mail's body
 
         public function __construct(
-                $sFrom = 'm2test2.croissant.show@gmail.com'
-            ,   $sTo = array()
+                $sTo = array()
             ,   $sSubject = 'Mail de test' 
             ,   $sBody = 'Corps de mail')
         {
-            $this->m_sSender = $sFrom;
-            $this->m_aRecipients = $sTo;
+            //No array given protection
+            if (!is_array($sTo))
+            {
+                $this->m_aRecipients = array($sTo);
+            }else 
+            {
+                $this->m_aRecipients = array();
+            }
+
             $this->m_sSubject = $sSubject;
             $this->m_sBody = $sBody;
         }
 
         //---- GETTERS ----
-
-        public function getSender()
-        {
-            return $this->m_sSender;
-        }
 
         public function getRecipients()
         {
@@ -46,11 +45,6 @@ namespace Mailing;
         }
 
         //---- SENDERS ----
-
-        public function setSender($sSender)
-        {
-            $this->m_sSender = $sSender;
-        }
 
         public function addRecipient($sRecipient)
         {

@@ -50,7 +50,7 @@ namespace Mailing;
         public function sendMail($oMail)
         {
             //Configure last infos of the mail
-            $this->m_oMailer->setFrom($oMail->getSender() , "Croissant Show Mailing System");
+            $this->m_oMailer->setFrom($this->m_sLogin , "Croissant Show Mailing System");
 
             foreach ($oMail->getRecipients() as $recipient)
             {
