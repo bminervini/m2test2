@@ -1,7 +1,7 @@
 <?php
 
 namespace Auth;
-    include("Source/Vendor/DAO/DAO.php");    
+    require_once("../DAO/DAO.php");    
     use \DAO\DAO;
 
     class Auth{
@@ -12,34 +12,35 @@ namespace Auth;
             $this->dao = new DAO();
         }
 
-        public function connection($usern, $pass){
+        public function connection($username, $password){
 
-            //$username = $dao->connexion->quote($usern);
-            //$password = $dao->connexion->quote($pass);
-            
+            //UPDATE `m2test2`.`personne` SET `password` = '21232f297a57a5a743894a0e4a801fc3' WHERE `personne`.`idPersonne` = 1;           
             if(!empty($username) && !empty($password)){
                 
-                $cryptedPassword = password_hash($password,PASSWORD_BCRYPT);
-
-                $query = "SELECT * FROM Personne WHERE username='$username' AND password='$cryptedPassword' LIMIT 1";
-                $req = $dao->connexion->prepare($query);
-                //$req->execute(array("username"=>$username));
-                $result = $req->fetch();
+                $cryptedPassword = md5($password);
+                $query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
+                $req = $this->dao->connexion->prepare($query);
+                $req->execute();
                 
-                if(!$result){
+                $result = $req->fetch();
+ 
+                if($result){
                     session_start();
                     $_SESSION['username'] = $username;
-                    $_SESSION['pass'] = $password;
+                    $_SESSION['password'] = $cryptedPassword;
 
-                    header("Location: dashboard.php");
+                   header("Location: dashboard.php");
+                   
+                   echo "Connecté !";
                 }else{
+                    echo "Mauvais mdp !";
                     $error = "Your Login Name or Password is invalid";
                 }
             }
         }
 
         public static function isLogged(){
-            if(isset($_SESSION['username']) and isset($_SESSION['pass'])){
+            if(isset($_SESSION['username']) and isset($_SESSION['password'])){
                 //Later retrieve the user from the database to perform a verification
                 return true;
             }

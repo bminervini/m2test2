@@ -1,3 +1,3 @@
 <?php 
-    include('Source/Vendor/Gestion/login.php');
+    header("Location: Source/Vendor/Gestion/login.php");
 ?>
