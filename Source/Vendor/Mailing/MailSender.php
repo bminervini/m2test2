@@ -51,7 +51,12 @@ namespace Mailing;
         {
             //Configure last infos of the mail
             $this->m_oMailer->setFrom($oMail->getSender() , "Croissant Show Mailing System");
-            $this->m_oMailer->addAddress($oMail->getRecipient());
+
+            foreach ($oMail->getRecipients() as $recipient)
+            {
+                $this->m_oMailer->addAddress($recipient);
+            }
+            
             $this->m_oMailer->Subject   = $oMail->getSubject();
             $this->m_oMailer->Body      = $oMail->getBody();
             $this->m_oMailer->AltBody   = $oMail->getBody();    //TOFIX: Alternative body
@@ -68,7 +73,9 @@ namespace Mailing;
     $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
     if (isset($_GET['destinataire']))
     {
-        $ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , $_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']));
+        $mail = new Mail("m2test2.croissant.show@gmail.com" , $_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
+        $mail->addRecipient("frizzy.rastay@gmail.com");
+        $ms->sendMail($mail);
     }
 
     include("./Static/formulaire.html");

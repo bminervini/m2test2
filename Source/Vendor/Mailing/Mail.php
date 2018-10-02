@@ -6,14 +6,19 @@ namespace Mailing;
     {
 
         var $m_sRecipient;      //< Mail's recipient
+        var $m_aRecipients;     //< The array of recipients
         var $m_sSender;         //< Mail's sender
-        var $m_sSubject;    //< Mail's subject
-        var $m_sBody;       //< Mail's body
+        var $m_sSubject;        //< Mail's subject
+        var $m_sBody;           //< Mail's body
 
-        public function __construct($sFrom , $sTo , $sSubject , $sBody)
+        public function __construct(
+                $sFrom = 'm2test2.croissant.show@gmail.com'
+            ,   $sTo = array()
+            ,   $sSubject = 'Mail de test' 
+            ,   $sBody = 'Corps de mail')
         {
             $this->m_sSender = $sFrom;
-            $this->m_sRecipient = $sTo;
+            $this->m_aRecipients = $sTo;
             $this->m_sSubject = $sSubject;
             $this->m_sBody = $sBody;
         }
@@ -25,9 +30,9 @@ namespace Mailing;
             return $this->m_sSender;
         }
 
-        public function getRecipient()
+        public function getRecipients()
         {
-            return $this->m_sRecipient;
+            return $this->m_aRecipients;
         }
 
         public function getSubject()
@@ -47,9 +52,9 @@ namespace Mailing;
             $this->m_sSender = $sSender;
         }
 
-        public function setRecipient($sRecipient)
+        public function addRecipient($sRecipient)
         {
-            $this->m_sRecipient = $sRecipient;
+            array_push($this->m_aRecipients , $sRecipient);
         }
 
         public function setSubject($sSubject)

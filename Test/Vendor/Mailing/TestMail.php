@@ -20,8 +20,13 @@ namespace Mailing\tests\units
                 ->then
                 ->string($oInstance->getSender())
                     ->isEqualTo($sFrom)
-                ->string($oInstance->getRecipient())
-                    ->isEqualTo($sTo)
+                ->array($oInstance->getRecipients())
+                    ->keys
+                        ->isEqualTo(
+                            array(
+                                $sTo
+                            )
+                        )
                 ->string($oInstance->getSubject())
                     ->isEqualTo($sSubject)
                 ->string($oInstance->getBody())
@@ -41,12 +46,12 @@ namespace Mailing\tests\units
             ;
         }
 
-        public function testGetSetRecipient()
+        public function testGetRecipients()
         {
             $this
                 ->given($oInstance = new \Mailing\Mail("" , "" , "" , "" , ""))
                 ->and($sRecipient = "exemple@gmail.com")
-                ->if($oInstance->setRecipient($sRecipient))
+                ->if($oInstance->addRecipient($sRecipient))
                 ->then
                 ->string($oInstance->getRecipient())
                     ->isEqualTo($sRecipient)
