@@ -53,9 +53,7 @@ namespace DAO {
             $this->dropTables();
             $this->createTablePersonne();
             $this->createTableCalendrier();
-            $this->createTablePassage();
             $this->createTableDisponibilite();
-
 
             $this->addAdmin();
 
@@ -77,8 +75,12 @@ namespace DAO {
             $admin = $personne->isADmin();
             $sql = "INSERT INTO personne (nom, prenom, username, password, mail, admin, nbreCroissantAmene)
                     VALUES ($nom, $prenom, $username, $password, $mail, $admin, 0)";
-            $this->connexion->exec($sql);
-
+            var_dump($sql);
+            $create = $this->connexion->prepare($sql);
+            $idPersonne = $create->execute();
+            var_dump($idPersonne);
+            die();
+            $personne->setIdPersonne($idPersonne);
         }
 
         function getListPersonne()
@@ -91,7 +93,7 @@ namespace DAO {
         function createTablePersonne()
         {
             $sql = "CREATE TABLE IF NOT EXISTS `personne`(
-               `idPersonne` int(11) NOT NULL PRIMARY KEY,
+               `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
                `nom` varchar(40) NOT NULL,
                `prenom` varchar(40) NOT NULL, 
                `username` varchar(40) NOT NULL, 
@@ -99,7 +101,8 @@ namespace DAO {
                `password` varchar(40) NOT NULL, 
                `isAdmin` int(1) NOT NULL, 
                `participe` int(1) NOT NULL, 
-               `nbreCroissantAmene` int(10) NOT NULL
+               `nbreCroissantAmene` int(10) NOT NULL,
+               PRIMARY KEY (idPersonne)
                )";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
@@ -112,30 +115,14 @@ namespace DAO {
         function createTableCalendrier()
         {
             $sql = "CREATE TABLE IF NOT EXISTS `calendrier`(
-               `idCalendrier` int(11) NOT NULL PRIMARY KEY,
+               `idCalendrier` int(11) NOT NULL AUTO_INCREMENT,
                `jour` date NOT NULL,
-               `ferie` int(1) NOT NULL
+               `ferie` int(1) NOT NULL, 
+               PRIMARY KEY (idCalendrier)
                );";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
                 echo " Table calendrier créé \n";
-            } else {
-                print_r($create->errorInfo());
-            }
-        }
-
-        function createTablePassage()
-        {
-            $sql = "CREATE TABLE IF NOT EXISTS `passage`(
-               `idPassage` int(11) NOT NULL PRIMARY KEY,
-               `datePassage` date NOT NULL,
-               `statut` int(1) NOT NULL,
-               `idPersonne` int NOT NULL,
-               FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne)
-               );";
-            $create = $this->connexion->prepare($sql);
-            if ($create->execute()) {
-                echo " Table passage créé \n";
             } else {
                 print_r($create->errorInfo());
             }
@@ -147,9 +134,11 @@ namespace DAO {
                `disponible` int (1) NOT NULL,
                `idPersonne` int NOT NULL,
                `idCalendrier` int NOT NULL,
+               `ferie` int(1) NOT NULL, 
                FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne),
                FOREIGN KEY (idCalendrier) REFERENCES calendrier(idCalendrier), 
-               CONSTRAINT PK_Person PRIMARY KEY (idPersonne,idCalendrier));";
+               CONSTRAINT PK_Person PRIMARY KEY (idPersonne,idCalendrier))
+               ;";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
                 echo " Table calendrier créé \n";
@@ -164,7 +153,6 @@ namespace DAO {
                 DROP TABLE IF EXISTS `disponibilite`;
                 DROP TABLE IF EXISTS `calendrier`;
                 DROP TABLE IF EXISTS `personne`;
-                DROP TABLE IF EXISTS `passage`;
                 ");
             if ($sql->execute()) {
                 echo " Tables supprimées ";

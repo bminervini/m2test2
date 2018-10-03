@@ -12,9 +12,11 @@ namespace Models {
         var $password;
         var $mail;
         var $admin;
+        var $idPersonne = null;
 
         function __construct($nom, $prenom, $username, $password, $mail, $admin)
         {
+
             $this->nom = $nom;
             $this->prenom = $prenom;
             $this->username = $username;
@@ -22,6 +24,11 @@ namespace Models {
             $this->nombreCroissantAmene = 0;
             $this->mail = $mail;
             $this->admin = $admin;
+        }
+
+        public function setIdPersonne($idPersonne)
+        {
+            $this->idPersonne = $idPersonne;
         }
 
         public function getNom()
