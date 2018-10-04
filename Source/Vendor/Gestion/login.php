@@ -1,7 +1,7 @@
 <?php 
     require_once("Auth.php");
     use \Auth\Auth;
-
+    
     if(isset($_POST['submit'])){
         $auth = new Auth();
         $auth->connection($_POST['username'], $_POST['password'])."\n";

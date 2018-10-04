@@ -13,11 +13,12 @@
 include 'DAO.php';
 include 'Header.php';
 
-$dao = new DAO();
+$dao = new \DAO\DAO();
 
 if (isset($_GET["action"]) && ($_GET["action"] == "reset"))
 {
     $dao->initialisationBD();
+
 }
 
 

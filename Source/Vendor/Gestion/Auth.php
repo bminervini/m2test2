@@ -14,7 +14,8 @@ namespace Auth;
 
         public function connection($username, $password){
 
-            //UPDATE `m2test2`.`personne` SET `password` = '21232f297a57a5a743894a0e4a801fc3' WHERE `personne`.`idPersonne` = 1;           
+            //UPDATE `m2test2`.`personne` SET `password` = '21232f297a57a5a743894a0e4a801fc3' WHERE `personne`.`idPersonne` = 1;      
+            //INSERT INTO `m2test2`.`personne` (`idPersonne`, `nom`, `prenom`, `username`, `mail`, `password`, `isAdmin`, `participe`, `nbreCroissantAmene`) VALUES ('1', 'thierry ', 'margoulin', 'admin', 'thierry@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1', '0', '0');     
             if(!empty($username) && !empty($password)){
                 
                 $cryptedPassword = md5($password);
