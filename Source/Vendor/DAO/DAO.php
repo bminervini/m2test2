@@ -3,7 +3,7 @@
 namespace DAO {
 
     use \PDO;
-    include("../Models/Personne.php");
+    //include("../Models/Personne.php"); //à commenter pour les test atoum
     use \Models\Personne;
 
     class DAO
@@ -48,7 +48,8 @@ namespace DAO {
         {
             try {
                 $requete = $this->connexion->prepare($sql);
-                return $requete->exec();
+                $requete->execute();
+                return $requete;
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 return null;

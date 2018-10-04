@@ -2,13 +2,11 @@
 
 namespace DAO\tests\units
 {
-
     use \atoum;
-    use Models\Personne;
+    //use \Models\Personne;
 
     class DAO extends atoum
     {
-
         //permet de vérifier que l'on peut accéder à la base de données
         public function testRequestConnexion()
         {
@@ -22,10 +20,10 @@ namespace DAO\tests\units
         {
             $dao = new \DAO\DAO();
             $dao->dropTables();
-
+            $requete = $dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
             $this
-                ->integer($dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';"))
-                    ->isEqualTo(0);
+                ->integer($requete->fetch())
+                    ->isNotEqualTo(null);
 
         }
 
@@ -59,8 +57,6 @@ namespace DAO\tests\units
                     ->isEqualTo(null);
 
         }
-
-
 
     }
 

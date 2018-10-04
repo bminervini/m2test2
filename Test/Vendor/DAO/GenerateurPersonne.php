@@ -6,7 +6,7 @@
  * Time: 15:24
  */
 
-namespace DAO\tests\units
+namespace DAO\tests\units\generation
 {
 
 class GenerateurPersonne
