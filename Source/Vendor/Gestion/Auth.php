@@ -20,7 +20,8 @@ namespace Auth;
                 
                 $cryptedPassword = md5($password);
                 $query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
-                $req = $this->dao->connexion->prepare($query);
+                
+                $req = $this->dao->getConnexion()->prepare($query);
                 $req->execute();
                 
                 $result = $req->fetch();
