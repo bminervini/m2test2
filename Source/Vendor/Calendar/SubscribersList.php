@@ -39,7 +39,7 @@ namespace Calendar
             return isset($this->subscribers[$sub->getId()]);
         }
 
-        public function chooseOne($day)
+        public function chooseOne()
         {
             if (count($this->subscribers) == 0)
             {
@@ -52,7 +52,7 @@ namespace Calendar
             {
                 $current = $person->getCroissantAmount();
 
-                if (!isset($min) || $current < $min && $person->isDisponible($day))
+                if (!isset($min) || $current < $min)
                 {
                     $min = $current;
                     $choosen = $person;
