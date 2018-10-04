@@ -4,6 +4,7 @@ namespace DAO {
 
     use \PDO;
     include("../Source/Vendor/Models/Personne.php");
+
     use \Models\Personne;
 
     class DAO
@@ -48,7 +49,8 @@ namespace DAO {
         {
             try {
                 $requete = $this->connexion->prepare($sql);
-                return $requete->exec();
+                $requete->execute();
+                return $requete;
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 return null;

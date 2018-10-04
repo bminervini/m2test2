@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="atoum testsuite">
-  <testsuite name="SubscribersList" package="Calendar\tests\units" tests="10" failures="1" errors="4" skipped="0" time="0.017940759658813">
-    <testcase name="testEmptyInit" time="0.0028059482574463" classname="Calendar\tests\units\SubscribersList" assertions="0"/>
-    <testcase name="testNoSubChoice" time="0.0016958713531494" classname="Calendar\tests\units\SubscribersList" assertions="3">
+  <testsuite name="SubscribersList" package="Calendar\tests\units" tests="10" failures="1" errors="4" skipped="0" time="0.019581317901611">
+    <testcase name="testEmptyInit" time="0.0032851696014404" classname="Calendar\tests\units\SubscribersList" assertions="0"/>
+    <testcase name="testNoSubChoice" time="0.0019800662994385" classname="Calendar\tests\units\SubscribersList" assertions="3">
       <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 47 and defined]]></error>
     </testcase>
-    <testcase name="testPopulatedChoice" time="0.0044910907745361" classname="Calendar\tests\units\SubscribersList" assertions="1">
+    <testcase name="testPopulatedChoice" time="0.0050230026245117" classname="Calendar\tests\units\SubscribersList" assertions="1">
       <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 56 and defined]]></error>
     </testcase>
-    <testcase name="testAddSubscribers" time="0.0044939517974854" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
-    <testcase name="testAddMultipleSubs" time="0.0044538974761963" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
+    <testcase name="testAddSubscribers" time="0.0048019886016846" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
+    <testcase name="testAddMultipleSubs" time="0.0044910907745361" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
     <testcase name="testMultiplePersonChoice" time="0" classname="Calendar\tests\units\SubscribersList" assertions="2">
       <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 72 and defined]]></error>
       <error type="8"><![CDATA[Undefined variable: day]]></error>
@@ -23,66 +23,44 @@
 }]]></failure>
     </testcase>
   </testsuite>
-  <testsuite name="DAO" package="DAO\tests\units" tests="12" failures="1" errors="9" skipped="0" time="0.14282703399658">
-    <testcase name="testRequestConnexion" time="0.021404981613159" classname="DAO\tests\units\DAO" assertions="0">
-      <error type="2"><![CDATA[include(../Models/Personne.php): failed to open stream: No such file or directory]]></error>
-      <error type="2"><![CDATA[include(): Failed opening '../Models/Personne.php' for inclusion (include_path='.;C:\php\pear')]]></error>
-    </testcase>
-    <testcase name="testDropTables" time="0.12142205238342" classname="DAO\tests\units\DAO" assertions="2">
-      <error type="2"><![CDATA[include(../Models/Personne.php): failed to open stream: No such file or directory]]></error>
-      <error type="2"><![CDATA[include(): Failed opening '../Models/Personne.php' for inclusion (include_path='.;C:\php\pear')]]></error>
-    </testcase>
-    <testcase name="testUserExistant" time="0" classname="DAO\tests\units\DAO" assertions="0">
-      <error type="2"><![CDATA[include(../Models/Personne.php): failed to open stream: No such file or directory]]></error>
-      <error type="2"><![CDATA[include(): Failed opening '../Models/Personne.php' for inclusion (include_path='.;C:\php\pear')]]></error>
-      <error type="2"><![CDATA[Missing argument 1 for DAO\DAO::initialisationBD(), called in D:\m2test2\Test\Vendor\DAO\TestDao.php on line 99 and defined]]></error>
-      <failure type="Failure" message="object()"><![CDATA[object(Models\Personne) is not equal to null
--Expected
-+Actual
-@@ -1 +1 @@
--NULL
-+object(Models\Personne)#78 (9) {
-  ["nom"]=>
-  string(8) "Merandat"
-  ["prenom"]=>
-  string(8) "Jonathan"
-  ["nombreCroissantAmene"]=>
-  int(0)
-  ["username"]=>
-  string(4) "john"
-  ["password"]=>
-  string(32) "098f6bcd4621d373cade4e832627b4f6"
-  ["mail"]=>
-  string(12) "jon@mail.com"
-  ["admin"]=>
-  int(0)
-  ["participe"]=>
-  int(0)
-  ["idPersonne"]=>
-  int(1)
-}]]></failure>
-    </testcase>
-    <testcase name="testAddPersonne" time="0" classname="DAO\tests\units\DAO" assertions="2">
-      <error type="UNKNOWN"><![CDATA[Fatal error: Uncaught Error: Call to a member function count() on null in D:\m2test2\Test\Vendor\DAO\TestDao.php:85
+  <testsuite name="DAO" package="DAO\tests\units" tests="6" failures="1" errors="4" skipped="0" time="0.012295007705688">
+    <testcase name="testRequestConnexion" time="0.012295007705688" classname="DAO\tests\units\DAO" assertions="0"/>
+    <testcase name="testAddPersonne" time="0" classname="DAO\tests\units\DAO" assertions="1">
+      <error type="UNKNOWN"><![CDATA[Fatal error: Uncaught Error: Class 'DAO\tests\units\generationPersonne' not found in D:\m2test2\Test\Vendor\DAO\TestDao.php:35
 Stack trace:
 #0 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testAddPersonne()
 #1 -(1): mageekguy\atoum\test->runTestMethod('testAddPersonne')
 #2 {main}
-  thrown in D:\m2test2\Test\Vendor\DAO\TestDao.php on line 85]]></error>
+  thrown in D:\m2test2\Test\Vendor\DAO\TestDao.php on line 35]]></error>
       <error type="255"><![CDATA[ Tables supprimées  Table personne créé 
  Table calendrier créé 
  Table calendrier créé 
 ]]></error>
     </testcase>
+    <testcase name="testUserExistant" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="UNKNOWN"><![CDATA[Fatal error: Uncaught Error: Class 'DAO\tests\units\Personne' not found in D:\m2test2\Test\Vendor\DAO\TestDao.php:52
+Stack trace:
+#0 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testUserExistant()
+#1 -(1): mageekguy\atoum\test->runTestMethod('testUserExistan...')
+#2 {main}
+  thrown in D:\m2test2\Test\Vendor\DAO\TestDao.php on line 52]]></error>
+      <error type="255"><![CDATA[ Tables supprimées  Table personne créé 
+ Table calendrier créé 
+ Table calendrier créé 
+]]></error>
+    </testcase>
+    <testcase name="testDropTables" time="0" classname="DAO\tests\units\DAO" assertions="2">
+      <failure type="Failure" message="integer()"><![CDATA[array(2) is not an integer]]></failure>
+    </testcase>
   </testsuite>
-  <testsuite name="Mail" package="Mailing\tests\units" tests="5" failures="0" errors="0" skipped="0" time="0.010525465011597">
-    <testcase name="testConstruct" time="0.0020887851715088" classname="Mailing\tests\units\Mail" assertions="0"/>
-    <testcase name="testGetSetSender" time="0.0019779205322266" classname="Mailing\tests\units\Mail" assertions="8"/>
-    <testcase name="testGetSetRecipient" time="0.002202033996582" classname="Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetSubject" time="0.0021557807922363" classname="Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetBody" time="0.002100944519043" classname="Mailing\tests\units\Mail" assertions="2"/>
+  <testsuite name="Mail" package="Mailing\tests\units" tests="5" failures="0" errors="0" skipped="0" time="0.010886669158936">
+    <testcase name="testConstruct" time="0.0020909309387207" classname="Mailing\tests\units\Mail" assertions="0"/>
+    <testcase name="testGetSetSender" time="0.0025599002838135" classname="Mailing\tests\units\Mail" assertions="8"/>
+    <testcase name="testGetSetRecipient" time="0.0021100044250488" classname="Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetSubject" time="0.0020208358764648" classname="Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetBody" time="0.0021049976348877" classname="Mailing\tests\units\Mail" assertions="2"/>
   </testsuite>
-  <testsuite name="MailSender" package="Mailing\tests\units" tests="1" failures="0" errors="0" skipped="0" time="6.103515625E-5">
-    <testcase name="testSendMail" time="6.103515625E-5" classname="Mailing\tests\units\MailSender" assertions="0"/>
+  <testsuite name="MailSender" package="Mailing\tests\units" tests="1" failures="0" errors="0" skipped="0" time="1.8119812011719E-5">
+    <testcase name="testSendMail" time="1.8119812011719E-5" classname="Mailing\tests\units\MailSender" assertions="0"/>
   </testsuite>
 </testsuites>
