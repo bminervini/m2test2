@@ -1,3 +1,8 @@
-<?php 
-    header("Location: Source/Vendor/Gestion/login.php");
+<?php
+
+    header("Location: static/login.php");
+    exit;
+
+
 ?>
+
