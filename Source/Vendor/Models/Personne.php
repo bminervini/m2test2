@@ -12,6 +12,7 @@ namespace Models {
         var $password;
         var $mail;
         var $admin;
+        var $participe;
         var $idPersonne = null;
 
         function __construct($nom, $prenom, $username, $password, $mail, $admin)
@@ -21,6 +22,7 @@ namespace Models {
             $this->prenom = $prenom;
             $this->username = $username;
             $this->password = $password;
+            $this->participe = 0;
             $this->nombreCroissantAmene = 0;
             $this->mail = $mail;
             $this->admin = $admin;
@@ -30,6 +32,12 @@ namespace Models {
         {
             $this->idPersonne = $idPersonne;
         }
+
+        public function getParticipe()
+        {
+            return $this->participe;
+        }
+
 
         public function getNom()
         {

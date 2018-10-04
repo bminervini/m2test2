@@ -31,6 +31,8 @@ namespace DAO {
 
             try {
                 $this->connexion = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 $connexion = null;
@@ -48,6 +50,7 @@ namespace DAO {
             return $query->exec();
         }
 
+        //initialise la bdd avec un admin
         function initialisationBD()
         {
             $this->dropTables();
@@ -61,7 +64,7 @@ namespace DAO {
 
         function addAdmin()
         {
-            $pers = new Personne("Merandat", "John", "JohnDuff", "test", "john@gmail.com", 0);
+            $pers = new Personne("Administrateur", "admin", "admin", md5("admin"), "admin@gmail.com", 1);
             $this->addPersonne($pers);
         }
 
@@ -73,14 +76,19 @@ namespace DAO {
             $password = $personne->getPassword();
             $mail = $personne->getMail();
             $admin = $personne->isADmin();
-            $sql = "INSERT INTO personne (nom, prenom, username, password, mail, admin, nbreCroissantAmene)
-                    VALUES ($nom, $prenom, $username, $password, $mail, $admin, 0)";
-            var_dump($sql);
-            $create = $this->connexion->prepare($sql);
-            $idPersonne = $create->execute();
-            var_dump($idPersonne);
-            die();
-            $personne->setIdPersonne($idPersonne);
+            $participe = $personne->getParticipe();
+            $nbreCroissant = $personne->getNombreCroissantAmene();
+
+            $sql = "INSERT INTO `m2test2`.`personne` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
+                    VALUES (NULL, '$nom', '$prenom', '$username', '$password', '$mail', '$admin', '$participe', '$nbreCroissant');";
+            try {
+                $this->connexion->exec($sql);
+                var_dump("Admin ajouté");
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+            }
         }
 
         function getListPersonne()
