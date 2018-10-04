@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="atoum testsuite">
+  <testsuite name="SubscribersList" package="Calendar\tests\units" tests="10" failures="1" errors="4" skipped="0" time="0.028646469116211">
+    <testcase name="testEmptyInit" time="0.0025861263275146" classname="Calendar\tests\units\SubscribersList" assertions="0"/>
+    <testcase name="testNoSubChoice" time="0.0017120838165283" classname="Calendar\tests\units\SubscribersList" assertions="3">
+      <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 47 and defined]]></error>
+    </testcase>
+    <testcase name="testPopulatedChoice" time="0.009148120880127" classname="Calendar\tests\units\SubscribersList" assertions="1">
+      <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 56 and defined]]></error>
+    </testcase>
+    <testcase name="testAddSubscribers" time="0.0042181015014648" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
+    <testcase name="testAddMultipleSubs" time="0.010982036590576" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
+    <testcase name="testMultiplePersonChoice" time="0" classname="Calendar\tests\units\SubscribersList" assertions="2">
+      <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 72 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: day]]></error>
+      <failure type="Failure" message="object()"><![CDATA[object(mock\DAO\Personne) is not identical to object(mock\DAO\Personne)
+-Expected
++Actual
+@@ -1 +1 @@
+-object(mock\DAO\Personne)#82 (0) {
+}
++object(mock\DAO\Personne)#76 (0) {
+}]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="DAO" package="DAO\tests\units" tests="3" failures="0" errors="2" skipped="0" time="0.028008937835693">
+    <testcase name="testRequestConnexion" time="0.028008937835693" classname="DAO\tests\units\DAO" assertions="0"/>
+    <testcase name="testDropTables" time="0" classname="DAO\tests\units\DAO" assertions="2">
+      <error type="UNKNOWN"><![CDATA[Fatal error: Uncaught Error: Call to undefined method PDOStatement::exec() in D:\m2test2\Source\Vendor\DAO\DAO.php:46
+Stack trace:
+#0 D:\m2test2\Test\Vendor\DAO\TestDao.php(25): DAO\DAO->querySQL('SELECT Count(*)...')
+#1 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testDropTables()
+#2 -(1): mageekguy\atoum\test->runTestMethod('testDropTables')
+#3 {main}
+  thrown in D:\m2test2\Source\Vendor\DAO\DAO.php on line 46]]></error>
+      <error type="255"><![CDATA[ Tables supprimées ]]></error>
+    </testcase>
+  </testsuite>
+  <testsuite name="Mail" package="Mailing\tests\units" tests="5" failures="0" errors="0" skipped="0" time="0.01019549369812">
+    <testcase name="testConstruct" time="0.0021052360534668" classname="Mailing\tests\units\Mail" assertions="0"/>
+    <testcase name="testGetSetSender" time="0.0020201206207275" classname="Mailing\tests\units\Mail" assertions="8"/>
+    <testcase name="testGetSetRecipient" time="0.0019409656524658" classname="Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetSubject" time="0.0022420883178711" classname="Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetBody" time="0.0018870830535889" classname="Mailing\tests\units\Mail" assertions="2"/>
+  </testsuite>
+  <testsuite name="MailSender" package="Mailing\tests\units" tests="1" failures="0" errors="0" skipped="0" time="1.7166137695312E-5">
+    <testcase name="testSendMail" time="1.7166137695312E-5" classname="Mailing\tests\units\MailSender" assertions="0"/>
+  </testsuite>
+</testsuites>
