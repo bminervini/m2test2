@@ -1,6 +1,6 @@
 <?php
 
-namespace DAO {
+namespace Vendor\DAO {
 
     use DAO\tests\units\generation\GenerateurPersonne;
     use \PDO;

@@ -1,5 +1,9 @@
 <?php
 
+namespace Vendor\Models{
+
+
+
 class Calendrier{
 
     var $mercredisOuvrables = [];
@@ -16,6 +20,7 @@ class Calendrier{
 
 }
 
+}
 
 
 ?>
