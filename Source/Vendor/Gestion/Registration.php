@@ -17,11 +17,30 @@ namespace Registration;
         public function registered($nom, $prenom, $username, $password, $mail, $admin){
         
             echo "nom : ".$nom."| prenom : ".$prenom."| username : ".$username."| password : ".$password."| mail : ".$mail."| admin : ".$admin;
-            //$person = new Personne($nom, $prenom, $username, $password, $mail, $admin);
+            
+            if($this->isNotUse($username)){
+                echo "pas utilisé";
+            }else{
+                echo "déjà utilisé";
+            }
+            
+            /*
+            $person = new Personne($nom, $prenom, $username, $password, $mail, $admin);
+            $this->dao->addPersonne($person);
+            */
         }
 
-        private function isAlreadyUse($username){
-            //$query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
+        private function isNotUse($username){
+            $query = "SELECT * FROM personne WHERE username='$username'";
+            
+            $req = $this->dao->querySQL($query);    
+            $result = $req->fetch();
+
+            if($result){
+                return false;
+            }else{
+                return true;
+            }
         }
     }
 
