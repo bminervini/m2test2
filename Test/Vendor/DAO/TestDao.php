@@ -20,10 +20,11 @@ namespace DAO\tests\units
         {
             $dao = new \DAO\DAO();
             $dao->dropTables();
-            $requete = $dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            //$requete = $dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            $nbreTable = $dao->getNombreTable();
             $this
-                ->integer($requete->fetch())
-                    ->isNotEqualTo(null);
+                ->integer($nbreTable)
+                    ->isNotEqualTo(0);
 
         }
 

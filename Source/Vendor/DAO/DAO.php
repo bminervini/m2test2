@@ -2,8 +2,10 @@
 
 namespace DAO {
 
+    use DAO\tests\units\generation\GenerateurPersonne;
     use \PDO;
-    //include("../Models/Personne.php"); //à commenter pour les test atoum
+    include("../Models/Personne.php"); //à commenter pour les test atoum
+    include("../../../Test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
     use \Models\Personne;
 
     class DAO
@@ -56,6 +58,12 @@ namespace DAO {
             }
         }
 
+        function getNombreTable(){
+            $requete = $this->connexion->exec("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            var_dump($requete);
+            die();
+        }
+
         //initialise la bdd (schéma) avec un admin
         function initialisationBD($nombreDePersonne)
         {
@@ -65,6 +73,12 @@ namespace DAO {
             $this->createTableDisponibilite();
 
             $this->addAdmin();
+
+            $generator = new GenerateurPersonne($nombreDePersonne);
+            $personnes = $generator->getPersonnes();
+            for ($i = 0; $i < count($personnes); $i++){
+                $this->addPersonne($personnes[$i]);
+            }
 
         }
 
@@ -93,7 +107,11 @@ namespace DAO {
             try {
                 $idPersonne = $this->connexion->exec($sql);
                 $personne->setIdPersonne($idPersonne);
-                return $personne;
+                if ($idPersonne == null){
+                    return null;
+                }else{
+                    return $personne;
+                }
             }
             catch(PDOException $e)
             {

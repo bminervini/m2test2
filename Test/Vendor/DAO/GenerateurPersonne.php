@@ -9,20 +9,22 @@
 namespace DAO\tests\units\generation
 {
 
-class GenerateurPersonne
+    use \Models\Personne;
+
+    class GenerateurPersonne
 {
 
     var $prenom = array("John", "Baptiste", "Yannis", "Awa", "Brandon", "Lucas");
     var $nom = array("test", "test2", "test3", "test4", "test5", "test6");
-    var $username = array("PigeonDétraqué", "CascadeurFou", "HyèneEnragé", "CastorDupé", "LoupMalFamé", "HibouMalin");
+    var $username = array("PigeonDetraque", "CascadeurFou", "HyeneEnrage", "CastorDupe", "LoupMalFame", "HibouMalin");
     var $distriMail = array("outlook", "gmail", "aol", "yahoo", "hotmail");
     var $admin = array(0, 1);
 
-    var $listPersonnes;
+    var $listPersonnes = [];
 
     public function __construct($nbre)
     {
-        $this->listPersonnes = $this->getXPersonneRandom(nbre);
+        $this->listPersonnes = $this->getXPersonneRandom($nbre);
     }
 
     public function getPersonnes()
@@ -31,27 +33,28 @@ class GenerateurPersonne
     }
 
     public function getPersonneRandom($sel){
-        $aleaPrenom = rand(0 , $this->prenom->count()-1 );
-        $aleaNom = rand(0 , $this->nom->count()-1 );
-        $aleaUsername = rand(0 , $this->nom->count()-1 );
-        $aleaDistriMail = rand(0 , $this->nom->count()-1 );
-        $aleaAdmin = rand(0 , 1 );
+        $aleaPrenom = rand(0 , sizeof($this->prenom)-1 );
+        $aleaNom = rand(0 , sizeof($this->nom)-1 );
+        $aleaUsername = rand(0 , sizeof($this->username)-1 );
+        $aleaDistriMail = rand(0 , sizeof($this->distriMail)-1 );
+        $aleaAdmin = rand(0, 1);
 
-        return new Personne(
+        $pers = new Personne(
             $this->nom[$aleaNom],
             $this->prenom[$aleaPrenom],
             $this->username[$aleaUsername] . $sel,
-            $this->username[$aleaUsername],
-            $this->username[$aleaUsername] . "@" . $this->distriMail[$aleaDistriMail] ."com",
+            md5($this->username[$aleaUsername]),
+            $this->username[$aleaUsername] . "@" . $this->distriMail[$aleaDistriMail] .".com",
             $this->admin[$aleaAdmin]
         );
+        return $pers;
     }
 
     public function getXPersonneRandom($nbre){
-        $this->listPersonnes = array();
         for ($i = 0; $i < $nbre; $i++){
-            $this->listePersonne[$i] = $this->getPersonneRandom($i);
+            $this->listPersonnes[$i] = $this->getPersonneRandom($i);
         }
+        return $this->listPersonnes;
     }
 }
 }
