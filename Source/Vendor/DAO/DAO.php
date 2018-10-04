@@ -47,15 +47,16 @@ namespace DAO {
         function querySQL($sql)
         {
             try {
-                return $this->connexion->exec($sql);
+                $requete = $this->connexion->prepare($sql);
+                return $requete->exec();
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 return null;
             }
         }
 
-        //initialise la bdd avec un admin
-        function initialisationBD()
+        //initialise la bdd (schéma) avec un admin
+        function initialisationBD($nombreDePersonne)
         {
             $this->dropTables();
             $this->createTablePersonne();
@@ -139,7 +140,10 @@ namespace DAO {
 
         function getListPersonne()
         {
-
+            $sql = "SELECT * FROM personne;";
+            $retour = $this->connexion->exec($sql);
+            var_dump($retour);
+            return $retour;
         }
 
         //Création du schéma de BDD
@@ -150,7 +154,7 @@ namespace DAO {
                `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
                `nom` varchar(40) NOT NULL,
                `prenom` varchar(40) NOT NULL, 
-               `username` varchar(40) NOT NULL, 
+               `username` varchar(40) NOT NULL UNIQUE, 
                `mail` varchar(40) NOT NULL, 
                `password` varchar(40) NOT NULL, 
                `isAdmin` int(1) NOT NULL, 
@@ -190,10 +194,10 @@ namespace DAO {
         function createTableDisponibilite()
         {
             $sql = "CREATE TABLE IF NOT EXISTS `disponibilite`(
-               `disponible` int (1) NOT NULL,
                `idPersonne` int NOT NULL,
                `idCalendrier` int NOT NULL,
-               `ferie` int(1) NOT NULL, 
+               `disponible` int (1) NOT NULL,
+               `amenCroissant` int(1) NOT NULL, 
                FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne),
                FOREIGN KEY (idCalendrier) REFERENCES calendrier(idCalendrier), 
                CONSTRAINT PK_Person PRIMARY KEY (idPersonne,idCalendrier))
