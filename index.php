@@ -1,5 +1,7 @@
 <?php
 
-    include("static/login.html");
+    header("Location: static/login.php");
+    exit;
+
 
 ?>

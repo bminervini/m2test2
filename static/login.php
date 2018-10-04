@@ -1,24 +1,23 @@
 <html>
 
-    <?php include 'static/head.html';?>
+    <!-- Include head html -->
+    <?php include 'head.php';?>
 
-    <body style="background-color: whitesmoke">
+    <body class="cs_body">
 
-        <?php include 'static/jumbotron.html';?>
-
-        <br><br><br>
+        <!-- Include jumbotron -->
+        <?php include 'jumbotron.php';?>
 
         <div class="container">
             
             <div class="row">
-                
                 
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 
                     
-                    <form action="dashboard.html" method="POST" role="form">
+                    <form action="dashboard.php" method="POST" role="form">
                         <legend>Authentification</legend>
                     
                         <div class="form-group">
@@ -39,6 +38,8 @@
             
         </div>
         
+
+        <?php include 'bottom.php';?>
         
     </body>
 </html>
