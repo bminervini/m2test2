@@ -1,5 +1,5 @@
 <?php
 
-    include("Source/Vendor/Static/index.html");
+    include("static/login.html");
 
 ?>
