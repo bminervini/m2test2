@@ -8,6 +8,7 @@ namespace DAO\tests\units
 
     class DAO extends atoum
     {
+
         //permet de vérifier que l'on peut accéder à la base de données
         public function testRequestConnexion()
         {
@@ -29,7 +30,22 @@ namespace DAO\tests\units
         }
 
         //vérifier le fonctionnement de la fonction addPersonne
-        public function
+        public function testAddPersonne(){
+
+            $dao = new \DAO\DAO();
+            $dao->initialisationBD();
+            $gener = new generationPersonne(10);
+            $personneRandom = $gener->getPersonnes();
+
+            for ($i = 0; $i < $personneRandom->count(); $i++){
+                $dao->addPersonne($personneRandom[$i]);
+            }
+
+            $nbrePersonneDansBdd = $dao->querySQL("SELECT COUNT(*) FROM personne;");
+
+
+            $this->integer($nbrePersonneDansBdd)->isEqualTo(10);
+        }
 
         //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
         public function testUserExistant(){
@@ -43,6 +59,7 @@ namespace DAO\tests\units
                     ->isEqualTo(null);
 
         }
+
 
 
     }
