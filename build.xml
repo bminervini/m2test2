@@ -4,7 +4,7 @@
 
  <target name="atoum" description="Test unitaire">
   <exec executable="php">
-   <arg line="${basedir}/applis/atoum/atoum.phar -c ${basedir}/Test/.atoum.php -d ${basedir}/Test/" />
+   <arg line="${basedir}/applis/atoum/atoum.phar -c ${basedir}/src/test/.atoum.php -d ${basedir}/src/test/" />
   </exec>
  </target>  
 

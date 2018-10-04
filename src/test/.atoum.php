@@ -6,7 +6,7 @@ $runner->addReport($xunit);
 $runner->addReport($clover);
 
 $report = $script->addDefaultReport();
-$runner->setBootstrapFile(__DIR__ . DIRECTORY_SEPARATOR .  '.bootstrap.atoum.php');
+$runner->setBootstrapFile(__DIR__ . DIRECTORY_SEPARATOR . ".bootstrap.atoum.php");
 $runner->addTestsFromDirectory(__DIR__ . DIRECTORY_SEPARATOR);
 
 $writer = new atoum\writers\file('build/logs/xunit.xml');

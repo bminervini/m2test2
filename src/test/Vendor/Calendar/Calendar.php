@@ -1,9 +1,8 @@
 <?php
 
-namespace Calendar\tests\units
+namespace Vendor\Calendar\test\units
 {
     use \atoum;
-
     class SubscribersList extends atoum
     {
         function mockPerson($id = 0, $croissant = 0)
@@ -31,7 +30,7 @@ namespace Calendar\tests\units
         {
 
             $this
-                ->if($list = new \Calendar\SubscribersList())
+                ->if($list = new \Vendor\Calendar\SubscribersList())
                 ->then
                 ->array($list->subscribers)
                 ->and
@@ -42,7 +41,7 @@ namespace Calendar\tests\units
         {
 
             $this
-                ->if($list = new \Calendar\SubscribersList())
+                ->if($list = new \Vendor\Calendar\SubscribersList())
                 ->then
                 ->variable($list->chooseOne())
                     ->isEqualTo(null);
@@ -51,7 +50,7 @@ namespace Calendar\tests\units
         {
             $fred = $this->mockPerson(1);
             $this
-                ->if($list = new \Calendar\SubscribersList([$fred]))
+                ->if($list = new \Vendor\Calendar\SubscribersList([$fred]))
                 ->then
                 ->object($list->chooseOne())
                 ->isIdenticalTo($fred);
@@ -67,7 +66,7 @@ namespace Calendar\tests\units
             $this
                 ->given($subs = [$fred, $fab, $a, $b])
                 ->and($length = count($subs))
-                ->if($list = new \Calendar\SubscribersList($subs))
+                ->if($list = new \Vendor\Calendar\SubscribersList($subs))
                 ->then
                 ->object($list->chooseOne())
                 ->isIdenticalTo($fab)
@@ -84,7 +83,7 @@ namespace Calendar\tests\units
             $length = count($subs);
             $jub = $this->mockPerson(count($subs) + 1);
             $this
-                ->if($list = new \Calendar\SubscribersList($subs))
+                ->if($list = new \Vendor\Calendar\SubscribersList($subs))
                 ->and($list->addSubscriber($jub))
                 ->then
                 ->integer(count($list->subscribers))
@@ -100,7 +99,7 @@ namespace Calendar\tests\units
             $length2 = count($subs2);
             $this
                 ->given()
-                ->if($list = new \Calendar\SubscribersList($subs))
+                ->if($list = new \Vendor\Calendar\SubscribersList($subs))
                 ->and()
                 ->and($list->addSubscribers($subs2))
                 ->then
