@@ -35,10 +35,12 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 
                     
-                    <form action="" method="POST" role="form">
-                        <legend>Authentification</legend>
+                    <form action="login.php" method="POST" role="form">
+                        <legend>Enregistrement</legend>
                     
                         <div class="form-group">
+                            <label for="">Mail</label>
+                            <input type="mail" class="form-control" id="" placeholder="tonyletruand@exemple.com" name="mail">
                             <label for="">Identifiant</label>
                             <input type="text" class="form-control" id="" placeholder="Identifiant" name="username">
                             <label for="">Mot de passe</label>
