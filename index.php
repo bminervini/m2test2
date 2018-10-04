@@ -3,5 +3,4 @@
     header("Location: static/login.php");
     exit;
 
-
 ?>

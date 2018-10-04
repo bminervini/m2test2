@@ -35,7 +35,7 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 
                     
-                    <form action="login.php" method="POST" role="form">
+                    <form action="" method="POST" role="form">
                         <legend>Authentification</legend>
                     
                         <div class="form-group">
