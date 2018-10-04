@@ -46,8 +46,12 @@ namespace DAO {
 
         function querySQL($sql)
         {
-            $query = $this->connexion->prepare($sql);
-            return $query->exec();
+            try {
+                return $this->connexion->exec($sql);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return null;
+            }
         }
 
         //initialise la bdd avec un admin
@@ -68,6 +72,9 @@ namespace DAO {
             $this->addPersonne($pers);
         }
 
+        //ajoute une personne dans la base de données
+        //si l'ajout est possible, retourne la personne avec l'idPersonne renseigné
+        //sinon retourne null
         function addPersonne($personne)
         {
             $nom = $personne->getNom();
@@ -76,19 +83,58 @@ namespace DAO {
             $password = $personne->getPassword();
             $mail = $personne->getMail();
             $admin = $personne->isADmin();
-            $participe = $personne->getParticipe();
-            $nbreCroissant = $personne->getNombreCroissantAmene();
+            $participe = 0;
+            $nbreCroissant = 0;
 
             $sql = "INSERT INTO `m2test2`.`personne` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
                     VALUES (NULL, '$nom', '$prenom', '$username', '$password', '$mail', '$admin', '$participe', '$nbreCroissant');";
             try {
-                $this->connexion->exec($sql);
-                var_dump("Admin ajouté");
+                $idPersonne = $this->connexion->exec($sql);
+                $personne->setIdPersonne($idPersonne);
+                return $personne;
             }
             catch(PDOException $e)
             {
                 echo $sql . "<br>" . $e->getMessage();
+                return null;
             }
+        }
+
+        function updatePersonne($personne){
+
+            $idPersonne = $personne->getIdPersonne();
+            $nom = $personne->getNom();
+            $prenom = $personne->getPrenom();
+            $username = $personne->getUsername();
+            $password = $personne->getPassword();
+            $mail = $personne->getMail();
+            $admin = $personne->isADmin();
+            $participe = 0;
+            $nbreCroissant = 0;
+
+            $sql = "UPDATE personne
+                    SET   nom = $nom, 
+                          prenom = $prenom,
+                          username = $username,
+                          mail = $mail,
+                          password = $password,
+                          isAdmin = $admin,
+                          participe = $participe,
+                          nbreCroissantAmene = $nbreCroissant
+                    WHERE idPersonne = $idPersonne;";
+            try {
+                if($this->connexion->exec($sql)){
+                    return true;
+                }else{
+                    return false;
+                };
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+                return null;
+            }
+
         }
 
         function getListPersonne()
@@ -96,8 +142,8 @@ namespace DAO {
 
         }
 
-
         //Création du schéma de BDD
+        //retourne true si tout est ok, sinon retourne false
         function createTablePersonne()
         {
             $sql = "CREATE TABLE IF NOT EXISTS `personne`(
@@ -113,10 +159,13 @@ namespace DAO {
                PRIMARY KEY (idPersonne)
                )";
             $create = $this->connexion->prepare($sql);
+
             if ($create->execute()) {
                 echo " Table personne créé \n";
+                return true;
             } else {
                 print_r($create->errorInfo());
+                return false;
             }
         }
 
@@ -131,8 +180,10 @@ namespace DAO {
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
                 echo " Table calendrier créé \n";
+                return true;
             } else {
                 print_r($create->errorInfo());
+                return false;
             }
         }
 
