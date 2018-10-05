@@ -1,14 +1,14 @@
 <?php 
-    require_once("Auth.php");
-    use \Auth\Auth;
+    require_once("Registration.php");
+    use \Registration\Registration;
     
     if(isset($_POST['submit'])){
-        $auth = new Auth();
-        $auth->connection($_POST['username'], $_POST['password']);
+        $register = new Registration();
+        $register->registered($_POST['lastname'], $_POST['firstname'], $_POST['username'], $_POST['password'], $_POST['mail'], (empty($_POST['admin']))? "0": $_POST['admin']);
     }
 ?>
 
-<?php $title = "log page"; ?>
+<?php $title = "Register page"; ?>
 
 <!-- Start of storage -->
 <?php ob_start(); ?>
@@ -17,7 +17,19 @@
 <div class="container">
     <div class="col-md-5 col-centered">
         <form action="" method="post">
-            <h2>Login Page</h2>
+            <h2>Register page</h2>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="firstname" placeholder="Firstname" required="required">        	
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control" name="lastname" placeholder="Lastname" required="required">
+            </div>
+
+            <div class="form-group">
+                <input type="email" class="form-control" name="mail" placeholder="Email" required="required">
+            </div>
 
             <div class="form-group">
                 <input type="text" class="form-control" name="username" placeholder="Username" required="required">        	
@@ -25,6 +37,11 @@
             
             <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="admin" name="admin" value="1"/>
+                <label for="scales">isAdmin</label>
             </div>
                 
             <div class="form-group">
