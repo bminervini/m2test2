@@ -1,6 +1,6 @@
 <?php 
-    require_once("../Source/Vendor/Gestion/Auth.php");
-    use \Auth\Auth;
+    require_once("../src/main/Vendor/Gestion/Auth.php");
+    use \Vendor\Auth;
 
     if(isset($_POST['submit']))
     {

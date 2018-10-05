@@ -1,7 +1,7 @@
 <?php
 
 namespace Auth;
-    require_once("../Source/Vendor/DAO/DAO.php");    
+    require_once("../src/main/Vendor/DAO/DAO.php");
     use \DAO\DAO;
 
     class Auth{
