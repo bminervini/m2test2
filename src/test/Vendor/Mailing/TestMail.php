@@ -10,18 +10,20 @@ namespace Mailing\tests\units
 
         public function testConstruct()
         {
-            $sFrom = "m2test2.croissant.show@gmail.com";
+
             $sTo = "yannis.beaux@gmail.com";
             $sSubject = "Sujet du mail";
             $sBody = "Corps du mail";
 
             $this
-                ->if($oInstance = new \Mailing\Mail($sFrom , $sTo , $sSubject , $sBody))
+                ->if($oInstance = new \Mailing\Mail($sTo , $sSubject , $sBody))
                 ->then
-                ->string($oInstance->getSender())
-                    ->isEqualTo($sFrom)
-                ->string($oInstance->getRecipient())
-                    ->isEqualTo($sTo)
+                ->phpArray($oInstance->getRecipients())
+                    ->isEqualTo(
+                        array(
+                            $sTo
+                        )
+                    )
                 ->string($oInstance->getSubject())
                     ->isEqualTo($sSubject)
                 ->string($oInstance->getBody())
@@ -29,34 +31,30 @@ namespace Mailing\tests\units
             ;
         }
 
-        public function testGetSetSender()
+        public function testGetRecipients()
         {
+            
             $this
-                ->given($oInstance = new \Mailing\Mail("" , "" , "" , "" , ""))
-                ->and($sFrom = "m2test2.croissant.show@gmail.com")
-                ->if($oInstance->setSender($sFrom))
+                ->given($oInstance = new \Mailing\Mail())
+                ->and($sRecipient1 = "exemple1@gmail.com")
+                ->and($sRecipient2 = "exemple2@gmail.fr")
+                ->and($oInstance->addRecipient($sRecipient1))
+                ->and($oInstance->addRecipient($sRecipient2))
                 ->then
-                ->string($oInstance->getSender())
-                    ->isEqualTo($sFrom)
-            ;
-        }
-
-        public function testGetSetRecipient()
-        {
-            $this
-                ->given($oInstance = new \Mailing\Mail("" , "" , "" , "" , ""))
-                ->and($sRecipient = "exemple@gmail.com")
-                ->if($oInstance->setRecipient($sRecipient))
-                ->then
-                ->string($oInstance->getRecipient())
-                    ->isEqualTo($sRecipient)
+                ->array($oInstance->getRecipients())
+                    ->isEqualTo(
+                        array(
+                                $sRecipient1
+                            ,   $sRecipient2
+                        )
+                    )
             ;
         }
 
         public function testGetSetSubject()
         {
             $this
-                ->given($oInstance = new \Mailing\Mail("" , "" , "" , "" , ""))
+                ->given($oInstance = new \Mailing\Mail())
                 ->and($sSubject = "Mail de test")
                 ->if($oInstance->setSubject($sSubject))
                 ->then
@@ -68,7 +66,7 @@ namespace Mailing\tests\units
         public function testGetSetBody()
         {
             $this
-                ->given($oInstance = new \Mailing\Mail("" , "" , "" , "" , ""))
+                ->given($oInstance = new \Mailing\Mail())
                 ->and($sBody = "Corps de mail de test")
                 ->if($oInstance->setBody($sBody))
                 ->then
