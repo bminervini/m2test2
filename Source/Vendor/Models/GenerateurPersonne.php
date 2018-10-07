@@ -6,10 +6,8 @@
  * Time: 15:24
  */
 
-namespace DAO\tests\units\generation
+namespace Vendor\Models
 {
-
-    use \Models\Personne;
 
     class GenerateurPersonne
 {
