@@ -1,0 +1,11 @@
+SETUP :
+// vide la table 
+# DELETE_ALL_DBUNIT datasets/cleaning-blackBoard.xml FROM WebRobot
+// Insere les elements dans l'ordre du depliage du script
+# INSERT_DBUNIT datasets/blackBoard.xml INTO WebRobot
+
+TEST :
+
+TEARDOWN : 
+// Verifier que la base de reference et presente
+# ASSERT_DBUNIT TARGET WebRobot CONTAINS  datasets/mapGenerator.xml
