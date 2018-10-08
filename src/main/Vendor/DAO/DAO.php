@@ -4,8 +4,8 @@ namespace Vendor\DAO {
 
     use DAO\tests\units\generation\GenerateurPersonne;
     use \PDO;
-    include("../Models/Personne.php"); //à commenter pour les test atoum
-    include("../../../Test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
+    include("../src/main/Vendor/Models/Personne.php"); //à commenter pour les test atoum
+    include("../src/test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
     use \Models\Personne;
 
     class DAO
