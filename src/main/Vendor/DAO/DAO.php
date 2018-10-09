@@ -1,11 +1,13 @@
 <?php
 
-namespace Vendor\DAO {
+namespace DAO {
 
-    use DAO\tests\units\generation\GenerateurPersonne;
     use \PDO;
-    include("../src/main/Vendor/Models/Personne.php"); //à commenter pour les test atoum
-    include("../src/test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
+
+    use \Vendor\Models;
+    //include("../Models/Personne.php"); //à commenter pour les test atoum
+    //include("../../../Test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
+
     use \Models\Personne;
 
     class DAO
@@ -59,9 +61,21 @@ namespace Vendor\DAO {
         }
 
         function getNombreTable(){
-            $requete = $this->connexion->exec("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
-            var_dump($requete);
-            die();
+            $sql = "SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $nbre = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return intval($nbre[0][0]);
+        }
+
+        function getNombrePersonne(){
+            $sql = "SELECT count(*) FROM personne;";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $nbre = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return intval($nbre[0][0]);
         }
 
         //initialise la bdd (schéma) avec un admin
@@ -74,18 +88,28 @@ namespace Vendor\DAO {
 
             $this->addAdmin();
 
-            $generator = new GenerateurPersonne($nombreDePersonne);
-            $personnes = $generator->getPersonnes();
-            for ($i = 0; $i < count($personnes); $i++){
-                $this->addPersonne($personnes[$i]);
+            if ($nombreDePersonne > 0){
+                $generator = new \Vendor\Models\GenerateurPersonne($nombreDePersonne);
+                $personnes = $generator->getPersonnes();
+                for ($i = 0; $i < count($personnes); $i++){
+                    $this->addPersonne($personnes[$i]);
+                }
             }
 
         }
 
         function addAdmin()
         {
-            $pers = new Personne("Administrateur", "admin", "admin", md5("admin"), "admin@gmail.com", 1);
-            $this->addPersonne($pers);
+            $mdp = md5("admin");
+            $sql = "INSERT INTO `m2test2`.`personne` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
+                    VALUES (NULL, 'Administrateur', 'admin', 'admin', '$mdp', 'admin@gmail.com', '1', '1', '0');";
+            try {
+                $this->connexion->exec($sql);
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+            }
         }
 
         //ajoute une personne dans la base de données
@@ -106,10 +130,10 @@ namespace Vendor\DAO {
                     VALUES (NULL, '$nom', '$prenom', '$username', '$password', '$mail', '$admin', '$participe', '$nbreCroissant');";
             try {
                 $idPersonne = $this->connexion->exec($sql);
-                $personne->setIdPersonne($idPersonne);
                 if ($idPersonne == null){
                     return null;
                 }else{
+                    $personne->setIdPersonne($idPersonne);
                     return $personne;
                 }
             }
@@ -154,7 +178,6 @@ namespace Vendor\DAO {
                 echo $sql . "<br>" . $e->getMessage();
                 return null;
             }
-
         }
 
         function getListPersonne()
