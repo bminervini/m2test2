@@ -1,4 +1,5 @@
-<?php 
+<?php
+//namespace Calendar;
 
 include ('./../Mailing/MailSender.php'); 
 
@@ -6,19 +7,13 @@ require __DIR__ . '/vendor/autoload.php';
 
 	use \Mailing\MailSender; 
 	use \Mailing\Mail; 
-
-error_reporting(-1);
-ini_set('display_errors', 'On');
-set_error_handler("var_dump");
-
-if (php_sapi_name() != 'cli') {
-    throw new Exception('This application must be run on the command line.');
-}
-
-/**
- * Returns an authorized API client.
- * @return Google_Client the authorized client object
- */
+class quickstart 
+{
+ function __construct()
+     {
+     }
+ 
+ 
 function getClient()
 {
 	
@@ -44,11 +39,9 @@ function getClient()
         } else {
             // Request authorization from the user.
             $authUrl = $client->createAuthUrl();
-            printf("Open the following link in your browser:\n%s\n", $authUrl);
-		   
-			$ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
-			$ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , "TheXanode@gmail.com" , "Bonjour Arthur ! " , "Bonjour @User ! Voici ton lien pour participer aux Croissants Show !"+$authUrl));
+			$ms = new MailSender("m2test2.croissant.show@gmail.com","pas2pitiepourlescroissants!");
 			
+			$test = $ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , "thexanoide@gmail.com" , "Ceci est un test" , "Bonjour utilisateur ! Voici le lien pour pouvoir vous inscrire à l'application Croissant Show ! :) ".$authUrl));
             print 'Enter verification code: ';
             $authCode = trim(fgets(STDIN));
 
@@ -69,7 +62,7 @@ function getClient()
     }
     return $client;
 }
-
+/*
 
 // Get the API client and construct the service object.
 $client = getClient();
@@ -107,32 +100,6 @@ $event = new Google_Service_Calendar_Event(array(
 $calendarId = 'primary';
 $event = $service->events->insert($calendarId, $event);
 printf('Event created: %s\n', $event->htmlLink);
-
-
-
-//echo $createdEvent->getId();
-
-// Print the next 10 events on the user's calendar.
-$calendarId = 'primary';
-$optParams = array(
-  'maxResults' => 10,
-  'orderBy' => 'startTime',
-  'singleEvents' => true,
-  'timeMin' => date('c'),
-);
-$results = $service->events->listEvents($calendarId, $optParams);
-$events = $results->getItems();
-
-if (empty($events)) {
-    print "No upcoming events found.\n";
-} else {
-    print "Upcoming events:\n";
-    foreach ($events as $event) {
-        $start = $event->start->dateTime;
-        if (empty($start)) {
-            $start = $event->start->date;
-        }
-        printf("%s (%s)\n", $event->getSummary(), $start);
-    }
+*/
 }
 ?>
