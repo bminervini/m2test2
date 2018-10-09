@@ -1,7 +1,4 @@
-m2test2.iml
 .idea
 .idea/*
 **/target
 cache.properties
-build
-*.iml
