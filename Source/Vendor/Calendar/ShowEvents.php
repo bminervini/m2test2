@@ -43,7 +43,7 @@ require __DIR__ . '/vendor/autoload.php';
 				$day = date('l',$event->getStart()->date); 
 				echo "
 					<tr>
-						<td>".$day." | ".$event->getStart()->dateTime."</td>
+						<td>".$event->getStart()->dateTime."</td>
 						<td>IL A ETE CHOISI</td>
 						<td>BOUTON BOOTSTRAP VALIDER</td>
 						<td>BOUTON BOOTSTRAP REFUSER</td>
