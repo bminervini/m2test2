@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>M2TEST2_DesignTestSuite</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Authentication_ConnexionAdmin_Valide</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php<datalist><option>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>type</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::button[1]</option><option>//button[@name='submit']</option><option>//button</option><option>css=button[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>assertVisible</td><td>//nav<datalist><option>//nav</option><option>css=nav.navbar.navbar-expand-lg.navbar-dark.bg-dark</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Authentication_ConnexionInvalide</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php<datalist><option>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td>mauvaisID</td>
+</tr>
+<tr><td>type</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td>mauvaisMDP</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::button[1]</option><option>//button[@name='submit']</option><option>//button</option><option>css=button[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>assertVisible</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/preceding::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::legend[1]</option><option>//legend</option><option>css=legend</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Authentication_ChampLoginVide</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php<datalist><option>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td>123456789</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::button[1]</option><option>//button[@name='submit']</option><option>//button</option><option>css=button[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>assertVisible</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/preceding::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::legend[1]</option><option>//legend</option><option>css=legend</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Authentication_ChampMotDePasseVide</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php<datalist><option>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td>identifiant</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::button[1]</option><option>//button[@name='submit']</option><option>//button</option><option>css=button[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>assertVisible</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/preceding::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::legend[1]</option><option>//legend</option><option>css=legend</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Dashboard_Deconnexion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php<datalist><option>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>type</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>sendKeys</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td>${KEY_ENTER}</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::button[1]</option><option>//button[@name='submit']</option><option>//button</option><option>css=button[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Calendrier'])[1]/following::img[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Calendrier'])[1]/following::img[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::img[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Bienvenue sur le dashboard de Croissant Show', "'", '')])[1]/preceding::img[1]</option><option>//img</option><option>css=img</option></datalist></td><td></td>
+</tr>
+<tr><td>assertVisible</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/preceding::legend[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::legend[1]</option><option>//legend</option><option>css=legend</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Dashboard_Calendar</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php<datalist><option>http://127.0.0.1:8080/edsa-Master%202%20-%20Test%202%20-%20Croissant%20Show'/static/login.php</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>name=username<datalist><option>name=username</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentification'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[2]</option><option>//input[@id='']</option><option>//input</option><option>css=input[name="username"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>type</td><td>name=password<datalist><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Envoyez les croissants !'])[1]/preceding::input[1]</option><option>xpath=(//input[@id=''])[2]</option><option>//input[2]</option><option>css=input[name="password"]</option></datalist></td><td>admin</td>
+</tr>
+<tr><td>click</td><td>name=submit<datalist><option>name=submit</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Mot de passe'])[1]/following::button[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Identifiant'])[1]/following::button[1]</option><option>//button[@name='submit']</option><option>//button</option><option>css=button[name="submit"]</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Calendrier<datalist><option>link=Calendrier</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Croissant Show', "'", '')])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Bienvenue sur le dashboard de Croissant Show', "'", '')])[1]/preceding::a[4]</option><option>//a[contains(text(),'Calendrier')]</option><option>//a[contains(@href, 'calendar.php')]</option><option>//a[2]</option></datalist></td><td></td>
+</tr>
+<tr><td>assertVisible</td><td>//body<datalist><option>//body</option><option>css=body</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
