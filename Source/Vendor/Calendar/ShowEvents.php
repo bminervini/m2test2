@@ -40,7 +40,9 @@ require __DIR__ . '/vendor/autoload.php';
 			}
 			$croissant = "Croissant"; 
 			if(strpos($event->getSummary(), $croissant) !== false){
-				$day = date('l',$event->getStart()->date); 
+			//	$day = date('l',$event->getStart()->date); 
+				$date = substr($event->getStart()->date,9); 
+				print_r($date);  
 				echo "
 					<tr>
 						<td>".$event->getStart()->dateTime."</td>

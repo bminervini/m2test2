@@ -37,5 +37,5 @@ function getHolidays($year = null)
   return $holidays;
 }
 
-$ms = getHolidays(2018); // Ressort des TimeStamp UNIX 
+//$ms = getHolidays(2018); // Ressort des TimeStamp UNIX 
 ?>

@@ -11,6 +11,7 @@ class quickstart
 {
  function __construct()
      {
+		$ms = getClient(); 
      }
  
  
@@ -38,7 +39,9 @@ function getClient()
             $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
         } else {
             // Request authorization from the user.
+			
             $authUrl = $client->createAuthUrl();
+			print $authUrl; 
 			$ms = new MailSender("m2test2.croissant.show@gmail.com","pas2pitiepourlescroissants!");
 			
 			$test = $ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , "thexanoide@gmail.com" , "Ceci est un test" , "Bonjour utilisateur ! Voici le lien pour pouvoir vous inscrire à l'application Croissant Show ! :) ".$authUrl));
@@ -62,6 +65,7 @@ function getClient()
     }
     return $client;
 }
+
 /*
 
 // Get the API client and construct the service object.
