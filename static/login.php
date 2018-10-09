@@ -1,10 +1,10 @@
 <?php 
     require_once("../src/main/Vendor/Gestion/Auth.php");
-    use \Vendor\Auth;
+    // use Vendor\Auth;
 
     if(isset($_POST['submit']))
     {
-        $auth = new Auth();
+        $auth = new Auth\Auth();
         $auth->connection($_POST['username'], $_POST['password'])."\n";
     }
 
