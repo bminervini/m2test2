@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Models {
+namespace Vendor\Models {
 
     class Personne
     {
