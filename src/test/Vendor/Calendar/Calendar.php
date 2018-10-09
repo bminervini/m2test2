@@ -11,9 +11,9 @@ namespace Vendor\Calendar\test\units
 
         function mockPerson($id = 0, $croissant = 0, $disponible = true)
         {
-            $person = new \Mock\DAO\Personne\Personne();
+            $person = new \Mock\Vendor\Models\Personne("", "", "", "", "", 1);
             $this->calling($person)->getId = $id;
-            $this->calling($person)->getCroissantAmount = $croissant;
+            $this->calling($person)->getNombreCroissantAmene = $croissant;
             $this->calling($person)->isDisponible = $disponible;
             return $person;
         }
