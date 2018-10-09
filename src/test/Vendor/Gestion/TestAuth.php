@@ -1,17 +1,17 @@
 <?php
 
-namespace Auth\tests\units 
-{
+namespace Vendor\Gestion\test\units 
+{   
     use \atoum;
 
     class Auth extends atoum {
         
         public function testCreateSession(){
             
-            \Auth\Auth::createSession("admin","admin",1);
+            \Vendor\Gestion\Auth::createSession("admin","admin",1);
 
             $this
-                ->($_SESSION["username"])->isEqualTo("admin");
+                ->string($_SESSION["username"])->isEqualTo("admin");
 
         }
 

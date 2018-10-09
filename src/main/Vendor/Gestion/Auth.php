@@ -1,7 +1,11 @@
 <?php
 
-namespace Auth;
+
+namespace Vendor\Gestion;
+    
     require_once("../src/main/Vendor/DAO/DAO.php");
+    //require_once("../DAO/DAO.php");
+    use \DAO\DAO;
 
     class Auth{
         
@@ -56,7 +60,7 @@ namespace Auth;
             session_start();
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
-            $_SESSION['isAdmin'] = $isAdmin
+            $_SESSION['isAdmin'] = $isAdmin;
         }
     }
 
