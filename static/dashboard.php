@@ -4,10 +4,15 @@
   
     <body class="cs_body">
         
-        <?php include 'jumbotron.php';?>
-        
-        <?php include 'navbar.php';?>
-
+        <?php 
+            if(isset($_SESSION['admin']) || 1)
+            {
+                include 'navbaradmin.php';
+            }else 
+            {
+                include 'navbaruser.php';
+            }
+        ?>
         
         <div class="container">
             
