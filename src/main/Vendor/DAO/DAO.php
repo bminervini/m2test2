@@ -68,7 +68,6 @@ namespace Vendor\DAO {
 
         function getNombrePersonne($nomTable){
             $sql = "SELECT count(*) FROM $nomTable;";
-            print_r($sql);
             $cursor = $this->connexion->prepare($sql);
             $cursor->execute();
             $nbre = $cursor->fetchAll();
@@ -190,7 +189,6 @@ namespace Vendor\DAO {
 
         function getPersonne($id, $nomTable){
             $sql = "SELECT * FROM $nomTable WHERE 'personne.id' = $id;";
-            print_r($sql);
             $cursor = $this->connexion->prepare($sql);
             $cursor->execute();
             $personne = $cursor->fetchAll();
