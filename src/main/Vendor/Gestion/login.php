@@ -1,6 +1,6 @@
 <?php 
     require_once("Auth.php");
-    use \Auth\Auth;
+    use \Vendor\Gestion\;
     
     if(isset($_POST['submit'])){
         $auth = new Auth();

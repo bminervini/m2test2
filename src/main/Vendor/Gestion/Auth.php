@@ -2,8 +2,8 @@
 
 namespace Vendor\Gestion;
     
-    //require_once("../src/main/Vendor/DAO/DAO.php");
-    require_once("../main/Vendor/DAO/DAO.php");
+    require_once("../src/main/Vendor/DAO/DAO.php");
+    //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
     use \DAO\DAO;
 
     class Auth{
@@ -38,7 +38,7 @@ namespace Vendor\Gestion;
         }
 
         public static function isLogged(){
-            session_start();//> START SESSION 
+            //session_start();//> START SESSION 
             if(isset($_SESSION['username']) and isset($_SESSION['password']) and isset($_SESSION['isAdmin'])){
                 //Later retrieve the user from the database to perform a verification
                 return true;
@@ -46,8 +46,8 @@ namespace Vendor\Gestion;
             return false;
         }
 
-        public static function Logout(){
-            if($this->isLogged()){
+        public static function logout(){
+            if(Auth::isLogged()){
                 unset($_SESSION["username"]);
                 unset($_SESSION['password']); 
                 unset($_SESSION['isAdmin']); 
