@@ -23,12 +23,44 @@
 }]]></failure>
     </testcase>
   </testsuite>
-  <testsuite name="Mail" package="Mailing\tests\units" tests="5" failures="0" errors="0" skipped="0" time="0.019531965255737">
-    <testcase name="testConstruct" time="0.0087339878082275" classname="Mailing\tests\units\Mail" assertions="0"/>
-    <testcase name="testGetSetSender" time="0.002669095993042" classname="Mailing\tests\units\Mail" assertions="8"/>
-    <testcase name="testGetSetRecipient" time="0.0027210712432861" classname="Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetSubject" time="0.0026459693908691" classname="Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetBody" time="0.0027618408203125" classname="Mailing\tests\units\Mail" assertions="2"/>
+  <testsuite name="DAO" package="DAO\tests\units" tests="10" failures="0" errors="9" skipped="0" time="0.025234222412109">
+    <testcase name="testRequestConnexion" time="0.025234222412109" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="2"><![CDATA[include(../Models/Personne.php): failed to open stream: No such file or directory]]></error>
+      <error type="2"><![CDATA[include(): Failed opening '../Models/Personne.php' for inclusion (include_path='.;C:\php\pear')]]></error>
+      <error type="2"><![CDATA[include(../../../Test/Vendor/DAO/GenerateurPersonne.php): failed to open stream: No such file or directory]]></error>
+      <error type="2"><![CDATA[include(): Failed opening '../../../Test/Vendor/DAO/GenerateurPersonne.php' for inclusion (include_path='.;C:\php\pear')]]></error>
+    </testcase>
+    <testcase name="testAddPersonne" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="UNKNOWN"><![CDATA[Fatal error: Uncaught Error: Class 'DAO\tests\units\generation\GenerateurPersonne' not found in D:\m2test2\Source\Vendor\DAO\DAO.php:77
+Stack trace:
+#0 D:\m2test2\Test\Vendor\DAO\TestDao.php(35): DAO\DAO->initialisationBD()
+#1 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testAddPersonne()
+#2 -(1): mageekguy\atoum\test->runTestMethod('testAddPersonne')
+#3 {main}
+  thrown in D:\m2test2\Source\Vendor\DAO\DAO.php on line 77]]></error>
+      <error type="255"><![CDATA[ Tables supprimées  Table personne créé 
+ Table calendrier créé 
+ Table calendrier créé 
+]]></error>
+    </testcase>
+    <testcase name="testUserExistant" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="UNKNOWN"><![CDATA[Fatal error: Uncaught Error: Class 'DAO\tests\units\generation\GenerateurPersonne' not found in D:\m2test2\Source\Vendor\DAO\DAO.php:77
+Stack trace:
+#0 D:\m2test2\Test\Vendor\DAO\TestDao.php(52): DAO\DAO->initialisationBD()
+#1 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testUserExistant()
+#2 -(1): mageekguy\atoum\test->runTestMethod('testUserExistan...')
+#3 {main}
+  thrown in D:\m2test2\Source\Vendor\DAO\DAO.php on line 77]]></error>
+      <error type="255"><![CDATA[ Tables supprimées  Table personne créé 
+ Table calendrier créé 
+ Table calendrier créé 
+]]></error>
+    </testcase>
+    <testcase name="testDropTables" time="0" classname="DAO\tests\units\DAO" assertions="2">
+      <error type="0"><![CDATA[ Tables supprimées int(0)
+]]></error>
+    </testcase>
+>>>>>>> origin/preprod
   </testsuite>
   <testsuite name="MailSender" package="Mailing\tests\units" tests="1" failures="0" errors="0" skipped="0" time="2.3126602172852E-5">
     <testcase name="testSendMail" time="2.3126602172852E-5" classname="Mailing\tests\units\MailSender" assertions="0"/>

@@ -1,0 +1,10 @@
+# LOAD {file_name} TO XML DATASET {converted_name}
+    =>
+
+// will load the xml file '{file_name}' and convert it to a dbunit dataset, that will be registered under the name '{converted_name}'
+// note that the name '__{%%rand1}.xml' and the likes are just a trick for name generation, just to make sure
+// that it won't collide with another name in the same test. Read the documentation for details about shortcuts.
+
+LOAD {file_name} as __{%%r1}.file
+CONVERT __{%%r1}.file TO xml(structured) AS __{%%x1}.xml
+CONVERT __{%%x1}.xml TO dataset.dbunit(dataset) AS {converted_name}
