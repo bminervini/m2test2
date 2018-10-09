@@ -180,9 +180,13 @@ namespace DAO {
         function getListPersonne()
         {
             $sql = "SELECT * FROM personne;";
-            $retour = $this->connexion->exec($sql);
-            var_dump($retour);
-            return $retour;
+            return $this->connexion->exec($sql);
+        }
+
+        function getPersonne($id){
+            $sql = "SELECT * FROM personne WHERE 'personne.id' = $id;";
+            print_r($sql);
+            return $this->connexion->exec($sql);
         }
 
         //Création du schéma de BDD
@@ -204,10 +208,10 @@ namespace DAO {
             $create = $this->connexion->prepare($sql);
 
             if ($create->execute()) {
-                echo " Table personne créé \n";
+                //echo " Table personne créé \n";
                 return true;
             } else {
-                print_r($create->errorInfo());
+                //print_r($create->errorInfo());
                 return false;
             }
         }
@@ -222,10 +226,10 @@ namespace DAO {
                );";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
-                echo " Table calendrier créé \n";
+                //echo " Table calendrier créé \n";
                 return true;
             } else {
-                print_r($create->errorInfo());
+                //print_r($create->errorInfo());
                 return false;
             }
         }
@@ -243,9 +247,9 @@ namespace DAO {
                ;";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
-                echo " Table calendrier créé \n";
+                //echo " Table calendrier créé \n";
             } else {
-                print_r($create->errorInfo());
+               //print_r($create->errorInfo());
             }
         }
 
@@ -257,9 +261,9 @@ namespace DAO {
                 DROP TABLE IF EXISTS `personne`;
                 ");
             if ($sql->execute()) {
-                echo " Tables supprimées ";
+                //echo " Tables supprimées ";
             } else {
-                print_r($sql->errorInfo());
+                //print_r($sql->errorInfo());
             };
         }
     }

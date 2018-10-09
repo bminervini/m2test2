@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="atoum testsuite">
-  <testsuite name="SubscribersList" package="Calendar\tests\units" tests="10" failures="1" errors="4" skipped="0" time="0.033046722412109">
-    <testcase name="testEmptyInit" time="0.0034618377685547" classname="Calendar\tests\units\SubscribersList" assertions="0"/>
-    <testcase name="testNoSubChoice" time="0.0021548271179199" classname="Calendar\tests\units\SubscribersList" assertions="3">
+  <testsuite name="SubscribersList" package="Calendar\tests\units" tests="10" failures="1" errors="4" skipped="0" time="0.035228967666626">
+    <testcase name="testEmptyInit" time="0.011506080627441" classname="Calendar\tests\units\SubscribersList" assertions="0"/>
+    <testcase name="testNoSubChoice" time="0.0055408477783203" classname="Calendar\tests\units\SubscribersList" assertions="3">
       <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 47 and defined]]></error>
     </testcase>
-    <testcase name="testPopulatedChoice" time="0.013890981674194" classname="Calendar\tests\units\SubscribersList" assertions="1">
+    <testcase name="testPopulatedChoice" time="0.0042600631713867" classname="Calendar\tests\units\SubscribersList" assertions="1">
       <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 56 and defined]]></error>
     </testcase>
-    <testcase name="testAddSubscribers" time="0.0071671009063721" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
-    <testcase name="testAddMultipleSubs" time="0.0063719749450684" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
+    <testcase name="testAddSubscribers" time="0.0096349716186523" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
+    <testcase name="testAddMultipleSubs" time="0.0042870044708252" classname="Calendar\tests\units\SubscribersList" assertions="2"/>
     <testcase name="testMultiplePersonChoice" time="0" classname="Calendar\tests\units\SubscribersList" assertions="2">
       <error type="2"><![CDATA[Missing argument 1 for Calendar\SubscribersList::chooseOne(), called in D:\m2test2\Test\Vendor\Calendar\Calendar.php on line 72 and defined]]></error>
       <error type="8"><![CDATA[Undefined variable: day]]></error>
@@ -23,19 +23,49 @@
 }]]></failure>
     </testcase>
   </testsuite>
-  <testsuite name="Mail" package="Mailing\tests\units" tests="5" failures="0" errors="0" skipped="0" time="0.019531965255737">
-    <testcase name="testConstruct" time="0.0087339878082275" classname="Mailing\tests\units\Mail" assertions="0"/>
-    <testcase name="testGetSetSender" time="0.002669095993042" classname="Mailing\tests\units\Mail" assertions="8"/>
-    <testcase name="testGetSetRecipient" time="0.0027210712432861" classname="Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetSubject" time="0.0026459693908691" classname="Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetBody" time="0.0027618408203125" classname="Mailing\tests\units\Mail" assertions="2"/>
+  <testsuite name="Mail" package="Mailing\tests\units" tests="5" failures="0" errors="0" skipped="0" time="0.0143883228302">
+    <testcase name="testConstruct" time="0.0059599876403809" classname="Mailing\tests\units\Mail" assertions="0"/>
+    <testcase name="testGetSetSender" time="0.0019001960754395" classname="Mailing\tests\units\Mail" assertions="8"/>
+    <testcase name="testGetSetRecipient" time="0.0020780563354492" classname="Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetSubject" time="0.0020160675048828" classname="Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetBody" time="0.0024340152740479" classname="Mailing\tests\units\Mail" assertions="2"/>
   </testsuite>
-  <testsuite name="MailSender" package="Mailing\tests\units" tests="1" failures="0" errors="0" skipped="0" time="2.3126602172852E-5">
-    <testcase name="testSendMail" time="2.3126602172852E-5" classname="Mailing\tests\units\MailSender" assertions="0"/>
+  <testsuite name="MailSender" package="Mailing\tests\units" tests="1" failures="0" errors="0" skipped="0" time="1.7881393432617E-5">
+    <testcase name="testSendMail" time="1.7881393432617E-5" classname="Mailing\tests\units\MailSender" assertions="0"/>
   </testsuite>
-  <testsuite name="DAO" package="DAO\tests\units" tests="1" failures="0" errors="1" skipped="0" time="0">
+  <testsuite name="DAO" package="DAO\tests\units" tests="3" failures="0" errors="3" skipped="0" time="0">
     <testcase name="testRequestConnexion" time="0" classname="DAO\tests\units\DAO" assertions="0">
-      <error type="256"><![CDATA[Tested class 'DAO\DAO' does not exist for test class 'DAO\tests\units\DAO']]></error>
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+ in D:\m2test2\Source\Vendor\DAO\DAO.php:34
+Stack trace:
+#0 D:\m2test2\Source\Vendor\DAO\DAO.php(34): PDO->__construct('mysql:host=172....', 'm2test2', 'm2test2')
+#1 D:\m2test2\Source\Vendor\DAO\DAO.php(17): DAO\DAO->requestConnexion()
+#2 D:\m2test2\Test\Vendor\DAO\TestDao.php(12): DAO\DAO->__construct()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testRequestConnexion()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testRequestConn...')
+#5 {main}]]></error>
+    </testcase>
+    <testcase name="testDropTables" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+ in D:\m2test2\Source\Vendor\DAO\DAO.php:34
+Stack trace:
+#0 D:\m2test2\Source\Vendor\DAO\DAO.php(34): PDO->__construct('mysql:host=172....', 'm2test2', 'm2test2')
+#1 D:\m2test2\Source\Vendor\DAO\DAO.php(17): DAO\DAO->requestConnexion()
+#2 D:\m2test2\Test\Vendor\DAO\TestDao.php(21): DAO\DAO->__construct()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testDropTables()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testDropTables')
+#5 {main}]]></error>
+    </testcase>
+    <testcase name="testInitialisationBD" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[HY000] [2002] Une tentative de connexion a échoué car le parti connecté n’a pas répondu convenablement au-delà d’une certaine durée ou une connexion établie a échoué car l’hôte de connexion n’a pas répondu.
+ in D:\m2test2\Source\Vendor\DAO\DAO.php:34
+Stack trace:
+#0 D:\m2test2\Source\Vendor\DAO\DAO.php(34): PDO->__construct('mysql:host=172....', 'm2test2', 'm2test2')
+#1 D:\m2test2\Source\Vendor\DAO\DAO.php(17): DAO\DAO->requestConnexion()
+#2 D:\m2test2\Test\Vendor\DAO\TestDao.php(32): DAO\DAO->__construct()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): DAO\tests\units\DAO->testInitialisationBD()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testInitialisat...')
+#5 {main}]]></error>
     </testcase>
   </testsuite>
 </testsuites>

@@ -33,9 +33,7 @@ namespace DAO\tests\units
             $dao->initialisationBD(0);
 
             $nbreTable = $dao->getNombreTable();
-            var_dump($nbreTable);
             $nbrePersonne = $dao->getNombrePersonne();
-            var_dump($nbrePersonne);
 
             $this
                 ->integer($nbreTable)->isEqualTo(3)
@@ -68,6 +66,15 @@ namespace DAO\tests\units
 
 
         //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
+        public function testGetPersonne(){
+            $dao = new \DAO\DAO();
+            $dao->initialisationBD(0);
+            $admin = $dao->getPersonne(0);
+            $this
+                ->object($admin)->isNotEqualTo(null);
+        }
+
+        //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
         public function testUserExistant(){
             $dao = new \DAO\DAO();
             $dao->initialisationBD(0);
@@ -77,13 +84,36 @@ namespace DAO\tests\units
                         $dao->addAdmin();
                     }
                 )
-                    ->hasCode(23000)
-                    ->hasMessage("Integrity");
+            ;
 
             $nbrePersonne = $dao->getNombrePersonne();
             $this
                 ->integer($nbrePersonne)
-                    ->isEqualTo(1);
+                ->isEqualTo(1);
+
+        }
+
+
+        //vérifier le fonctionnement de la fonction updatePersonne
+        public function testUpdatePersonne(){
+
+            //initialisation de la bdd avec un admin dedans
+            $dao = new \DAO\DAO();
+            $dao->initialisationBD(0);
+
+            //mise à jour des infos de l'utilisateur admin
+            $personne = new \Mock\Vendor\Models\Personne();
+            $this->calling($personne)->getIdPersonne = 0 ;
+            $this->calling($personne)->getNom = "NewNomAdmin" ;
+            $this->calling($personne)->getPrenom = "NewPrenomAdmin" ;
+            $this->calling($personne)->getUsername = "admin" ;
+            $this->calling($personne)->getPassword = "admin" ;
+            $this->calling($personne)->getMail = "newAdmin@gmail.com" ;
+
+            $dao->updatePersonne($personne);
+            $personne = $dao->getListPersonne(0);
+
+            $this->string($dao)->isEqualTo(2);
 
         }
 
