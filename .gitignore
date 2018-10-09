@@ -3,3 +3,4 @@
 **/target
 cache.properties
 \.vscode/tasks\.json
+./build/logs/*
