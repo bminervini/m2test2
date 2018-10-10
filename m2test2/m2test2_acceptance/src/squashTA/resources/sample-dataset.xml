@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<dataset>
+    <my_table id="1" first_name="Hello" last_name="World"/>
+</dataset>
