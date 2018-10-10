@@ -31,11 +31,24 @@ namespace Vendor\Gestion\test\units
         }
 
         public function testConnectionOK(){
-            //$auth = new \Vendor\Gestion\Auth();
+            $auth = new \Vendor\Gestion\Auth();
+            $this
+                ->given($auth->connection("admin","admin"))
+                ->variable(\Vendor\Gestion\Auth::isLogged())->isEqualTo(true);
         }
 
         public function testConectionKO(){
+            $auth = new \Vendor\Gestion\Auth();
+            $this
+                ->given($auth->connection("admin","wrong"))
+                ->variable(\Vendor\Gestion\Auth::isLogged())->isEqualTo(false);
+        }
 
+        public function testConnectionInjection(){
+            $auth = new \Vendor\Gestion\Auth();
+            $this
+                ->given($auth->connection("'OR 1=1#","wrong"))
+                ->variable(\Vendor\Gestion\Auth::isLogged())->isEqualTo(false);
         }
     }
 }

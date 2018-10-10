@@ -124,9 +124,22 @@ namespace Vendor\DAO {
             $nbreCroissant = 0;
 
             $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
-                    VALUES (NULL, '$nom', '$prenom', '$username', '$password', '$mail', '$admin', '$participe', '$nbreCroissant');";
+                    VALUES (NULL, :lastname, :firstname, :username, :password, :mail, :isAdmin, :participe, :nbreCroissant);";
             try {
-                $idPersonne = $this->connexion->exec($sql);
+                
+                $req = $this->connexion->prepare($sql);
+
+                $req->bindParam(':lastname', $nom);
+                $req->bindParam(':firstname', $prenom);
+                $req->bindParam(':username', $username);
+                $req->bindParam(':password', $password);
+                $req->bindParam(':mail', $mail);
+                $req->bindParam(':isAdmin', $admin);
+                $req->bindParam(':participe', $participe);
+                $req->bindParam(':nbreCroissant', $nbreCroissant);
+
+                $idPersonne = $req->execute();
+
                 if ($idPersonne == null){
                     return null;
                 }else{
@@ -201,10 +214,9 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function getPersonToAuth($username, $password){
-            $cryptedPassword = md5($password);
-            $query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
-    
-            $req = $this->querySQL($query);
+            $password = md5($password);
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ? AND password= ? LIMIT 1");
+            $req->execute(array($username, $password));
             
             return $req;
         }
@@ -214,8 +226,8 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function getPersonByUsername($username){
-            $query = "SELECT * FROM personne WHERE username='$username'";
-            $req = $this->querySQL($query);  
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ?");
+            $req->execute(array($username));
 
             return $req;
         }
