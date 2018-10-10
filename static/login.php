@@ -1,21 +1,17 @@
 <?php 
     require_once("../src/main/Vendor/Gestion/Auth.php");
-    // use Vendor\Auth;
+    use \Vendor\Gestion\Auth;
 
     if(isset($_POST['submit']))
     {
-        $auth = new Auth\Auth();
-        $auth->connection($_POST['username'], $_POST['password'])."\n";
+        $auth = new Auth();
+        $error = $auth->connection($_POST['username'], $_POST['password']);
     }
-
-    // echo "YOLOOO";
 ?>
 
 <?php $title = "log page"; ?>
 
 <!-- Start of storage -->
-
-
 <html>
 
     <!-- Include head html -->
@@ -36,15 +32,26 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 
                     
-                    <form action="" method="POST" role="form">
-                        <legend>Authentification</legend>
+                    <form action="login.php" method="POST" role="form">
+                        <br/>
+                        <h2>Authentification</h2>
                     
                         <div class="form-group">
                             <label for="">Identifiant</label>
                             <input type="text" class="form-control" id="" placeholder="Identifiant" name="username">
+                        </div>
+
+                        <div class="form-group">
                             <label for="">Mot de passe</label>
                             <input type="password" class="form-control" id="" placeholder="Mot de passe" name="password">
                         </div>
+ 
+                        <?php
+                            if(isset($error))
+                            { 
+                                echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';
+                            }
+                        ?>
 
                         <button type="submit" class="btn btn-default center-block" name="submit">Envoyez les croissants ! </button>
                     </form>

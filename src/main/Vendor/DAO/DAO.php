@@ -7,7 +7,6 @@ namespace Vendor\DAO {
     //set_include_path('.;');
     //include("src/main/Vendor/Models/GenerateurPersonne.php"); //à commenter pour les test atoum
 
-
     class DAO
     {
 
@@ -195,6 +194,30 @@ namespace Vendor\DAO {
             $personne = $cursor->fetchAll();
             $cursor->closeCursor();
             return $personne;
+        }
+
+        /**
+         * Used to retrieve a person from their username and password
+         * @return request return the PDO object of the request
+         */
+        function getPersonToAuth($username, $password){
+            $cryptedPassword = md5($password);
+            $query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
+    
+            $req = $this->querySQL($query);
+            
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person from their username
+         * @return request return the PDO object of the request
+         */
+        function getPersonByUsername($username){
+            $query = "SELECT * FROM personne WHERE username='$username'";
+            $req = $this->querySQL($query);  
+
+            return $req;
         }
 
         //Création du schéma de BDD

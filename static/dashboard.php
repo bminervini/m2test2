@@ -1,11 +1,13 @@
 <html>
 
+    <!-- used to redirect if the user is not connected -->
+    <?php include_once 'session.php' ?>
     <?php include 'head.php';?>
   
     <body class="cs_body">
         
         <?php 
-            if(isset($_SESSION['admin']) || 1)
+            if(isset($_SESSION['isAdmin']) || 1)
             {
                 include 'navbaradmin.php';
             }else 

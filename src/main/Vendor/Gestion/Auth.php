@@ -15,52 +15,66 @@ namespace Vendor\Gestion;
             $this->dao = new \Vendor\DAO\DAO();
         }
 
+        /**
+         *  Used to connect a user form the password and username passed in param 
+         * @return string return error message if the connection fails
+         */
         public function connection($username, $password)
         {
 
             if(!empty($username) && !empty($password)){
                 
-                $cryptedPassword = md5($password);
-                $query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
-        
-                $req = $this->dao->querySQL($query);                
+                $req = $this->dao->getPersonToAuth($username, $password);
                 $result = $req->fetch();
  
                 if($result){
-                    
-                    $this->createSession($username, $cryptedPassword, $result['isAdmin']);
+                    /* create session and redirects the user to the dashboard */
+                    $this->createSession($username, $result['isAdmin']);
                     header("Location: dashboard.php");
-                   
-                    echo "Connecté !";
+                
                 }else{
-                    echo "Mauvais mdp !";
-                    $error = "Your Login Name or Password is invalid";
+                    /* return error message */
+                    return "Invalid username or password !";
                 }
             }
         }
 
+        /**
+         * Used to know if a user is connected 
+         * @return boolean return true is the user is logged else false
+         */
         public static function isLogged(){
-            //session_start();//> START SESSION 
-            if(isset($_SESSION['username']) and isset($_SESSION['password']) and isset($_SESSION['isAdmin'])){
-                //Later retrieve the user from the database to perform a verification
+            if(isset($_SESSION['username']) and isset($_SESSION['isAdmin'])){
                 return true;
             }
             return false;
         }
 
+        /**
+         *  Used to disconnect a user by removing session variables 
+         * @return boolean return true if the disconnection was successful
+         */
         public static function logout(){
             if(Auth::isLogged()){
                 unset($_SESSION["username"]);
-                unset($_SESSION['password']); 
                 unset($_SESSION['isAdmin']); 
+
+                return true;
             }
         }
 
-        public static function createSession($username, $password, $isAdmin){
+        /**
+         *  Used to create the user's session variables
+         */
+        public static function createSession($username, $isAdmin){
             session_start();
             $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
             $_SESSION['isAdmin'] = $isAdmin;
+        }
+
+        //TODO
+        private function userStillInDB(){
+
         }
     }
 
