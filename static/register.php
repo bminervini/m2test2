@@ -8,7 +8,14 @@
     if(isset($_POST['submit']))
     { 
         $register = new Registration();
-        $error = $register->registration($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'], $_POST['mail'], (empty($_POST['admin']))? "0": $_POST['admin']);
+        $result = $register->registration($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'], $_POST['mail'], (empty($_POST['admin']))? "0": $_POST['admin']);
+        
+        if($result){
+            $success = "User successfully registered !";
+            $_POST = array();
+        }else{
+            $error = "Username already used ! ";
+        }
     }
 ?>
 
@@ -76,10 +83,8 @@
                         </div>
 
                         <?php
-                            if(isset($error))
-                            { 
-                                echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';
-                            }
+                            if(isset($error)) { echo '<div class="alert alert-danger" role="alert">'.$error.'</div>'; }
+                            if(isset($success)) { echo '<div class="alert alert-success" role="alert">'.$success.'</div>'; }
                         ?>
 
                         <button type="submit" class="btn btn-default center-block" name="submit">Envoyez les croissants ! </button>  

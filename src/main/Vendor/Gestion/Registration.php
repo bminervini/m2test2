@@ -1,10 +1,11 @@
 <?php
 
 namespace Vendor\Gestion;
-    require_once("../src/main/Vendor/DAO/DAO.php");   
+    require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
+    //require_once("../src/main/Vendor/DAO/DAO.php");   
     use \DAO\DAO;
-
-    require_once("../src/main/Vendor/Models/Personne.php");
+    require_once("../../htdocs/m2test2/src/main/Vendor/Models/Personne.php");// use for Atoum
+    //require_once("../src/main/Vendor/Models/Personne.php");
     use \Vendor\Models\Personne;
 
     class Registration{
@@ -26,10 +27,12 @@ namespace Vendor\Gestion;
                 $password = md5($password);
                 $person = new Personne($nom, $prenom, $username, $password, $mail, $admin);
                 $this->dao->addPersonne($person,"personne");
+
+                return true;
             
             }else{
 
-                return "Username already used !";
+                return false;
             }
         }
 
@@ -37,7 +40,7 @@ namespace Vendor\Gestion;
          * Search if the user name passed as paramter is already used
          * @return boolean retrun ture is the user name is not used
          */
-        private function usernameNotUsed($username){
+        function usernameNotUsed($username){
             
             $req = $this->dao->getPersonByUsername($username);
             $result = $req->fetch();
