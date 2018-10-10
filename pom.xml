@@ -54,7 +54,8 @@
                         </goals>
                         <configuration>
                             <target>
-                                <ant target="atoum"/>
+                                <ant target="build"/>
+
                             </target>
                         </configuration>
                     </execution>
