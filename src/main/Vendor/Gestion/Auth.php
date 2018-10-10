@@ -9,12 +9,14 @@ namespace Vendor\Gestion;
     class Auth{
         
         private $dao;
-        
-        public function __construct(){
-            $this->dao = new DAO();
+
+        public function __construct()
+        {
+            $this->dao = new \Vendor\DAO\DAO();
         }
 
-        public function connection($username, $password){
+        public function connection($username, $password)
+        {
 
             if(!empty($username) && !empty($password)){
                 

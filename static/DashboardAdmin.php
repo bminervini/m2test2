@@ -4,15 +4,10 @@
   
     <body class="cs_body">
         
-        <?php 
-            if(isset($_SESSION['admin']) || 1)
-            {
-                include 'navbaradmin.php';
-            }else 
-            {
-                include 'navbaruser.php';
-            }
-        ?>
+        <?php include 'jumbotron.php';?>
+        
+        <?php include 'navBarAdmin.php';?>
+
         
         <div class="container">
             
@@ -22,7 +17,7 @@
                 </div>
 
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
-                    <h1>Bienvenue sur le dashboard de Croissant Show'</h1>
+                    <h1>Bienvenue sur le dashboard Admin de Croissant Show'</h1>
                 </div>
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

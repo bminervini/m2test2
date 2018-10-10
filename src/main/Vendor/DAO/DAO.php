@@ -3,15 +3,10 @@
 namespace DAO {
 
     use \PDO;
-<<<<<<< HEAD:Source/Vendor/DAO/DAO.php
     use \Vendor\Models;
     //include("../Models/Personne.php"); //à commenter pour les test atoum
     //include("../../../Test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
-=======
-    include("../Models/Personne.php"); //à commenter pour les test atoum
-    include("../../../Test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
-    use \Models\Personne;
->>>>>>> origin/preprod:src/main/Vendor/DAO/DAO.php
+
 
     class DAO
     {
