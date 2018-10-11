@@ -1,6 +1,6 @@
 <?php 
 
-namespace Mailing;
+namespace Vendor\Mailing;
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
@@ -81,7 +81,7 @@ namespace Mailing;
         $ms->sendMail($mail);
     }
 
-    include("./Static/formulaire.html");
+    // include("./Static/formulaire.html");
 
     // $mail = new PHPMailer(true);
     //     //Server settings

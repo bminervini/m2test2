@@ -87,7 +87,10 @@ namespace Vendor\Models {
         {
             $this->nombreCroissantAmene += $croissants;
         }
-
+        public function isDisponible()
+        {
+            return true;
+        }
     }
 
 }

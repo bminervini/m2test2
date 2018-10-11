@@ -50,7 +50,7 @@ class SubscribersList
 
         foreach ($this->subscribers as $key => $person)
         {
-            $current = $person->getCroissantAmount();
+            $current = $person->getNombreCroissantAmene();
 
             if (!isset($min) || $current < $min && $person->isDisponible($day))
             {

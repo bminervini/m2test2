@@ -4,8 +4,6 @@
   
     <body class="cs_body">
         
-        <?php include 'jumbotron.php';?>
-        
         <?php include 'navbar.php';?>
 
         
