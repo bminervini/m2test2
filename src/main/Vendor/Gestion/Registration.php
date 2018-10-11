@@ -1,10 +1,13 @@
 <?php
 
-namespace Registration;
-    require_once("../src/main/Vendor/DAO/DAO.php");
-    //use \DAO\DAO;
-    //include("../Models/Personne.php");
-    //use \Models\Personne;
+
+namespace Vendor\Gestion;
+    require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
+    //require_once("../src/main/Vendor/DAO/DAO.php");   
+    use \DAO\DAO;
+    require_once("../../htdocs/m2test2/src/main/Vendor/Models/Personne.php");// use for Atoum
+    //require_once("../src/main/Vendor/Models/Personne.php");
+    use \Vendor\Models\Personne;
 
     class Registration{
         
@@ -14,26 +17,33 @@ namespace Registration;
             $this->dao = new \Vendor\DAO\DAO();
         }
 
-        public function registered($nom, $prenom, $username, $password, $mail, $admin){
-        
-            echo "nom : ".$nom."| prenom : ".$prenom."| username : ".$username."| password : ".$password."| mail : ".$mail."| admin : ".$admin;
+        /**
+         * Registers a new user form the data passed in param. Only if the username is not used
+         * @return string return error message if the registration fails
+         */
+        public function registration($nom, $prenom, $username, $password, $mail, $admin){
+           
+            if($this->usernameNotUsed($username)){
+                
+                $password = md5($password);
+                $person = new Personne($nom, $prenom, $username, $password, $mail, $admin);
+                $this->dao->addPersonne($person,"personne");
+
+                return true;
             
-            if($this->isNotUse($username)){
-                echo "pas utilisé";
             }else{
-                echo "déjà utilisé";
+
+                return false;
             }
-            
-            /*
-            $person = new Personne($nom, $prenom, $username, $password, $mail, $admin);
-            $this->dao->addPersonne($person);
-            */
         }
 
-        private function isNotUse($username){
-            $query = "SELECT * FROM personne WHERE username='$username'";
+        /**
+         * Search if the user name passed as paramter is already used
+         * @return boolean retrun ture is the user name is not used
+         */
+        function usernameNotUsed($username){
             
-            $req = $this->dao->querySQL($query);    
+            $req = $this->dao->getPersonByUsername($username);
             $result = $req->fetch();
 
             if($result){
