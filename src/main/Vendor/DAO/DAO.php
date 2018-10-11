@@ -4,6 +4,8 @@ namespace Vendor\DAO {
 
     use \PDO;
 
+    use \Vendor\Models;
+
     //include("../Models/Personne.php"); //à commenter pour les test atoum
     //set_include_path('.;');
     //include("src/main/Vendor/Models/GenerateurPersonne.php"); //à commenter pour les test atoum
