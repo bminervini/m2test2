@@ -4,24 +4,16 @@
 namespace Vendor\Gestion;
     
     require_once("../src/main/Vendor/DAO/DAO.php");
-<<<<<<< HEAD
-    //require_once("../DAO/DAO.php");
-    //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
-=======
+
     //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
     use \DAO\DAO;
 
->>>>>>> origin/authentication
     class Auth{
 
         private $dao;
 
-<<<<<<< HEAD
-        public function __construct(){
-=======
         public function __construct()
         {
->>>>>>> origin/authentication
             $this->dao = new \Vendor\DAO\DAO();
         }
 
