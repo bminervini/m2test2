@@ -17,7 +17,6 @@ namespace Vendor\Models {
 
         function __construct($nom, $prenom, $username, $password, $mail, $admin)
         {
-
             $this->nom = $nom;
             $this->prenom = $prenom;
             $this->username = $username;
@@ -31,6 +30,11 @@ namespace Vendor\Models {
         public function setIdPersonne($idPersonne)
         {
             $this->idPersonne = $idPersonne;
+        }
+
+        public function getIdPersonne()
+        {
+            return $this->idPersonne;
         }
 
         public function getParticipe()
