@@ -4,7 +4,7 @@
     if(isset($_POST['submit']))
     {
         $auth = new \Vendor\Gestion\Auth();
-        $auth->connection($_POST['username'], $_POST['password']);
+        $error = $auth->connection($_POST['username'], $_POST['password']);
     }
 ?>
 
