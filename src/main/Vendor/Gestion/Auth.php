@@ -6,14 +6,12 @@ namespace Vendor\Gestion;
     require_once("../src/main/Vendor/DAO/DAO.php");
     //require_once("../DAO/DAO.php");
     //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
-    use \DAO\DAO;
-
     class Auth{
-        
+
         private $dao;
 
         public function __construct(){
-            $this->dao = new DAO();
+            $this->dao = new \Vendor\DAO\DAO();
         }
 
         public function connection($username, $password)
