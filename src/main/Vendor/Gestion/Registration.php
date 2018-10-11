@@ -1,8 +1,8 @@
 <?php
 
 namespace Registration;
-    require_once("../DAO/DAO.php");    
-    use \DAO\DAO;
+    require_once("../src/main/Vendor/DAO/DAO.php");
+    //use \DAO\DAO;
     //include("../Models/Personne.php");
     //use \Models\Personne;
 
@@ -11,7 +11,7 @@ namespace Registration;
         private $dao;
 
         public function __construct(){
-            $this->dao = new DAO();
+            $this->dao = new \Vendor\DAO\DAO();
         }
 
         public function registered($nom, $prenom, $username, $password, $mail, $admin){
