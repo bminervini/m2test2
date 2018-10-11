@@ -1,19 +1,10 @@
 <?php 
     require_once("../src/main/Vendor/Gestion/Auth.php");
-<<<<<<< HEAD
 
     if(isset($_POST['submit']))
     {
         $auth = new \Vendor\Gestion\Auth();
-        $auth->connection($_POST['username'], $_POST['password'])."\n";
-=======
-    use \Vendor\Gestion\Auth;
-
-    if(isset($_POST['submit']))
-    {
-        $auth = new Auth();
-        $error = $auth->connection($_POST['username'], $_POST['password']);
->>>>>>> origin/authentication
+        $auth->connection($_POST['username'], $_POST['password']);
     }
 ?>
 
