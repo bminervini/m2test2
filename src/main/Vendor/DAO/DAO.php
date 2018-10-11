@@ -5,11 +5,10 @@ namespace Vendor\DAO {
     use \PDO;
 
     use \Vendor\Models;
+
     //include("../Models/Personne.php"); //à commenter pour les test atoum
     //set_include_path('.;');
     //include("src/main/Vendor/Models/GenerateurPersonne.php"); //à commenter pour les test atoum
-
-    use \Models\Personne;
 
     class DAO
     {
@@ -128,9 +127,22 @@ namespace Vendor\DAO {
             $nbreCroissant = 0;
 
             $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
-                    VALUES (NULL, '$nom', '$prenom', '$username', '$password', '$mail', '$admin', '$participe', '$nbreCroissant');";
+                    VALUES (NULL, :lastname, :firstname, :username, :password, :mail, :isAdmin, :participe, :nbreCroissant);";
             try {
-                $idPersonne = $this->connexion->exec($sql);
+                
+                $req = $this->connexion->prepare($sql);
+
+                $req->bindParam(':lastname', $nom);
+                $req->bindParam(':firstname', $prenom);
+                $req->bindParam(':username', $username);
+                $req->bindParam(':password', $password);
+                $req->bindParam(':mail', $mail);
+                $req->bindParam(':isAdmin', $admin);
+                $req->bindParam(':participe', $participe);
+                $req->bindParam(':nbreCroissant', $nbreCroissant);
+
+                $idPersonne = $req->execute();
+
                 if ($idPersonne == null){
                     return null;
                 }else{
@@ -198,6 +210,29 @@ namespace Vendor\DAO {
             $personne = $cursor->fetchAll();
             $cursor->closeCursor();
             return $personne;
+        }
+
+        /**
+         * Used to retrieve a person from their username and password
+         * @return request return the PDO object of the request
+         */
+        function getPersonToAuth($username, $password){
+            $password = md5($password);
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ? AND password= ? LIMIT 1");
+            $req->execute(array($username, $password));
+            
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person from their username
+         * @return request return the PDO object of the request
+         */
+        function getPersonByUsername($username){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ?");
+            $req->execute(array($username));
+
+            return $req;
         }
 
         //Création du schéma de BDD

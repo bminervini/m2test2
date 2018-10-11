@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="atoum testsuite">
+  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="7" failures="0" errors="0" skipped="0" time="0.10162401199341">
+    <testcase name="testNoSubChoice" time="0.0015220642089844" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
+    <testcase name="testAddMultipleSubs" time="0.009904146194458" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1"/>
+    <testcase name="testAddSubscribers" time="0.035670042037964" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+    <testcase name="testMultiplePersonChoice" time="0.02330493927002" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+    <testcase name="testEmptyInit" time="0.0089399814605713" classname="Vendor\Calendar\test\units\SubscribersList" assertions="4"/>
+    <testcase name="testPopulatedChoice" time="0.016541957855225" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
+    <testcase name="testWithUndisponiblePersons" time="0.0057408809661865" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+  </testsuite>
+  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.86330509185791">
+    <testcase name="testBadSender" time="0.31312704086304" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
+    <testcase name="testBadCredentials" time="0.55017805099487" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
+  </testsuite>
+  <testsuite name="DAO" package="DAO\tests\units" tests="5" failures="0" errors="5" skipped="0" time="0">
+    <testcase name="testRequestConnexion" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="256"><![CDATA[Tested class 'DAO\DAO' does not exist for test class 'DAO\tests\units\DAO']]></error>
+    </testcase>
+    <testcase name="testInitialisationBD" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="256"><![CDATA[Tested class 'DAO\DAO' does not exist for test class 'DAO\tests\units\DAO']]></error>
+    </testcase>
+    <testcase name="testUserExistant" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="256"><![CDATA[Tested class 'DAO\DAO' does not exist for test class 'DAO\tests\units\DAO']]></error>
+    </testcase>
+    <testcase name="testDropTables" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="256"><![CDATA[Tested class 'DAO\DAO' does not exist for test class 'DAO\tests\units\DAO']]></error>
+    </testcase>
+    <testcase name="testAddPersonne" time="0" classname="DAO\tests\units\DAO" assertions="0">
+      <error type="256"><![CDATA[Tested class 'DAO\DAO' does not exist for test class 'DAO\tests\units\DAO']]></error>
+    </testcase>
+  </testsuite>
+  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="4" failures="0" errors="4" skipped="0" time="0">
+    <testcase name="testCreateSession" time="0" classname="Vendor\Gestion\test\units\Auth" assertions="0">
+      <error type="Fatal error"><![CDATA[require_once(): Failed opening required '../src/main/Vendor/DAO/DAO.php' (include_path='.:')]]></error>
+      <error type="255"><![CDATA[]]></error>
+    </testcase>
+    <testcase name="testIsLogged" time="0" classname="Vendor\Gestion\test\units\Auth" assertions="0">
+      <error type="Fatal error"><![CDATA[require_once(): Failed opening required '../src/main/Vendor/DAO/DAO.php' (include_path='.:')]]></error>
+      <error type="255"><![CDATA[]]></error>
+    </testcase>
+  </testsuite>
+  <testsuite name="Mail" package="Mailing\tests\units" tests="4" failures="0" errors="4" skipped="0" time="0">
+    <testcase name="testGetRecipients" time="0" classname="Mailing\tests\units\Mail" assertions="0">
+      <error type="256"><![CDATA[Tested class 'Mailing\Mail' does not exist for test class 'Mailing\tests\units\Mail']]></error>
+    </testcase>
+    <testcase name="testGetSetBody" time="0" classname="Mailing\tests\units\Mail" assertions="0">
+      <error type="256"><![CDATA[Tested class 'Mailing\Mail' does not exist for test class 'Mailing\tests\units\Mail']]></error>
+    </testcase>
+    <testcase name="testConstruct" time="0" classname="Mailing\tests\units\Mail" assertions="0">
+      <error type="256"><![CDATA[Tested class 'Mailing\Mail' does not exist for test class 'Mailing\tests\units\Mail']]></error>
+    </testcase>
+    <testcase name="testGetSetSubject" time="0" classname="Mailing\tests\units\Mail" assertions="0">
+      <error type="256"><![CDATA[Tested class 'Mailing\Mail' does not exist for test class 'Mailing\tests\units\Mail']]></error>
+    </testcase>
+  </testsuite>
+</testsuites>
