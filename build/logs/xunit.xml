@@ -1,42 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="atoum testsuite">
-  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="7" failures="0" errors="0" skipped="0" time="0.041484355926514">
-    <testcase name="testEmptyInit" time="0.0057070255279541" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
-    <testcase name="testNoSubChoice" time="0.0017380714416504" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
-    <testcase name="testPopulatedChoice" time="0.0055789947509766" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1"/>
-    <testcase name="testMultiplePersonChoice" time="0.007047176361084" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
-    <testcase name="testAddSubscribers" time="0.0066051483154297" classname="Vendor\Calendar\test\units\SubscribersList" assertions="4"/>
-    <testcase name="testAddMultipleSubs" time="0.0081069469451904" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
-    <testcase name="testWithUndisponiblePersons" time="0.0067009925842285" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="115" failures="0" errors="108" skipped="0" time="0.04151463508606">
+    <testcase name="testEmptyInit" time="0.0025029182434082" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
+    <testcase name="testNoSubChoice" time="0.0016689300537109" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
+    <testcase name="testPopulatedChoice" time="0.0056779384613037" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1">
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+    </testcase>
+    <testcase name="testMultiplePersonChoice" time="0.0098459720611572" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+    </testcase>
+    <testcase name="testAddSubscribers" time="0.0074729919433594" classname="Vendor\Calendar\test\units\SubscribersList" assertions="4">
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+    </testcase>
+    <testcase name="testAddMultipleSubs" time="0.0069239139556885" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+    </testcase>
+    <testcase name="testWithUndisponiblePersons" time="0.0074219703674316" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+      <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
+      <error type="8"><![CDATA[Undefined variable: admin]]></error>
+      <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
+      <error type="8"><![CDATA[Undefined variable: accepte]]></error>
+    </testcase>
   </testsuite>
-  <testsuite name="DAO" package="Vendor\DAO\tests\units" tests="6" failures="0" errors="0" skipped="0" time="1.2311320304871">
-    <testcase name="testRequestConnexion" time="0.027493000030518" classname="Vendor\DAO\tests\units\DAO" assertions="0"/>
-    <testcase name="testCreationTables" time="0.25596690177917" classname="Vendor\DAO\tests\units\DAO" assertions="2"/>
-    <testcase name="testAddPersonne" time="0.24988508224487" classname="Vendor\DAO\tests\units\DAO" assertions="4"/>
-    <testcase name="testGetPersonne" time="0.19435715675354" classname="Vendor\DAO\tests\units\DAO" assertions="2"/>
-    <testcase name="testUserExistant" time="0.26518201828003" classname="Vendor\DAO\tests\units\DAO" assertions="4"/>
-    <testcase name="testUpdatePersonne" time="0.23824787139893" classname="Vendor\DAO\tests\units\DAO" assertions="3"/>
+  <testsuite name="DAO" package="Vendor\DAO\tests\units" tests="6" failures="0" errors="5" skipped="0" time="0.024703979492188">
+    <testcase name="testRequestConnexion" time="0.024703979492188" classname="Vendor\DAO\tests\units\DAO" assertions="0"/>
+    <testcase name="testCreationTables" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="2">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
+Stack trace:
+#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
+#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
+#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(33): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testCreationTables()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testCreationTab...')
+#5 {main}]]></error>
+    </testcase>
+    <testcase name="testAddPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
+Stack trace:
+#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
+#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
+#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(51): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testAddPersonne()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testAddPersonne')
+#5 {main}]]></error>
+    </testcase>
+    <testcase name="testGetPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
+Stack trace:
+#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
+#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
+#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(73): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testGetPersonne()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testGetPersonne')
+#5 {main}]]></error>
+    </testcase>
+    <testcase name="testUserExistant" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
+Stack trace:
+#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
+#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
+#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(87): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testUserExistant()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testUserExistan...')
+#5 {main}]]></error>
+    </testcase>
+    <testcase name="testUpdatePersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
+Stack trace:
+#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
+#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
+#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(111): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testUpdatePersonne()
+#4 -(1): mageekguy\atoum\test->runTestMethod('testUpdatePerso...')
+#5 {main}]]></error>
+    </testcase>
   </testsuite>
-  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="6" failures="0" errors="0" skipped="0" time="0.09498119354248">
-    <testcase name="testCreateSession" time="0.0028910636901855" classname="Vendor\Gestion\test\units\Auth" assertions="0"/>
-    <testcase name="testIsLogged" time="0.017898082733154" classname="Vendor\Gestion\test\units\Auth" assertions="4"/>
-    <testcase name="testLogout" time="0.0057449340820312" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConnectionOK" time="0.027387142181396" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConectionKO" time="0.021472930908203" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConnectionInjection" time="0.01958703994751" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="6" failures="0" errors="0" skipped="0" time="0.069810390472412">
+    <testcase name="testCreateSession" time="0.0028271675109863" classname="Vendor\Gestion\test\units\Auth" assertions="0"/>
+    <testcase name="testIsLogged" time="0.010879993438721" classname="Vendor\Gestion\test\units\Auth" assertions="4"/>
+    <testcase name="testLogout" time="0.0022470951080322" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConnectionOK" time="0.020161151885986" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConectionKO" time="0.010164976119995" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConnectionInjection" time="0.023530006408691" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
   </testsuite>
-  <testsuite name="Registration" package="Vendor\Gestion\test\units" tests="2" failures="0" errors="0" skipped="0" time="0.026859045028687">
-    <testcase name="testRegistration" time="1.5020370483398E-5" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
-    <testcase name="testUsernameNotUsed" time="0.026844024658203" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
+  <testsuite name="Registration" package="Vendor\Gestion\test\units" tests="2" failures="0" errors="0" skipped="0" time="0.027731895446777">
+    <testcase name="testRegistration" time="1.3828277587891E-5" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
+    <testcase name="testUsernameNotUsed" time="0.027718067169189" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
   </testsuite>
-  <testsuite name="Mail" package="Vendor\Mailing\tests\units" tests="4" failures="0" errors="0" skipped="0" time="0.0091948509216309">
-    <testcase name="testConstruct" time="0.0028510093688965" classname="Vendor\Mailing\tests\units\Mail" assertions="0"/>
-    <testcase name="testGetRecipients" time="0.002385139465332" classname="Vendor\Mailing\tests\units\Mail" assertions="6"/>
-    <testcase name="testGetSetSubject" time="0.0020067691802979" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetBody" time="0.0019519329071045" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+  <testsuite name="Mail" package="Vendor\Mailing\tests\units" tests="4" failures="0" errors="0" skipped="0" time="0.0091488361358643">
+    <testcase name="testConstruct" time="0.0027759075164795" classname="Vendor\Mailing\tests\units\Mail" assertions="0"/>
+    <testcase name="testGetRecipients" time="0.0022399425506592" classname="Vendor\Mailing\tests\units\Mail" assertions="6"/>
+    <testcase name="testGetSetSubject" time="0.002079963684082" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetBody" time="0.0020530223846436" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
   </testsuite>
-  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.95808696746826">
-    <testcase name="testBadSender" time="0.48842597007751" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
-    <testcase name="testBadCredentials" time="0.46966099739075" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
+  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.96616888046265">
+    <testcase name="testBadSender" time="0.50978398323059" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
+    <testcase name="testBadCredentials" time="0.45638489723206" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
   </testsuite>
 </testsuites>

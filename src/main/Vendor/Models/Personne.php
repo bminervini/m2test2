@@ -15,7 +15,7 @@ namespace Vendor\Models {
         var $participe;
         var $idPersonne = null;
 
-        function __construct($nom, $prenom, $username, $password, $mail, $admin)
+        function __construct($nom, $prenom, $username, $password, $mail, $gmail, $admin, $statutParticipation, $accepte)
         {
             $this->nom = $nom;
             $this->prenom = $prenom;
@@ -24,6 +24,9 @@ namespace Vendor\Models {
             $this->participe = 0;
             $this->nombreCroissantAmene = 0;
             $this->mail = $mail;
+            $this->gmail = $gmail;
+            $this->statutParticipation = $statutParticipation;
+            $this->accepte = $accepte;
             $this->admin = $admin;
         }
 
@@ -35,6 +38,16 @@ namespace Vendor\Models {
         public function getIdPersonne()
         {
             return $this->idPersonne;
+        }
+
+        public function getAccepte()
+        {
+            return $this->accepte;
+        }
+
+        public function getStatutParticipation()
+        {
+            return $this->statutParticipation;
         }
 
         public function getParticipe()
@@ -67,6 +80,13 @@ namespace Vendor\Models {
         {
             return $this->mail;
         }
+
+        public function getGmail()
+        {
+            return $this->gmail;
+        }
+
+
 
         public function isADmin()
         {
