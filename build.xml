@@ -21,7 +21,7 @@
 <mkdir dir="${basedir}/build/phpdox"/>
 </target>
  <target name="atoum" description="Test unitaire calendar">
-  <exec executable="php">
+  <exec failonerror="true" executable="php">
    <arg line="${basedir}/applis/atoum/atoum.phar -c ${basedir}/src/test/.atoum.php -d ${basedir}/src/test/" />
   </exec>
  </target>
