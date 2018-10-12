@@ -8,6 +8,7 @@
 
 namespace Vendor\Models
 {
+    require_once(__DIR__ . "/../Models/Personne.php");
 
     class GenerateurPersonne
 {

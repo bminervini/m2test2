@@ -16,6 +16,7 @@ namespace Vendor\DAO\tests\units
         }
 
         /*
+         * Désactiver car un peu dérangeant de supprimer toutes les données
         //permet de vérifier que toutes les tables sont bien supprimées
         public function testDropTables()
         {
@@ -25,7 +26,6 @@ namespace Vendor\DAO\tests\units
             $this
                 ->integer($nbreTable)
                     ->isEqualTo(0);
-
         }*/
 
         //permet d'initialiser la base de données

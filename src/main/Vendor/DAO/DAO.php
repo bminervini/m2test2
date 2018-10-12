@@ -5,14 +5,11 @@ namespace Vendor\DAO {
 
     use \Vendor\Models;
 
-    //include("../Models/Personne.php"); //à commenter pour les test atoum
-    //set_include_path('.;');
-    //include("src/main/Vendor/Models/GenerateurPersonne.php"); //à commenter pour les test atoum
-    use DAO\tests\units\generation\GenerateurPersonne;
-    use \PDO;
-    require_once(__DIR__ ."/../Models/Personne.php"); //à commenter pour les test atoum
-    include(__DIR__ ."/../Models/GenerateurPersonne.php"); //à commenter pour les test atoum
-    use \Models\Personne;
+
+ use \PDO;
+
+    require_once(__DIR__ . "/../Models/Personne.php");
+    require_once(__DIR__ . "/../Models/GenerateurPersonne.php");
 
     class DAO
     {
@@ -94,14 +91,14 @@ namespace Vendor\DAO {
             $this->createTableDisponibilite("disponibilite");
 
             $this->addAdmin("personne");
-/*
+
             if ($nombreDePersonne > 0){
                 $generator = new \Vendor\Models\GenerateurPersonne($nombreDePersonne);
                 $personnes = $generator->getPersonnes();
                 for ($i = 0; $i < count($personnes); $i++){
                     $this->addPersonne($personnes[$i], "personne");
                 }
-            }*/
+            }
 
         }
 
@@ -186,17 +183,48 @@ namespace Vendor\DAO {
             $nbreCroissant = 0;
 
             $sql = "UPDATE $nomTable
-                    SET   `nom` = '$nom', 
-                          `prenom` = '$prenom',
-                          `username` = '$username',
-                          `mail` = '$mail',
-                          `password` = '$password',
-                          `isAdmin` = '$admin',
-                          `participe` = '$participe',
-                          `nbreCroissantAmene` = '$nbreCroissant'
+                    SET   `nom` = :lastname, 
+                          `prenom` = :firstname,
+                          `username` = :username,
+                          `mail` = :mail,
+                          `password` = :password,
+                          `isAdmin` = :admin,
+                          `participe` = :participe,
+                          `nbreCroissantAmene` = :$nbreCroissant
                     WHERE `idPersonne` = '$idPersonne';";
+
+            $req = $this->connexion->prepare($sql);
+
+            $req->bindParam(':lastname', $nom);
+            $req->bindParam(':firstname', $prenom);
+            $req->bindParam(':username', $username);
+            $req->bindParam(':password', $password);
+            $req->bindParam(':mail', $mail);
+            $req->bindParam(':isAdmin', $admin);
+            $req->bindParam(':participe', $participe);
+            $req->bindParam(':nbreCroissant', $nbreCroissant);
+
             try {
                 if($this->connexion->exec($sql)){
+                    return true;
+                }else{
+                    return false;
+                };
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+                return null;
+            }
+        }
+
+        function deletePersonne($idPersonne, $nomTable){
+            $sql = "DELETE FROM table_name
+                    WHERE `idPersonne` = :idPersonne;";
+            $req = $this->connexion->prepare($sql);
+            $req->bindParam(':idPersonne', $idPersonne);
+            try {
+                if($req->exec($sql)){
                     return true;
                 }else{
                     return false;
@@ -241,8 +269,10 @@ namespace Vendor\DAO {
             return $req;
         }
 
+        ////////////////////////////
         //Création du schéma de BDD
-        //retourne true si tout est ok, sinon retourne false
+        ////////////////////////////
+
         function createTablePersonne($nomTable)
         {
             $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
