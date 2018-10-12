@@ -2,13 +2,17 @@
 
 namespace Vendor\DAO {
 
-    use \PDO;
 
     use \Vendor\Models;
 
     //include("../Models/Personne.php"); //à commenter pour les test atoum
     //set_include_path('.;');
     //include("src/main/Vendor/Models/GenerateurPersonne.php"); //à commenter pour les test atoum
+    use DAO\tests\units\generation\GenerateurPersonne;
+    use \PDO;
+    require_once(__DIR__ ."/../Models/Personne.php"); //à commenter pour les test atoum
+    include(__DIR__ ."/../Models/GenerateurPersonne.php"); //à commenter pour les test atoum
+    use \Models\Personne;
 
     class DAO
     {
@@ -76,6 +80,9 @@ namespace Vendor\DAO {
             $nbre = $cursor->fetchAll();
             $cursor->closeCursor();
             return intval($nbre[0][0]);
+            $requete = $this->connexion->exec("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            var_dump($requete);
+            die();
         }
 
         //initialise la bdd (schéma) avec un admin
@@ -110,6 +117,7 @@ namespace Vendor\DAO {
             {
                 echo $sql . "<br>" . $e->getMessage();
             }
+
         }
 
         //ajoute une personne dans la base de données
@@ -156,7 +164,6 @@ namespace Vendor\DAO {
                 return null;
             }
         }
-
         function getListPersonne($nomTable)
         {
             $sql = "SELECT * FROM $nomTable;";
@@ -168,7 +175,6 @@ namespace Vendor\DAO {
         }
 
         function updatePersonne($personne, $nomTable){
-
             $idPersonne = $personne->getIdPersonne();
             $nom = $personne->getNom();
             $prenom = $personne->getPrenom();
@@ -276,6 +282,7 @@ namespace Vendor\DAO {
                 return true;
             } else {
                 //print_r($create->errorInfo());
+
                 return false;
             }
         }

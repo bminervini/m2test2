@@ -15,6 +15,7 @@ namespace Vendor\Mailing\tests\units
 
             $this
                 ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword))
+
                 ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("65m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
                     ->boolean($oResult)
                         ->isEqualTo(false)

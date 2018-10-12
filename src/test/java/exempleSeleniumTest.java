@@ -9,12 +9,10 @@ public class exempleSeleniumTest
     private HtmlUnitDriver driver;
     private String baseUrl;
     private String valX;
-    @Before
     public void setUp() throws Exception {
         driver = new HtmlUnitDriver();
         baseUrl = "https://disc.univ-fcomte.fr";
     }
-    @Test
     public void testRobotSeleniumTest() throws Exception {
         driver.get("https://disc.univ-fcomte.fr/m2gl-webRobot/Accueil.php?seed=1");
         driver.findElement(By.id("newCarte")).click();

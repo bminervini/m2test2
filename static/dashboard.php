@@ -1,13 +1,20 @@
 <html>
 
+<<<<<<< HEAD
     <!-- used to redirect if the user is not connected -->
     <?php include_once 'session.php' ?>
+=======
+>>>>>>> origin/Calendrier_GoogleAPI
     <?php include 'head.php';?>
   
     <body class="cs_body">
         
         <?php 
+<<<<<<< HEAD
             if(isset($_SESSION['isAdmin']) || 1)
+=======
+            if(isset($_SESSION['admin']) || 1)
+>>>>>>> origin/Calendrier_GoogleAPI
             {
                 include 'navbaradmin.php';
             }else 
