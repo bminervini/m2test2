@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="atoum testsuite">
-  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="7" failures="1" errors="0" skipped="0" time="0.045490980148315">
-    <testcase name="testNoSubChoice" time="0.0015809535980225" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
-    <testcase name="testAddMultipleSubs" time="0.0064120292663574" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1"/>
-    <testcase name="testEmptyInit" time="0.0076289176940918" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
-    <testcase name="testPopulatedChoice" time="0.016324996948242" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
-    <testcase name="testAddSubscribers" time="0.0076169967651367" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
-    <testcase name="testMultiplePersonChoice" time="0.0059270858764648" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
-    <testcase name="testWithUndisponiblePersons" time="0" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
-      <failure type="Failure" message="object()"><![CDATA[object(mock\Vendor\Models\Personne) is not identical to object(mock\Vendor\Models\Personne)
--Expected
-+Actual
-@@ -1 +1 @@
--object(mock\Vendor\Models\Personne)#76 (9) {
-+object(mock\Vendor\Models\Personne)#186 (9) {]]></failure>
-    </testcase>
+  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="7" failures="0" errors="0" skipped="0" time="0.061395645141602">
+    <testcase name="testNoSubChoice" time="0.0015318393707275" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
+    <testcase name="testAddMultipleSubs" time="0.0058519840240479" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1"/>
+    <testcase name="testEmptyInit" time="0.014748811721802" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+    <testcase name="testWithUndisponiblePersons" time="0.0057559013366699" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
+    <testcase name="testPopulatedChoice" time="0.0049540996551514" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+    <testcase name="testAddSubscribers" time="0.016784906387329" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
+    <testcase name="testMultiplePersonChoice" time="0.011768102645874" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2"/>
   </testsuite>
-  <testsuite name="DAO" package="Vendor\DAO\tests\units" tests="7" failures="0" errors="5" skipped="0" time="0.036539077758789">
-    <testcase name="testRequestConnexion" time="0.014419078826904" classname="Vendor\DAO\tests\units\DAO" assertions="0"/>
-    <testcase name="testDropTables" time="0.022119998931885" classname="Vendor\DAO\tests\units\DAO" assertions="2"/>
-    <testcase name="testCreationTables" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="2">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'm2test2.personneTest' doesn't exist in /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php:152
+  <testsuite name="DAO" package="Vendor\DAO\tests\units" tests="7" failures="0" errors="5" skipped="0" time="0.036757946014404">
+    <testcase name="testRequestConnexion" time="0.012537956237793" classname="Vendor\DAO\tests\units\DAO" assertions="0"/>
+    <testcase name="testDropTables" time="0.024219989776611" classname="Vendor\DAO\tests\units\DAO" assertions="2"/>
+    <testcase name="testCreationTables" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'username' in /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php:114
 Stack trace:
-#0 /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php(152): PDOStatement->execute()
-#1 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(163): Vendor\DAO\DAO->addPersonne(Object(mock\Vendor\Models\Personne), 'personneTest')
-#2 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(34): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#3 phar:///home/baptiste/Documents/M2/TF/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testCreationTables()
-#4 Standard input code(1): mageekguy\atoum\test->runTestMethod('testCreationTab...')
-#5 {main}]]></error>
+#0 /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php(114): PDO->exec('INSERT INTO `m2...')
+#1 /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php(96): Vendor\DAO\DAO->addAdmin('personne')
+#2 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(161): Vendor\DAO\DAO->initialisationBD(0)
+#3 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(34): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#4 phar:///home/baptiste/Documents/M2/TF/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testCreationTables()
+#5 Standard input code(1): mageekguy\atoum\test->runTestMethod('testCreationTab...')
+#6 {main}]]></error>
     </testcase>
     <testcase name="testAddPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
       <error type="Exception"><![CDATA[PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'username' in /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php:114
@@ -40,16 +34,15 @@ Stack trace:
 #5 Standard input code(1): mageekguy\atoum\test->runTestMethod('testAddPersonne')
 #6 {main}]]></error>
     </testcase>
-    <testcase name="testGetPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'username' in /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php:114
+    <testcase name="testGetPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="2">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'm2test2.personneTest' doesn't exist in /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php:152
 Stack trace:
-#0 /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php(114): PDO->exec('INSERT INTO `m2...')
-#1 /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php(96): Vendor\DAO\DAO->addAdmin('personne')
-#2 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(161): Vendor\DAO\DAO->initialisationBD(0)
-#3 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(89): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#4 phar:///home/baptiste/Documents/M2/TF/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testGetPersonne()
-#5 Standard input code(1): mageekguy\atoum\test->runTestMethod('testGetPersonne')
-#6 {main}]]></error>
+#0 /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php(152): PDOStatement->execute()
+#1 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(163): Vendor\DAO\DAO->addPersonne(Object(mock\Vendor\Models\Personne), 'personneTest')
+#2 /home/baptiste/Documents/M2/TF/m2test2/src/test/Vendor/DAO/TestDao.php(89): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
+#3 phar:///home/baptiste/Documents/M2/TF/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testGetPersonne()
+#4 Standard input code(1): mageekguy\atoum\test->runTestMethod('testGetPersonne')
+#5 {main}]]></error>
     </testcase>
     <testcase name="testUserExistant" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
       <error type="Exception"><![CDATA[PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin' for key 'username' in /home/baptiste/Documents/M2/TF/m2test2/src/main/Vendor/DAO/DAO.php:114
@@ -74,12 +67,12 @@ Stack trace:
 #6 {main}]]></error>
     </testcase>
   </testsuite>
-  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="6" failures="2" errors="0" skipped="0" time="0.038912057876587">
-    <testcase name="testCreateSession" time="0.0024008750915527" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testLogout" time="0.0016210079193115" classname="Vendor\Gestion\test\units\Auth" assertions="4"/>
-    <testcase name="testConectionKO" time="0.017075061798096" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConnectionOK" time="0.017815113067627" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testIsLogged" time="0" classname="Vendor\Gestion\test\units\Auth" assertions="0">
+  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="6" failures="2" errors="0" skipped="0" time="0.044177770614624">
+    <testcase name="testLogout" time="0.0030851364135742" classname="Vendor\Gestion\test\units\Auth" assertions="0"/>
+    <testcase name="testConnectionOK" time="0.017583847045898" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testCreateSession" time="0.002518892288208" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConectionKO" time="0.020989894866943" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testIsLogged" time="0" classname="Vendor\Gestion\test\units\Auth" assertions="4">
       <failure type="Failure" message="variable()"><![CDATA[boolean(false) is not equal to boolean(true)
 -Expected
 +Actual
@@ -96,18 +89,18 @@ Stack trace:
 +bool(true)]]></failure>
     </testcase>
   </testsuite>
-  <testsuite name="Registration" package="Vendor\Gestion\test\units" tests="2" failures="0" errors="0" skipped="0" time="0.023453950881958">
-    <testcase name="testRegistration" time="4.6014785766602E-5" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
-    <testcase name="testUsernameNotUsed" time="0.023407936096191" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
+  <testsuite name="Registration" package="Vendor\Gestion\test\units" tests="2" failures="0" errors="0" skipped="0" time="0.021805763244629">
+    <testcase name="testRegistration" time="1.6927719116211E-5" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
+    <testcase name="testUsernameNotUsed" time="0.021788835525513" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
   </testsuite>
-  <testsuite name="Mail" package="Vendor\Mailing\tests\units" tests="4" failures="0" errors="0" skipped="0" time="0.0092673301696777">
-    <testcase name="testGetSetSubject" time="0.0019190311431885" classname="Vendor\Mailing\tests\units\Mail" assertions="0"/>
-    <testcase name="testConstruct" time="0.0033500194549561" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetRecipients" time="0.0027351379394531" classname="Vendor\Mailing\tests\units\Mail" assertions="6"/>
-    <testcase name="testGetSetBody" time="0.0012631416320801" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+  <testsuite name="Mail" package="Vendor\Mailing\tests\units" tests="4" failures="0" errors="0" skipped="0" time="0.02102255821228">
+    <testcase name="testGetRecipients" time="0.011220932006836" classname="Vendor\Mailing\tests\units\Mail" assertions="0"/>
+    <testcase name="testGetSetBody" time="0.0033538341522217" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testConstruct" time="0.0038928985595703" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetSubject" time="0.0025548934936523" classname="Vendor\Mailing\tests\units\Mail" assertions="6"/>
   </testsuite>
-  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.65047287940979">
-    <testcase name="testBadSender" time="0.22368097305298" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
-    <testcase name="testBadCredentials" time="0.42679190635681" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
+  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.66076493263245">
+    <testcase name="testBadSender" time="0.23342204093933" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
+    <testcase name="testBadCredentials" time="0.42734289169312" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
   </testsuite>
 </testsuites>

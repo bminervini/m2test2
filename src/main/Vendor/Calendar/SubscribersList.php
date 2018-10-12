@@ -38,7 +38,7 @@ namespace Vendor\Calendar
             return isset($this->subscribers[$sub->getId()]);
         }
 
-        public function chooseOne()
+        public function chooseOne($day)
         {
             if (count($this->subscribers) == 0)
             {
@@ -51,7 +51,7 @@ namespace Vendor\Calendar
             {
                 $current = $person->getNombreCroissantAmene();
 
-                if (!isset($min) || $current < $min)
+                if (!isset($min) || $current < $min && $person->isDisponible($day))
                 {
                     $min = $current;
                     $choosen = $person;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539348570" clover="5bc0985a0846d">
-  <project timestamp="1539348570" name="atoum code coverage">
+<coverage generated="1539348856" clover="5bc0997808ef2">
+  <project timestamp="1539348856" name="atoum code coverage">
     <package name="atoumCodeCoverage">
       <metrics complexity="0" elements="0" coveredelements="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" methods="0" coveredmethods="0" testduration="0" testfailures="0" testpasses="0" testruns="0" classes="0" loc="0" ncloc="0" files="0"/>
     </package>
