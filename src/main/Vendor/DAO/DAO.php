@@ -184,9 +184,9 @@ namespace Vendor\DAO {
                           `username` = :username,
                           `mail` = :mail,
                           `password` = :password,
-                          `isAdmin` = :admin,
+                          `isAdmin` = :isAdmin,
                           `participe` = :participe,
-                          `nbreCroissantAmene` = :$nbreCroissant
+                          `nbreCroissantAmene` = :nbreCroissant
                     WHERE `idPersonne` = '$idPersonne';";
 
             $req = $this->connexion->prepare($sql);
@@ -201,7 +201,7 @@ namespace Vendor\DAO {
             $req->bindParam(':nbreCroissant', $nbreCroissant);
 
             try {
-                if($this->connexion->exec($sql)){
+                if($req->execute()){
                     return true;
                 }else{
                     return false;

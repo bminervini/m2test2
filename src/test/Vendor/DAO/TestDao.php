@@ -121,7 +121,10 @@ namespace Vendor\DAO\tests\units
 
             $dao->updatePersonne($personne, "personneTest");
             $personne = $dao->getPersonne(0, "personneTest");
+
             $this->string($personne[0][1])->isEqualTo("NewNomAdmin");
+            $this->string($personne[0][2])->isEqualTo("NewPrenomAdmin");
+            $this->string($personne[0][4])->isEqualTo("newAdmin@gmail.com");
 
             $dao->dropTables(true);
 
