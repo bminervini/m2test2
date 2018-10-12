@@ -1,0 +1,115 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+
+ 	<groupId>webRobot</groupId>
+	<artifactId>testRobotA</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	
+    <!-- Properties definition -->
+    <properties>
+        <!-- Squash-TA framework version used by the project -->
+        <ta.framework.version>1.9.0-RELEASE</ta.framework.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Configuration of the Squash TA framework used by the project -->
+            <plugin>
+                <groupId>org.squashtest.ta</groupId>
+                <artifactId>squash-ta-maven-plugin</artifactId>
+                <version>${ta.framework.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.19</version>
+                    </dependency>
+                </dependencies>
+                <configuration>                    
+                    <!-- Uncomment the line below in order to the build finish in success even if a test failed -->
+                    <!-- <alwaysSuccess>true</alwaysSuccess> -->
+                    
+                    <!-- Define a log configuration file (at log4j format) to override the one defined internally -->
+                    <!-- If the given file can't be found the engine switch to the internal configuration-->
+                    <logConfiguration>${logConfFile}</logConfiguration>
+                    
+                    <!-- Define exporters -->
+                    <exporters>
+                        <surefire>
+                            <jenkinsAttachmentMode>${ta.jenkins.attachment.mode}</jenkinsAttachmentMode>
+                        </surefire>
+                        <html/>
+                    </exporters>
+                    
+                    <!-- Define configurers -->
+                    <configurers>
+                        <tmCallBack>
+                            <endpointURL>${status.update.events.url}</endpointURL>
+                            <executionExternalId>${squash.ta.external.id}</executionExternalId>
+                            <jobName>${jobname}</jobName>
+                            <hostName>${hostname}</hostName>
+                            <endpointLoginConfFile>${squash.ta.conf.file}</endpointLoginConfFile>
+                            <reportBaseUrl>${ta.tmcallback.reportbaseurl}</reportBaseUrl>          //@since SquashTA framework 1.8.0
+                            <jobExecutionId>${ta.tmcallback.jobexecutionid}</jobExecutionId>     //@since SquashTA framework 1.8.0
+                            <reportName>${ta.tmcallback.reportname}</reportName>                  //@since SquashTA framework 1.8.0
+                        </tmCallBack>
+                    </configurers>
+                </configuration>
+                
+                <!-- Bind the Squash TA "run" goal to the maven integration-test phase and reuse the default configuration -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <!-- Squash TA maven repository -->
+    <repositories>
+        <repository>
+            <id>org.squashtest.ta.release</id>
+            <name>squashtest test automation - releases</name>
+            <url>http://repo.squashtest.org/maven2/releases</url>
+        </repository>
+    </repositories>
+
+    <!-- Squash TA maven plugin repository -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>org.squashtest.plugins.release</id>
+            <name>squashtest.org</name>
+            <url>http://repo.squashtest.org/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.53.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <version>2.27</version>
+        </dependency>
+     </dependencies>
+
+</project>
