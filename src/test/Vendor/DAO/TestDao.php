@@ -3,6 +3,7 @@
 namespace Vendor\DAO\tests\units
 {
     use \atoum;
+    use \Vendor\Models;
 
     class DAO extends atoum
     {
@@ -39,9 +40,24 @@ namespace Vendor\DAO\tests\units
                 ->integer($nbreTable)->isEqualTo(6)
                 ->and()
                 ->integer($nbrePersonne)->isEqualTo(1)
-                ;
+            ;
 
             $dao->dropTables(true);
+            $this
+                ->given($dao = new \Vendor\DAO\DAO())
+                ->then->object($dao->getConnexion())->isNotEqualTo(null);
+        }
+
+        //permet de vérifier que toutes les tables sont bien supprimées
+        public function testDropTables()
+        {
+            $dao = new \Vendor\DAO\DAO();
+            $dao->dropTables(true);
+            //$requete = $dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            $nbreTable = $dao->getNombreTable();
+            $this
+                ->integer($nbreTable)
+                ->isNotEqualTo(0);
 
         }
 
@@ -80,6 +96,19 @@ namespace Vendor\DAO\tests\units
 
             $dao->dropTables(true);
 
+            $dao = new \Vendor\DAO\DAO();
+            $dao->initialisationBD();
+            $gener = new generationPersonne(10);
+            $personneRandom = $gener->getPersonnes();
+
+            for ($i = 0; $i < $personneRandom->count(); $i++){
+                $dao->addPersonne($personneRandom[$i], "personneTest");
+            }
+
+            $nbrePersonneDansBdd = $dao->querySQL("SELECT COUNT(*) FROM personne;");
+
+
+            $this->integer($nbrePersonneDansBdd)->isEqualTo(10);
         }
 
         //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
@@ -129,16 +158,15 @@ namespace Vendor\DAO\tests\units
 
         function initialiserBDDTest(){
             $dao = new \Vendor\DAO\DAO();
-            $dao->dropTables(true);
-            $dao->createTablePersonne("personneTest");
-            $dao->createTableCalendrier("calendrierTest");
-            $dao->createTableDisponibilite("disponibiliteTest");
-            $dao->addAdmin("personneTest");
-            return $dao;
+            $dao->initialisationBD(0);
+            $personne = new \Mock\Vendor\Models\Personne("Merandat", "Jonathan", "john", md5("test"), "jon@mail.com", 0 );
+            $dao->addPersonne($personne, "personneTest");
+
+            $this
+                ->object($dao->addPersonne($personne))
+                ->isEqualTo(null);
+
         }
 
     }
-
-
-
 }

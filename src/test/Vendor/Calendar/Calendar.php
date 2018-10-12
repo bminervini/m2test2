@@ -47,7 +47,7 @@ namespace Vendor\Calendar\test\units
                 ->array($list->subscribers)
                 ->and
                 ->integer(count($list->subscribers))
-                    ->isEqualTo(0);
+                ->isEqualTo(0);
         }
         public function testNoSubChoice()
         {
@@ -56,7 +56,7 @@ namespace Vendor\Calendar\test\units
                 ->if($list = new \Vendor\Calendar\SubscribersList())
                 ->then
                 ->variable($list->chooseOne($day))
-                    ->isEqualTo(null);
+                ->isEqualTo(null);
         }
         public function testPopulatedChoice( )
         {

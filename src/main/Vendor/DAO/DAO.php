@@ -2,9 +2,11 @@
 
 namespace Vendor\DAO {
 
-    use \PDO;
 
     use \Vendor\Models;
+
+
+ use \PDO;
 
     require_once(__DIR__ . "/../Models/Personne.php");
     require_once(__DIR__ . "/../Models/GenerateurPersonne.php");
@@ -75,6 +77,9 @@ namespace Vendor\DAO {
             $nbre = $cursor->fetchAll();
             $cursor->closeCursor();
             return intval($nbre[0][0]);
+            $requete = $this->connexion->exec("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            var_dump($requete);
+            die();
         }
 
         //initialise la bdd (schéma) avec un admin
@@ -109,6 +114,7 @@ namespace Vendor\DAO {
             {
                 echo $sql . "<br>" . $e->getMessage();
             }
+
         }
 
         //ajoute une personne dans la base de données
@@ -155,7 +161,6 @@ namespace Vendor\DAO {
                 return null;
             }
         }
-
         function getListPersonne($nomTable)
         {
             $sql = "SELECT * FROM $nomTable;";
@@ -167,7 +172,6 @@ namespace Vendor\DAO {
         }
 
         function updatePersonne($personne, $nomTable){
-
             $idPersonne = $personne->getIdPersonne();
             $nom = $personne->getNom();
             $prenom = $personne->getPrenom();
@@ -308,6 +312,7 @@ namespace Vendor\DAO {
                 return true;
             } else {
                 //print_r($create->errorInfo());
+
                 return false;
             }
         }
