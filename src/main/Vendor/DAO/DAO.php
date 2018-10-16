@@ -272,12 +272,34 @@ namespace Vendor\DAO {
         }
 
         /**
-         * Used to retrieve a person from their username
+         * Used to retrieve a person with their username
          * @return request return the PDO object of the request
          */
         function getPersonByUsername($username){
             $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ?");
             $req->execute(array($username));
+
+            return $req; 
+        }
+
+        /**
+         * Used to retrieve a person with their mail
+         * @return request return the PDO object of the request 
+         */
+        function getPersonByMailEdu($mail){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE mail= ?");
+            $req->execute(array($mail));
+
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person with their gmail
+         * @return request return the PDO object of the request
+         */
+        function getPersonByGmail($gmail){
+            $req = $this->connexion->prepare("SELECT * FROM personn WHERE gmail= ?");
+            $req->execute(array($mail));
 
             return $req;
         }

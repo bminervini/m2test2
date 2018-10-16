@@ -53,6 +53,7 @@
                         ?>
 
                         <button type="submit" class="btn btn-default center-block" name="submit">Envoyez les croissants ! </button>
+                        <a class="btn btn-default center-block" href="register.php">S'inscrire</a>
                     </form>
                     
                 </div>
