@@ -74,6 +74,7 @@
         
             if (isset($_GET['time']))
             {
+                // explode()
                 echo $_GET['time'];
             }
 
