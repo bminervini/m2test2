@@ -22,8 +22,9 @@ namespace Vendor\Mailing;
         //Enable debug
         var $m_bVerbose = false;
 
-        public function __construct($sLogin , $sPassword , $bVerbose = false)
+        public function __construct($sLogin , $sPassword , $sSender , $bVerbose = false)
         {
+            $this->m_sSender = $sSender;
             $this->m_sLogin = $sLogin;
             $this->m_sPassword = $sPassword;
             $this->m_bVerbose = $bVerbose;
@@ -51,8 +52,7 @@ namespace Vendor\Mailing;
         public function sendMail($oMail)
         {
             //Configure last infos of the mail
-            // $this->m_oMailer->setFrom($this->m_sLogin , "Crsoissant Show Mailing System");
-            $this->m_oMailer->setFrom("yannis.beaux@edu.univ-fcomte.fr" , "Croissant Show Mailing System");
+            $this->m_oMailer->setFrom($this->m_sSender , "Crsoissant Show Mailing System");
 
             foreach ($oMail->getRecipients() as $recipient)
             {
@@ -74,13 +74,13 @@ namespace Vendor\Mailing;
 
     }
 
-    $ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
+    /*$ms = new MailSender("m2test2.croissant.show@gmail.com" , "pas2pitiepourlescroissants!");
     if (isset($_GET['destinataire']))
     {
         $mail = new Mail($_GET['destinataire'] , $_GET['sujet'] , $_GET['corps']);
         // $mail->addRecipient("frizzy.rastay@gmail.com");
         $ms->sendMail($mail);
-    }
+    }*/
 
     // include("./Static/formulaire.html");
 
