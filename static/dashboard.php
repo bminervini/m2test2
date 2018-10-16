@@ -6,15 +6,7 @@
   
     <body class="cs_body">
         
-        <?php 
-            if(isset($_SESSION['isAdmin']) || 1)
-            {
-                include 'navbaradmin.php';
-            }else 
-            {
-                include 'navbaruser.php';
-            }
-        ?>
+        <?php include 'navbar.php';?>
         
         <div class="container">
             

@@ -2,12 +2,8 @@
 <html>
 	<?php include 'head.php';?>
 	<?php
-
 		require_once("../src/main/Vendor/DAO/DAO.php");    
 		use \DAO\DAO;
-		
-		//$dao = new \Vendor\DAO\DAO();
-		$reponse = (new \Vendor\DAO\DAO())->getListPersonne();
    
 	?>
 
@@ -19,22 +15,7 @@
 	<div class="container">
 	
 		
-		<table>
-			<tr>
-				<th>Prenom</th>
-				<th>Nom</th>
-			</tr>
-			
-		<?php
-		while($donnees = mysql_fetch_array($reponse))
-		{
-		?>
-			<tr>
-				<td><?php $donnees["nom"];?></td>
-				<td><?php $donnees["prenom"];?></td>	
-			</tr>
 		
-		</table>
 			
 	</div> 
 	<?php include 'bottom.php';?>
