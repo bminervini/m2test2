@@ -2,6 +2,7 @@
 
 namespace Vendor\Mailing;
 
+
     class Mail
     {
 

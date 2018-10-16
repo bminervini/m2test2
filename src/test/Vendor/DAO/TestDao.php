@@ -3,6 +3,7 @@
 namespace Vendor\DAO\tests\units
 {
     use \atoum;
+    use \Vendor\Models;
 
     class DAO extends atoum
     {
@@ -29,7 +30,7 @@ namespace Vendor\DAO\tests\units
 
         //permet d'initialiser la base de données
         public function testCreationTables(){
-
+            //initialiser bdd test
             $dao = $this->initialiserBDDTest();
 
             $nbreTable = $dao->getNombreTable();
@@ -39,23 +40,38 @@ namespace Vendor\DAO\tests\units
                 ->integer($nbreTable)->isEqualTo(6)
                 ->and()
                 ->integer($nbrePersonne)->isEqualTo(1)
-                ;
+            ;
 
+            //drop bdd test
             $dao->dropTables(true);
+
+        }
+
+        //permet de vérifier que toutes les tables sont bien supprimées
+        public function testDropTables()
+        {
+            $dao = new \Vendor\DAO\DAO();
+            $dao->dropTables(true);
+            //$requete = $dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
+            $nbreTable = $dao->getNombreTable();
+            $this
+                ->integer($nbreTable)
+                ->isNotEqualTo(0);
 
         }
 
         //vérifier le fonctionnement de la fonction addPersonne
         public function testAddPersonne(){
 
+            //initialiser bdd test
             $dao = $this->initialiserBDDTest();
 
             $personne = new \Mock\Vendor\Models\Personne("Merandat", "Jonathan", "John", "test", "john@gmail.com", "john@gmail.com", 1, 1, 1);
-            $this->calling($personne)->getNom = "Merandat" ;
+            /*$this->calling($personne)->getNom = "Merandat" ;
             $this->calling($personne)->getPrenom = "Jonathan" ;
             $this->calling($personne)->getUsername = "John" ;
             $this->calling($personne)->getPassword = "test" ;
-            $this->calling($personne)->getMail = "john@gmail.com" ;
+            $this->calling($personne)->getMail = "john@gmail.com" ;*/
 
             $dao->addPersonne($personne, "personneTest");
 
@@ -63,27 +79,52 @@ namespace Vendor\DAO\tests\units
 
             $this->integer($nbrePersonneDansBdd)->isEqualTo(2);
 
+            //drop bdd test
             $dao->dropTables(true);
 
         }
 
 
-        //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
+        //vérifier que l'on récupère bien la personne désirée
         public function testGetPersonne(){
+            //initialiser bdd test
             $dao = $this->initialiserBDDTest();
 
             $admin = $dao->getPersonne(0, "personneTest");
+
             $this
-                ->string($admin[0][2])->isEqualTo("admin")
+                ->string($admin[0][3])->isEqualTo("admin")
                 ->string($admin[0][5])->isEqualTo("admin@gmail.com")
             ;
 
+            //drop bdd test
             $dao->dropTables(true);
+        }
 
+        //vérifier que l'on peut récupérer une liste de personnes
+        public function testGetPersonnes(){
+
+            //initialiser bdd test
+            $dao = $this->initialiserBDDTest();
+
+            $gener = new Models\GenerateurPersonne(10);
+            $personneRandom = $gener->getPersonnes();
+
+            for ($i = 0; $i < count($personneRandom); $i++){
+                $dao->addPersonne($personneRandom[$i], "personneTest");
+            }
+
+            $nbrePersonneDansBdd = $dao->getNombrePersonne("personneTest");
+            $this->integer($nbrePersonneDansBdd)->isEqualTo(11);
+
+            //drop bdd test
+            $dao->dropTables(true);
         }
 
         //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
         public function testUserExistant(){
+
+            //initialiser bdd test
             $dao = $this->initialiserBDDTest();
 
             $this
@@ -99,15 +140,15 @@ namespace Vendor\DAO\tests\units
                 ->integer($nbrePersonne)
                 ->isEqualTo(1);
 
+            //drop bdd test
             $dao->dropTables(true);
-
         }
 
 
         //vérifier le fonctionnement de la fonction updatePersonne
         public function testUpdatePersonne(){
 
-            //initialisation de la bdd avec un admin dedans
+            //initialiser bdd test
             $dao = $this->initialiserBDDTest();
 
             //mise à jour des infos de l'utilisateur admin
@@ -126,22 +167,24 @@ namespace Vendor\DAO\tests\units
             $this->string($personne[0][2])->isEqualTo("NewPrenomAdmin");
             $this->string($personne[0][4])->isEqualTo("newAdmin@gmail.com");
 
+            //drop bdd test
             $dao->dropTables(true);
 
         }
 
         function initialiserBDDTest(){
+
             $dao = new \Vendor\DAO\DAO();
             $dao->dropTables(true);
             $dao->createTablePersonne("personneTest");
             $dao->createTableCalendrier("calendrierTest");
             $dao->createTableDisponibilite("disponibiliteTest");
-            $dao->addAdmin("personneTest");
+
+            $personne = new \Mock\Vendor\Models\Personne("Administrateur", "Admin", "admin", md5("admin"), "admin@mail.com", "admin@gmail.com", 0, 0, 0 );
+            $dao->addPersonne($personne, "personneTest");
+
             return $dao;
         }
 
     }
-
-
-
 }

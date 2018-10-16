@@ -17,26 +17,33 @@ namespace Vendor\Gestion;
             $this->dao = new \Vendor\DAO\DAO();
         }
 
-        /**
-         *  Used to connect a user form the password and username passed in param 
-         * @return string return error message if the connection fails
-         */
+
         public function connection($username, $password)
         {
 
+            //UPDATE `m2test2`.`personne` SET `password` = '21232f297a57a5a743894a0e4a801fc3' WHERE `personne`.`idPersonne` = 1;      
+            //INSERT INTO `m2test2`.`personne` (`idPersonne`, `nom`, `prenom`, `username`, `mail`, `password`, `isAdmin`, `participe`, `nbreCroissantAmene`) VALUES ('1', 'thierry ', 'margoulin', 'admin', 'thierry@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1', '0', '0');     
             if(!empty($username) && !empty($password)){
                 
-                $req = $this->dao->getPersonToAuth($username, $password);
+                $cryptedPassword = md5($password);
+                $query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
+                
+                $req = $this->dao->getConnexion()->prepare($query);
+                $req->execute();
+                
                 $result = $req->fetch();
  
                 if($result){
-                    /* create session and redirects the user to the dashboard */
-                    $this->createSession($username, $result['isAdmin']);
-                    header("Location: dashboard.php");
-                
+                    session_start();
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $cryptedPassword;
+
+                   header("Location: dashboard.php");
+                   
+                   echo "Connecté !";
                 }else{
-                    /* return error message */
-                    return "Invalid username or password !";
+                    echo "Mauvais mdp !";
+                    $error = "Your Login Name or Password is invalid";
                 }
             }
         }
@@ -45,8 +52,10 @@ namespace Vendor\Gestion;
          * Used to know if a user is connected 
          * @return boolean return true is the user is logged else false
          */
+
         public static function isLogged(){
-            if(isset($_SESSION['username']) and isset($_SESSION['isAdmin'])){
+            if(isset($_SESSION['username']) and isset($_SESSION['password'])){
+                //Later retrieve the user from the database to perform a verification
                 return true;
             }
             return false;
@@ -79,5 +88,6 @@ namespace Vendor\Gestion;
 
         }
     }
+
 
 ?>
