@@ -6,59 +6,59 @@
  * Time: 15:07
  */
 
-namespace Vendor\Calendar;
-
-
-use \DAO\Personne;
-
-class SubscribersList
+namespace Vendor\Calendar
 {
-    public $subscribers = [];
 
-    public function __construct($subs = [])
-    {
-        $this->subscribers = $subs;
-    }
 
-    public function addSubscriber($sub)
+    class SubscribersList
     {
-        $this->subscribers[$sub->getId()] = $sub;
-    }
+        public $subscribers = [];
 
-    public function addSubscribers($subs)
-    {
-        foreach ($subs as $key => $sub)
+        public function __construct($subs = [])
         {
-            $this->addSubscriber($sub);
+            $this->subscribers = $subs;
         }
 
-    }
-
-    public function isSub($sub)
-    {
-        return isset($this->subscribers[$sub->getId()]);
-    }
-
-    public function chooseOne($day)
-    {
-        if (count($this->subscribers) == 0)
+        public function addSubscriber($sub)
         {
-            return null;
+            $this->subscribers[$sub->getId()] = $sub;
         }
 
-        $choosen = 0;
-
-        foreach ($this->subscribers as $key => $person)
+        public function addSubscribers($subs)
         {
-            $current = $person->getCroissantAmount();
-
-            if (!isset($min) || $current < $min && $person->isDisponible($day))
+            foreach ($subs as $key => $sub)
             {
-                $min = $current;
-                $choosen = $person;
+                $this->addSubscriber($sub);
             }
-        }
-        return $choosen;
-    }
 
+        }
+
+        public function isSub($sub)
+        {
+            return isset($this->subscribers[$sub->getId()]);
+        }
+
+        public function chooseOne($day)
+        {
+            if (count($this->subscribers) == 0)
+            {
+                return null;
+            }
+
+            $choosen = 0;
+
+            foreach ($this->subscribers as $key => $person)
+            {
+                $current = $person->getNombreCroissantAmene();
+
+                if (!isset($min) || $current < $min && $person->isDisponible($day))
+                {
+                    $min = $current;
+                    $choosen = $person;
+                }
+            }
+            return $choosen;
+        }
+
+    }
 }

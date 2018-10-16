@@ -1,6 +1,7 @@
 <?php 
 
-namespace Mailing;
+namespace Vendor\Mailing;
+
 
     class Mail
     {

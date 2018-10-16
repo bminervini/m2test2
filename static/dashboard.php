@@ -1,5 +1,7 @@
 <html>
 
+    <!-- used to redirect if the user is not connected -->
+    <?php include_once 'session.php' ?>
     <?php include 'head.php';?>
   
     <body class="cs_body">

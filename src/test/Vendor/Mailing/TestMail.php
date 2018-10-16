@@ -1,6 +1,6 @@
 <?php
 
-namespace Mailing\tests\units
+namespace Vendor\Mailing\tests\units
 {
 
     use \atoum;
@@ -16,7 +16,7 @@ namespace Mailing\tests\units
             $sBody = "Corps du mail";
 
             $this
-                ->if($oInstance = new \Mailing\Mail($sTo , $sSubject , $sBody))
+                ->if($oInstance = new \Vendor\Mailing\Mail($sTo , $sSubject , $sBody))
                 ->then
                 ->phpArray($oInstance->getRecipients())
                     ->isEqualTo(
@@ -35,7 +35,7 @@ namespace Mailing\tests\units
         {
             
             $this
-                ->given($oInstance = new \Mailing\Mail())
+                ->given($oInstance = new \Vendor\Mailing\Mail())
                 ->and($sRecipient1 = "exemple1@gmail.com")
                 ->and($sRecipient2 = "exemple2@gmail.fr")
                 ->and($oInstance->addRecipient($sRecipient1))
@@ -54,7 +54,7 @@ namespace Mailing\tests\units
         public function testGetSetSubject()
         {
             $this
-                ->given($oInstance = new \Mailing\Mail())
+                ->given($oInstance = new \Vendor\Mailing\Mail())
                 ->and($sSubject = "Mail de test")
                 ->if($oInstance->setSubject($sSubject))
                 ->then
@@ -66,7 +66,7 @@ namespace Mailing\tests\units
         public function testGetSetBody()
         {
             $this
-                ->given($oInstance = new \Mailing\Mail())
+                ->given($oInstance = new \Vendor\Mailing\Mail())
                 ->and($sBody = "Corps de mail de test")
                 ->if($oInstance->setBody($sBody))
                 ->then

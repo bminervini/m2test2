@@ -1,6 +1,6 @@
 <?php 
 
-namespace Mailing;
+namespace Vendor\Mailing;
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
@@ -37,10 +37,10 @@ namespace Mailing;
         {
             if ($this->m_bVerbose)
             {
-                $this->m_oMailer->SMTPDebug = 2;            //< Enable verbose
+                $this->m_oMailer->SMTPDebug = 4;            //< Enable verbose
             }
             $this->m_oMailer->isSMTP();                 //< Use SMTP
-            $this->m_oMailer->Host = "smtp.gmail.com";  //< Specify the SMTP
+            $this->m_oMailer->Host = "smtps.univ-fcomte.fr";  //< Specify the SMTP
             $this->m_oMailer->SMTPAuth = true;          //< Enable the authentication of SMTP
             $this->m_oMailer->Username = $this->m_sLogin;     //< Login
             $this->m_oMailer->Password = $this->m_sPassword;  //< Password
@@ -51,7 +51,8 @@ namespace Mailing;
         public function sendMail($oMail)
         {
             //Configure last infos of the mail
-            $this->m_oMailer->setFrom($this->m_sLogin , "Croissant Show Mailing System");
+            // $this->m_oMailer->setFrom($this->m_sLogin , "Crsoissant Show Mailing System");
+            $this->m_oMailer->setFrom("yannis.beaux@edu.univ-fcomte.fr" , "Croissant Show Mailing System");
 
             foreach ($oMail->getRecipients() as $recipient)
             {
@@ -81,7 +82,7 @@ namespace Mailing;
         $ms->sendMail($mail);
     }
 
-    include("./Static/formulaire.html");
+    // include("./Static/formulaire.html");
 
     // $mail = new PHPMailer(true);
     //     //Server settings
