@@ -49,7 +49,7 @@ namespace Vendor\Models
             md5($this->username[$aleaUsername]),
             $this->username[$aleaUsername]  . $sel . "@" . $this->distriMail[$aleaDistriMail] .".com",
             $this->username[$aleaUsername]  . $sel . "@gmail.com",
-            $this->admin[$aleaAdmin],
+            0,
             $this->statutParticipation[$aleaStatutParticipation],
             $this->accepte[$aleaAccepte]
         );

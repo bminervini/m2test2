@@ -160,6 +160,7 @@ namespace Vendor\DAO {
                 return null;
             }
         }
+
         function getListPersonne($nomTable)
         {
             $sql = "SELECT * FROM $nomTable;";
@@ -168,6 +169,13 @@ namespace Vendor\DAO {
             $nbre = $cursor->fetchAll();
             $cursor->closeCursor();
             return $nbre;
+        }
+
+        function getListParticipant($nomTable)
+        {
+            $sql = "SELECT * FROM $nomTable WHERE $nomTable.statutParticipation = 1;";
+            $cursor = $this->connexion->prepare($sql);
+            return $cursor->execute();
         }
 
         function updatePersonne($personne, $nomTable){
