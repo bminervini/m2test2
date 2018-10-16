@@ -34,7 +34,6 @@ public class webRobotHeadless {
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
     }
 
-    @Test
     public void testRobot2SelHeadless() throws Exception {
 
         driver.get(baseUrl + "/webRobot/Accueil.php?seed=12");
