@@ -2,9 +2,7 @@
 
 namespace Vendor\DAO {
 
-
     use \Vendor\Models;
-
 
  use \PDO;
 
@@ -77,9 +75,6 @@ namespace Vendor\DAO {
             $nbre = $cursor->fetchAll();
             $cursor->closeCursor();
             return intval($nbre[0][0]);
-            $requete = $this->connexion->exec("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
-            var_dump($requete);
-            die();
         }
 
         //initialise la bdd (schéma) avec un admin
@@ -105,8 +100,8 @@ namespace Vendor\DAO {
         function addAdmin($nomTable)
         {
             $mdp = md5("admin");
-            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
-                    VALUES (NULL, 'Administrateur', 'admin', 'admin', '$mdp', 'admin@gmail.com', '1', '1', '0');";
+            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`, `gmail`, `isAdmin`, `statutParticipation`, `accepte`, `nbreCroissantAmene`)
+                    VALUES (NULL, 'Administrateur', 'admin', 'admin', '$mdp', 'admin@gmail.com', 'admin@gmail.com', '1', '1', '1', '0');";
             try {
                 $this->connexion->exec($sql);
             }
@@ -127,12 +122,14 @@ namespace Vendor\DAO {
             $username = $personne->getUsername();
             $password = $personne->getPassword();
             $mail = $personne->getMail();
+            $gmail = $personne->getGmail();
             $admin = $personne->isADmin();
-            $participe = 0;
+            $statutParticipation = $personne->getStatutParticipation();
+            $accepte = $personne->getAccepte();
             $nbreCroissant = 0;
 
-            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
-                    VALUES (NULL, :lastname, :firstname, :username, :password, :mail, :isAdmin, :participe, :nbreCroissant);";
+            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`, `gmail`, `isAdmin`, `nbreCroissantAmene`, `statutParticipation`, `accepte`)
+                    VALUES (NULL, :lastname, :firstname, :username, :password, :mail, :gmail, :isAdmin, :nbreCroissant, :statutParticipation, :accepte);";
             try {
                 
                 $req = $this->connexion->prepare($sql);
@@ -142,8 +139,10 @@ namespace Vendor\DAO {
                 $req->bindParam(':username', $username);
                 $req->bindParam(':password', $password);
                 $req->bindParam(':mail', $mail);
+                $req->bindParam(':gmail', $gmail);
                 $req->bindParam(':isAdmin', $admin);
-                $req->bindParam(':participe', $participe);
+                $req->bindParam(':statutParticipation', $statutParticipation);
+                $req->bindParam(':accepte', $accepte);
                 $req->bindParam(':nbreCroissant', $nbreCroissant);
 
                 $idPersonne = $req->execute();
@@ -161,6 +160,7 @@ namespace Vendor\DAO {
                 return null;
             }
         }
+
         function getListPersonne($nomTable)
         {
             $sql = "SELECT * FROM $nomTable;";
@@ -171,6 +171,13 @@ namespace Vendor\DAO {
             return $nbre;
         }
 
+        function getListParticipant($nomTable)
+        {
+            $sql = "SELECT * FROM $nomTable WHERE $nomTable.statutParticipation = 1;";
+            $cursor = $this->connexion->prepare($sql);
+            return $cursor->execute();
+        }
+
         function updatePersonne($personne, $nomTable){
             $idPersonne = $personne->getIdPersonne();
             $nom = $personne->getNom();
@@ -178,19 +185,23 @@ namespace Vendor\DAO {
             $username = $personne->getUsername();
             $password = $personne->getPassword();
             $mail = $personne->getMail();
+            $gmail = $personne->getGmail();
             $admin = $personne->isADmin();
-            $participe = 0;
-            $nbreCroissant = 0;
+            $statutParticipation = $personne->getStatutParticipation();
+            $accepte = $personne->getAccepte();
+            $nbreCroissant = $personne->getNombreCroissantAmene();
 
             $sql = "UPDATE $nomTable
                     SET   `nom` = :lastname, 
                           `prenom` = :firstname,
                           `username` = :username,
-                          `mail` = :mail,
                           `password` = :password,
-                          `isAdmin` = :admin,
-                          `participe` = :participe,
-                          `nbreCroissantAmene` = :$nbreCroissant
+                          `mail` = :mail,
+                          `gmail` = :gmail,
+                          `isAdmin` = :isAdmin,
+                          `statutParticipation` = :statutParticipation,
+                          `accepte` = :accepte,
+                          `nbreCroissantAmene` = :nbreCroissant
                     WHERE `idPersonne` = '$idPersonne';";
 
             $req = $this->connexion->prepare($sql);
@@ -200,12 +211,14 @@ namespace Vendor\DAO {
             $req->bindParam(':username', $username);
             $req->bindParam(':password', $password);
             $req->bindParam(':mail', $mail);
+            $req->bindParam(':gmail', $gmail);
             $req->bindParam(':isAdmin', $admin);
-            $req->bindParam(':participe', $participe);
+            $req->bindParam(':statutParticipation', $statutParticipation);
+            $req->bindParam(':accepte', $accepte);
             $req->bindParam(':nbreCroissant', $nbreCroissant);
 
             try {
-                if($this->connexion->exec($sql)){
+                if($req->execute()){
                     return true;
                 }else{
                     return false;
@@ -280,10 +293,12 @@ namespace Vendor\DAO {
                `nom` varchar(40) NOT NULL,
                `prenom` varchar(40) NOT NULL, 
                `username` varchar(40) NOT NULL UNIQUE, 
-               `mail` varchar(40) NOT NULL, 
+               `mail` varchar(40) NOT NULL UNIQUE, 
+               `gmail` varchar(40) NOT NULL UNIQUE, 
                `password` varchar(40) NOT NULL, 
                `isAdmin` int(1) NOT NULL, 
-               `participe` int(1) NOT NULL, 
+               `accepte` int(1) NOT NULL, 
+               `statutParticipation` int(1) NOT NULL, 
                `nbreCroissantAmene` int(10) NOT NULL,
                PRIMARY KEY (idPersonne)
                )";
@@ -303,7 +318,6 @@ namespace Vendor\DAO {
             $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
                `idCalendrier` int(11) NOT NULL AUTO_INCREMENT,
                `jour` date NOT NULL,
-               `ferie` int(1) NOT NULL, 
                PRIMARY KEY (idCalendrier)
                );";
             $create = $this->connexion->prepare($sql);

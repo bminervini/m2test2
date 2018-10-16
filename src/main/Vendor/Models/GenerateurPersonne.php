@@ -18,6 +18,8 @@ namespace Vendor\Models
     var $username = array("PigeonDetraque", "CascadeurFou", "HyeneEnrage", "CastorDupe", "LoupMalFame", "HibouMalin");
     var $distriMail = array("outlook", "gmail", "aol", "yahoo", "hotmail");
     var $admin = array(0, 1);
+    var $statutParticipation = array(0, 1, 2);
+    var $accepte = array(0, 1);
 
     var $listPersonnes = [];
 
@@ -37,14 +39,19 @@ namespace Vendor\Models
         $aleaUsername = rand(0 , sizeof($this->username)-1 );
         $aleaDistriMail = rand(0 , sizeof($this->distriMail)-1 );
         $aleaAdmin = rand(0, 1);
+        $aleaStatutParticipation = rand(0, 2);
+        $aleaAccepte = rand(0, 1);
 
         $pers = new Personne(
             $this->nom[$aleaNom],
             $this->prenom[$aleaPrenom],
             $this->username[$aleaUsername] . $sel,
             md5($this->username[$aleaUsername]),
-            $this->username[$aleaUsername] . "@" . $this->distriMail[$aleaDistriMail] .".com",
-            $this->admin[$aleaAdmin]
+            $this->username[$aleaUsername]  . $sel . "@" . $this->distriMail[$aleaDistriMail] .".com",
+            $this->username[$aleaUsername]  . $sel . "@gmail.com",
+            0,
+            $this->statutParticipation[$aleaStatutParticipation],
+            $this->accepte[$aleaAccepte]
         );
         return $pers;
     }
