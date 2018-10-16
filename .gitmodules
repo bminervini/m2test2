@@ -1,0 +1,3 @@
+[submodule "m2test2_acceptance"]
+	path = m2test2_acceptance
+	url = https://github.com/bminervini/m2test2_acceptance.git
