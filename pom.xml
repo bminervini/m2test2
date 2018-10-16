@@ -36,15 +36,7 @@
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.7</version>
-                <configuration>
-                    <target>
-                        <ant target="build"/>
-                    </target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
+
                 <executions>
                     <execution>
                         <id>unitTests</id>
@@ -52,7 +44,7 @@
                         <goals>
                             <goal>run</goal>
                         </goals>
-                        <configuration>
+                        <configuration >
                             <target>
                                 <ant target="build"/>
 

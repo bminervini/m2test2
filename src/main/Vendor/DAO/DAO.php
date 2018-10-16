@@ -2,11 +2,14 @@
 
 namespace Vendor\DAO {
 
-    use DAO\tests\units\generation\GenerateurPersonne;
-    use \PDO;
-    include("../src/main/Vendor/Models/Personne.php"); //à commenter pour les test atoum
-    include("../src/test/Vendor/DAO/GenerateurPersonne.php"); //à commenter pour les test atoum
-    use \Models\Personne;
+
+    use \Vendor\Models;
+
+
+ use \PDO;
+
+    require_once(__DIR__ . "/../Models/Personne.php");
+    require_once(__DIR__ . "/../Models/GenerateurPersonne.php");
 
     class DAO
     {
@@ -59,6 +62,21 @@ namespace Vendor\DAO {
         }
 
         function getNombreTable(){
+            $sql = "SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $nbre = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return intval($nbre[0][0]);
+        }
+
+        function getNombrePersonne($nomTable){
+            $sql = "SELECT count(*) FROM $nomTable;";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $nbre = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return intval($nbre[0][0]);
             $requete = $this->connexion->exec("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
             var_dump($requete);
             die();
@@ -67,31 +85,42 @@ namespace Vendor\DAO {
         //initialise la bdd (schéma) avec un admin
         function initialisationBD($nombreDePersonne)
         {
-            $this->dropTables();
-            $this->createTablePersonne();
-            $this->createTableCalendrier();
-            $this->createTableDisponibilite();
+            $this->dropTables(false);
+            $this->createTablePersonne("personne");
+            $this->createTableCalendrier("calendrier");
+            $this->createTableDisponibilite("disponibilite");
 
-            $this->addAdmin();
+            $this->addAdmin("personne");
 
-            $generator = new GenerateurPersonne($nombreDePersonne);
-            $personnes = $generator->getPersonnes();
-            for ($i = 0; $i < count($personnes); $i++){
-                $this->addPersonne($personnes[$i]);
+            if ($nombreDePersonne > 0){
+                $generator = new \Vendor\Models\GenerateurPersonne($nombreDePersonne);
+                $personnes = $generator->getPersonnes();
+                for ($i = 0; $i < count($personnes); $i++){
+                    $this->addPersonne($personnes[$i], "personne");
+                }
             }
 
         }
 
-        function addAdmin()
+        function addAdmin($nomTable)
         {
-            $pers = new Personne("Administrateur", "admin", "admin", md5("admin"), "admin@gmail.com", 1);
-            $this->addPersonne($pers);
+            $mdp = md5("admin");
+            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
+                    VALUES (NULL, 'Administrateur', 'admin', 'admin', '$mdp', 'admin@gmail.com', '1', '1', '0');";
+            try {
+                $this->connexion->exec($sql);
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+            }
+
         }
 
         //ajoute une personne dans la base de données
         //si l'ajout est possible, retourne la personne avec l'idPersonne renseigné
         //sinon retourne null
-        function addPersonne($personne)
+        function addPersonne($personne, $nomTable)
         {
             $nom = $personne->getNom();
             $prenom = $personne->getPrenom();
@@ -102,14 +131,27 @@ namespace Vendor\DAO {
             $participe = 0;
             $nbreCroissant = 0;
 
-            $sql = "INSERT INTO `m2test2`.`personne` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
-                    VALUES (NULL, '$nom', '$prenom', '$username', '$password', '$mail', '$admin', '$participe', '$nbreCroissant');";
+            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
+                    VALUES (NULL, :lastname, :firstname, :username, :password, :mail, :isAdmin, :participe, :nbreCroissant);";
             try {
-                $idPersonne = $this->connexion->exec($sql);
-                $personne->setIdPersonne($idPersonne);
+                
+                $req = $this->connexion->prepare($sql);
+
+                $req->bindParam(':lastname', $nom);
+                $req->bindParam(':firstname', $prenom);
+                $req->bindParam(':username', $username);
+                $req->bindParam(':password', $password);
+                $req->bindParam(':mail', $mail);
+                $req->bindParam(':isAdmin', $admin);
+                $req->bindParam(':participe', $participe);
+                $req->bindParam(':nbreCroissant', $nbreCroissant);
+
+                $idPersonne = $req->execute();
+
                 if ($idPersonne == null){
                     return null;
                 }else{
+                    $personne->setIdPersonne($idPersonne);
                     return $personne;
                 }
             }
@@ -119,9 +161,17 @@ namespace Vendor\DAO {
                 return null;
             }
         }
+        function getListPersonne($nomTable)
+        {
+            $sql = "SELECT * FROM $nomTable;";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $nbre = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return $nbre;
+        }
 
-        function updatePersonne($personne){
-
+        function updatePersonne($personne, $nomTable){
             $idPersonne = $personne->getIdPersonne();
             $nom = $personne->getNom();
             $prenom = $personne->getPrenom();
@@ -132,16 +182,28 @@ namespace Vendor\DAO {
             $participe = 0;
             $nbreCroissant = 0;
 
-            $sql = "UPDATE personne
-                    SET   nom = $nom, 
-                          prenom = $prenom,
-                          username = $username,
-                          mail = $mail,
-                          password = $password,
-                          isAdmin = $admin,
-                          participe = $participe,
-                          nbreCroissantAmene = $nbreCroissant
-                    WHERE idPersonne = $idPersonne;";
+            $sql = "UPDATE $nomTable
+                    SET   `nom` = :lastname, 
+                          `prenom` = :firstname,
+                          `username` = :username,
+                          `mail` = :mail,
+                          `password` = :password,
+                          `isAdmin` = :admin,
+                          `participe` = :participe,
+                          `nbreCroissantAmene` = :$nbreCroissant
+                    WHERE `idPersonne` = '$idPersonne';";
+
+            $req = $this->connexion->prepare($sql);
+
+            $req->bindParam(':lastname', $nom);
+            $req->bindParam(':firstname', $prenom);
+            $req->bindParam(':username', $username);
+            $req->bindParam(':password', $password);
+            $req->bindParam(':mail', $mail);
+            $req->bindParam(':isAdmin', $admin);
+            $req->bindParam(':participe', $participe);
+            $req->bindParam(':nbreCroissant', $nbreCroissant);
+
             try {
                 if($this->connexion->exec($sql)){
                     return true;
@@ -154,22 +216,66 @@ namespace Vendor\DAO {
                 echo $sql . "<br>" . $e->getMessage();
                 return null;
             }
-
         }
 
-        function getListPersonne()
-        {
-            $sql = "SELECT * FROM personne;";
-            $retour = $this->connexion->exec($sql);
-            var_dump($retour);
-            return $retour;
+        function deletePersonne($idPersonne, $nomTable){
+            $sql = "DELETE FROM table_name
+                    WHERE `idPersonne` = :idPersonne;";
+            $req = $this->connexion->prepare($sql);
+            $req->bindParam(':idPersonne', $idPersonne);
+            try {
+                if($req->exec($sql)){
+                    return true;
+                }else{
+                    return false;
+                };
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+                return null;
+            }
         }
 
+        function getPersonne($id, $nomTable){
+            $sql = "SELECT * FROM $nomTable WHERE 'personne.id' = $id;";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $personne = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return $personne;
+        }
+
+        /**
+         * Used to retrieve a person from their username and password
+         * @return request return the PDO object of the request
+         */
+        function getPersonToAuth($username, $password){
+            $password = md5($password);
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ? AND password= ? LIMIT 1");
+            $req->execute(array($username, $password));
+            
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person from their username
+         * @return request return the PDO object of the request
+         */
+        function getPersonByUsername($username){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ?");
+            $req->execute(array($username));
+
+            return $req;
+        }
+
+        ////////////////////////////
         //Création du schéma de BDD
-        //retourne true si tout est ok, sinon retourne false
-        function createTablePersonne()
+        ////////////////////////////
+
+        function createTablePersonne($nomTable)
         {
-            $sql = "CREATE TABLE IF NOT EXISTS `personne`(
+            $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
                `idPersonne` int(11) NOT NULL AUTO_INCREMENT,
                `nom` varchar(40) NOT NULL,
                `prenom` varchar(40) NOT NULL, 
@@ -184,17 +290,17 @@ namespace Vendor\DAO {
             $create = $this->connexion->prepare($sql);
 
             if ($create->execute()) {
-                echo " Table personne créé \n";
+                //echo " Table personne créé \n";
                 return true;
             } else {
-                print_r($create->errorInfo());
+                //print_r($create->errorInfo());
                 return false;
             }
         }
 
-        function createTableCalendrier()
+        function createTableCalendrier($nomTable)
         {
-            $sql = "CREATE TABLE IF NOT EXISTS `calendrier`(
+            $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
                `idCalendrier` int(11) NOT NULL AUTO_INCREMENT,
                `jour` date NOT NULL,
                `ferie` int(1) NOT NULL, 
@@ -202,17 +308,18 @@ namespace Vendor\DAO {
                );";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
-                echo " Table calendrier créé \n";
+                //echo " Table calendrier créé \n";
                 return true;
             } else {
-                print_r($create->errorInfo());
+                //print_r($create->errorInfo());
+
                 return false;
             }
         }
 
-        function createTableDisponibilite()
+        function createTableDisponibilite($nomTable)
         {
-            $sql = "CREATE TABLE IF NOT EXISTS `disponibilite`(
+            $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
                `idPersonne` int NOT NULL,
                `idCalendrier` int NOT NULL,
                `disponible` int (1) NOT NULL,
@@ -223,24 +330,38 @@ namespace Vendor\DAO {
                ;";
             $create = $this->connexion->prepare($sql);
             if ($create->execute()) {
-                echo " Table calendrier créé \n";
+                //echo " Table calendrier créé \n";
             } else {
-                print_r($create->errorInfo());
+               //print_r($create->errorInfo());
             }
         }
 
-        function dropTables()
+        function dropTables($test)
         {
-            $sql = $this->connexion->prepare("
+            if ($test){
+                $sql = $this->connexion->prepare("
+                DROP TABLE IF EXISTS `disponibiliteTest`;
+                DROP TABLE IF EXISTS `calendrierTest`;
+                DROP TABLE IF EXISTS `personneTest`;
+                ");
+                if ($sql->execute()) {
+                    //echo " Tables supprimées ";
+                } else {
+                    //print_r($sql->errorInfo());
+                };
+            }else{
+                $sql = $this->connexion->prepare("
                 DROP TABLE IF EXISTS `disponibilite`;
                 DROP TABLE IF EXISTS `calendrier`;
                 DROP TABLE IF EXISTS `personne`;
                 ");
-            if ($sql->execute()) {
-                echo " Tables supprimées ";
-            } else {
-                print_r($sql->errorInfo());
-            };
+                if ($sql->execute()) {
+                    //echo " Tables supprimées ";
+                } else {
+                    //print_r($sql->errorInfo());
+                };
+            }
+
         }
     }
 
