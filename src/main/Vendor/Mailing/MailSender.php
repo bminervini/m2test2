@@ -41,7 +41,7 @@ namespace Vendor\Mailing;
                 $this->m_oMailer->SMTPDebug = 4;            //< Enable verbose
             }
             $this->m_oMailer->isSMTP();                 //< Use SMTP
-            $this->m_oMailer->Host = "smtps.univ-fcomte.fr";  //< Specify the SMTP
+            $this->m_oMailer->Host = "194.57.88.66";  //< Specify the SMTP
             $this->m_oMailer->SMTPAuth = true;          //< Enable the authentication of SMTP
             $this->m_oMailer->Username = $this->m_sLogin;     //< Login
             $this->m_oMailer->Password = $this->m_sPassword;  //< Password

@@ -3,7 +3,7 @@
     require_once('../src/main/Vendor/Mailing/MailSender.php');
 
     
-    $ms = new \Vendor\Mailing\MailSender("ybeaux" , "Cestpasfaux!120" , "yannis.beaux@edu.univ-fcomte.fr", true);
+    $ms = new \Vendor\Mailing\MailSender("" , "" , "test@edu.univ-fcomte.fr", true);
     
     $mail = new \Vendor\Mailing\Mail();
     $mail->setSubject("Je suis un petit mail, ma foi fort sympathique");
