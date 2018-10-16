@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites name="atoum testsuite">
-  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="115" failures="0" errors="108" skipped="0" time="0.04151463508606">
-    <testcase name="testEmptyInit" time="0.0025029182434082" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
-    <testcase name="testNoSubChoice" time="0.0016689300537109" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
-    <testcase name="testPopulatedChoice" time="0.0056779384613037" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1">
+  <testsuite name="SubscribersList" package="Vendor\Calendar\test\units" tests="115" failures="0" errors="108" skipped="0" time="0.039773941040039">
+    <testcase name="testEmptyInit" time="0.0026061534881592" classname="Vendor\Calendar\test\units\SubscribersList" assertions="0"/>
+    <testcase name="testNoSubChoice" time="0.0016548633575439" classname="Vendor\Calendar\test\units\SubscribersList" assertions="3"/>
+    <testcase name="testPopulatedChoice" time="0.0055758953094482" classname="Vendor\Calendar\test\units\SubscribersList" assertions="1">
       <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="8"><![CDATA[Undefined variable: admin]]></error>
@@ -11,7 +11,7 @@
       <error type="8"><![CDATA[Undefined variable: accepte]]></error>
       <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
     </testcase>
-    <testcase name="testMultiplePersonChoice" time="0.0098459720611572" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
+    <testcase name="testMultiplePersonChoice" time="0.0082550048828125" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
       <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
@@ -37,7 +37,7 @@
       <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
     </testcase>
-    <testcase name="testAddSubscribers" time="0.0074729919433594" classname="Vendor\Calendar\test\units\SubscribersList" assertions="4">
+    <testcase name="testAddSubscribers" time="0.0074470043182373" classname="Vendor\Calendar\test\units\SubscribersList" assertions="4">
       <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="8"><![CDATA[Undefined variable: accepte]]></error>
       <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
@@ -69,7 +69,7 @@
       <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
     </testcase>
-    <testcase name="testAddMultipleSubs" time="0.0069239139556885" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
+    <testcase name="testAddMultipleSubs" time="0.0071070194244385" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
       <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="8"><![CDATA[Undefined variable: accepte]]></error>
       <error type="8"><![CDATA[Undefined variable: admin]]></error>
@@ -95,7 +95,7 @@
       <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="8"><![CDATA[Undefined variable: admin]]></error>
     </testcase>
-    <testcase name="testWithUndisponiblePersons" time="0.0074219703674316" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
+    <testcase name="testWithUndisponiblePersons" time="0.0071280002593994" classname="Vendor\Calendar\test\units\SubscribersList" assertions="2">
       <error type="2"><![CDATA[Missing argument 7 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 8 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
       <error type="2"><![CDATA[Missing argument 9 for mock\Vendor\Models\Personne::__construct(), called in D:\m2test2\src\test\Vendor\Calendar\Calendar.php on line 14 and defined]]></error>
@@ -120,81 +120,51 @@
       <error type="8"><![CDATA[Undefined variable: admin]]></error>
       <error type="8"><![CDATA[Undefined variable: statutParticipation]]></error>
       <error type="8"><![CDATA[Undefined variable: accepte]]></error>
-    </testcase>
-  </testsuite>
-  <testsuite name="DAO" package="Vendor\DAO\tests\units" tests="6" failures="0" errors="5" skipped="0" time="0.024703979492188">
-    <testcase name="testRequestConnexion" time="0.024703979492188" classname="Vendor\DAO\tests\units\DAO" assertions="0"/>
-    <testcase name="testCreationTables" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="2">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
-Stack trace:
-#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
-#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
-#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(33): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testCreationTables()
-#4 -(1): mageekguy\atoum\test->runTestMethod('testCreationTab...')
-#5 {main}]]></error>
-    </testcase>
-    <testcase name="testAddPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
-Stack trace:
-#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
-#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
-#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(51): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testAddPersonne()
-#4 -(1): mageekguy\atoum\test->runTestMethod('testAddPersonne')
-#5 {main}]]></error>
-    </testcase>
-    <testcase name="testGetPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
-Stack trace:
-#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
-#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
-#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(73): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testGetPersonne()
-#4 -(1): mageekguy\atoum\test->runTestMethod('testGetPersonne')
-#5 {main}]]></error>
-    </testcase>
-    <testcase name="testUserExistant" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
-Stack trace:
-#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
-#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
-#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(87): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testUserExistant()
-#4 -(1): mageekguy\atoum\test->runTestMethod('testUserExistan...')
-#5 {main}]]></error>
-    </testcase>
-    <testcase name="testUpdatePersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="0">
-      <error type="Exception"><![CDATA[PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'participe' in 'field list' in D:\m2test2\src\main\Vendor\DAO\DAO.php:106
-Stack trace:
-#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(106): PDO->exec('INSERT INTO `m2...')
-#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(139): Vendor\DAO\DAO->addAdmin('personneTest')
-#2 D:\m2test2\src\test\Vendor\DAO\TestDao.php(111): Vendor\DAO\tests\units\DAO->initialiserBDDTest()
-#3 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testUpdatePersonne()
-#4 -(1): mageekguy\atoum\test->runTestMethod('testUpdatePerso...')
-#5 {main}]]></error>
     </testcase>
   </testsuite>
-  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="6" failures="0" errors="0" skipped="0" time="0.069810390472412">
-    <testcase name="testCreateSession" time="0.0028271675109863" classname="Vendor\Gestion\test\units\Auth" assertions="0"/>
-    <testcase name="testIsLogged" time="0.010879993438721" classname="Vendor\Gestion\test\units\Auth" assertions="4"/>
-    <testcase name="testLogout" time="0.0022470951080322" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConnectionOK" time="0.020161151885986" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConectionKO" time="0.010164976119995" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
-    <testcase name="testConnectionInjection" time="0.023530006408691" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+  <testsuite name="DAO" package="Vendor\DAO\tests\units" tests="6" failures="1" errors="1" skipped="0" time="0.84476208686829">
+    <testcase name="testRequestConnexion" time="0.023962020874023" classname="Vendor\DAO\tests\units\DAO" assertions="0"/>
+    <testcase name="testCreationTables" time="0.28618597984314" classname="Vendor\DAO\tests\units\DAO" assertions="2"/>
+    <testcase name="testAddPersonne" time="0.25014400482178" classname="Vendor\DAO\tests\units\DAO" assertions="4"/>
+    <testcase name="testUserExistant" time="0.28447008132935" classname="Vendor\DAO\tests\units\DAO" assertions="4"/>
+    <testcase name="testGetPersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="2">
+      <failure type="Failure" message="string()"><![CDATA[strings are not equal
+-Expected
++Actual
+@@ -1 +1 @@
+-int(1)
++string(32) "21232f297a57a5a743894a0e4a801fc3"]]></failure>
+    </testcase>
+    <testcase name="testUpdatePersonne" time="0" classname="Vendor\DAO\tests\units\DAO" assertions="3">
+      <error type="Exception"><![CDATA[PDOException: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in D:\m2test2\src\main\Vendor\DAO\DAO.php:213
+Stack trace:
+#0 D:\m2test2\src\main\Vendor\DAO\DAO.php(213): PDOStatement->execute()
+#1 D:\m2test2\src\test\Vendor\DAO\TestDao.php(122): Vendor\DAO\DAO->updatePersonne(Object(mock\Vendor\Models\Personne), 'personneTest')
+#2 phar://D:/m2test2/applis/atoum/atoum.phar/1/classes/test.php(1363): Vendor\DAO\tests\units\DAO->testUpdatePersonne()
+#3 -(1): mageekguy\atoum\test->runTestMethod('testUpdatePerso...')
+#4 {main}]]></error>
+    </testcase>
   </testsuite>
-  <testsuite name="Registration" package="Vendor\Gestion\test\units" tests="2" failures="0" errors="0" skipped="0" time="0.027731895446777">
-    <testcase name="testRegistration" time="1.3828277587891E-5" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
-    <testcase name="testUsernameNotUsed" time="0.027718067169189" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
+  <testsuite name="Auth" package="Vendor\Gestion\test\units" tests="6" failures="0" errors="0" skipped="0" time="0.081398725509644">
+    <testcase name="testCreateSession" time="0.011421918869019" classname="Vendor\Gestion\test\units\Auth" assertions="0"/>
+    <testcase name="testIsLogged" time="0.012555122375488" classname="Vendor\Gestion\test\units\Auth" assertions="4"/>
+    <testcase name="testLogout" time="0.0021100044250488" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConnectionOK" time="0.022569894790649" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConectionKO" time="0.012523889541626" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
+    <testcase name="testConnectionInjection" time="0.020217895507812" classname="Vendor\Gestion\test\units\Auth" assertions="1"/>
   </testsuite>
-  <testsuite name="Mail" package="Vendor\Mailing\tests\units" tests="4" failures="0" errors="0" skipped="0" time="0.0091488361358643">
-    <testcase name="testConstruct" time="0.0027759075164795" classname="Vendor\Mailing\tests\units\Mail" assertions="0"/>
-    <testcase name="testGetRecipients" time="0.0022399425506592" classname="Vendor\Mailing\tests\units\Mail" assertions="6"/>
-    <testcase name="testGetSetSubject" time="0.002079963684082" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
-    <testcase name="testGetSetBody" time="0.0020530223846436" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+  <testsuite name="Registration" package="Vendor\Gestion\test\units" tests="2" failures="0" errors="0" skipped="0" time="0.014364004135132">
+    <testcase name="testRegistration" time="0.00015091896057129" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
+    <testcase name="testUsernameNotUsed" time="0.014213085174561" classname="Vendor\Gestion\test\units\Registration" assertions="0"/>
   </testsuite>
-  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.96616888046265">
-    <testcase name="testBadSender" time="0.50978398323059" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
-    <testcase name="testBadCredentials" time="0.45638489723206" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
+  <testsuite name="Mail" package="Vendor\Mailing\tests\units" tests="4" failures="0" errors="0" skipped="0" time="0.0097692012786865">
+    <testcase name="testConstruct" time="0.0027871131896973" classname="Vendor\Mailing\tests\units\Mail" assertions="0"/>
+    <testcase name="testGetRecipients" time="0.0023200511932373" classname="Vendor\Mailing\tests\units\Mail" assertions="6"/>
+    <testcase name="testGetSetSubject" time="0.002554178237915" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+    <testcase name="testGetSetBody" time="0.0021078586578369" classname="Vendor\Mailing\tests\units\Mail" assertions="2"/>
+  </testsuite>
+  <testsuite name="MailSender" package="Vendor\Mailing\tests\units" tests="2" failures="0" errors="0" skipped="0" time="0.98093175888062">
+    <testcase name="testBadSender" time="0.53970289230347" classname="Vendor\Mailing\tests\units\MailSender" assertions="0"/>
+    <testcase name="testBadCredentials" time="0.44122886657715" classname="Vendor\Mailing\tests\units\MailSender" assertions="2"/>
   </testsuite>
 </testsuites>

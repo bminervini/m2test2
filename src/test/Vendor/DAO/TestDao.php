@@ -50,7 +50,7 @@ namespace Vendor\DAO\tests\units
 
             $dao = $this->initialiserBDDTest();
 
-            $personne = new \Mock\Vendor\Models\Personne("Merandat", "Jonathan", "John", "test", "john@gmail.com", 1);
+            $personne = new \Mock\Vendor\Models\Personne("Merandat", "Jonathan", "John", "test", "john@gmail.com", "john@gmail.com", 1, 1, 1);
             $this->calling($personne)->getNom = "Merandat" ;
             $this->calling($personne)->getPrenom = "Jonathan" ;
             $this->calling($personne)->getUsername = "John" ;
@@ -75,7 +75,7 @@ namespace Vendor\DAO\tests\units
             $admin = $dao->getPersonne(0, "personneTest");
             $this
                 ->string($admin[0][2])->isEqualTo("admin")
-                ->string($admin[0][6])->isEqualTo(1)
+                ->string($admin[0][5])->isEqualTo("admin@gmail.com")
             ;
 
             $dao->dropTables(true);
@@ -111,7 +111,7 @@ namespace Vendor\DAO\tests\units
             $dao = $this->initialiserBDDTest();
 
             //mise à jour des infos de l'utilisateur admin
-            $personne = new \Mock\Vendor\Models\Personne("NewNomAdmin", "NewPrenomAdmin", "admin", "admin", "newAdmin@gmail.com", 1);
+            $personne = new \Mock\Vendor\Models\Personne("NewNomAdmin", "NewPrenomAdmin", "admin", "admin", "newAdmin@gmail.com", "newAdmin@gmail.com", 1, 1, 1);
             $this->calling($personne)->getIdPersonne = 1 ;
             $this->calling($personne)->getNom = "NewNomAdmin" ;
             $this->calling($personne)->getPrenom = "NewPrenomAdmin" ;

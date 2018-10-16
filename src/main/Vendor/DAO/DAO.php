@@ -100,8 +100,8 @@ namespace Vendor\DAO {
         function addAdmin($nomTable)
         {
             $mdp = md5("admin");
-            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`,  `isAdmin`, `participe`, `nbreCroissantAmene`)
-                    VALUES (NULL, 'Administrateur', 'admin', 'admin', '$mdp', 'admin@gmail.com', '1', '1', '0');";
+            $sql = "INSERT INTO `m2test2`.`$nomTable` (`idPersonne`, `nom`, `prenom`, `username`, `password`, `mail`, `gmail`, `isAdmin`, `statutParticipation`, `accepte`, `nbreCroissantAmene`)
+                    VALUES (NULL, 'Administrateur', 'admin', 'admin', '$mdp', 'admin@gmail.com', 'admin@gmail.com', '1', '1', '1', '0');";
             try {
                 $this->connexion->exec($sql);
             }
@@ -188,11 +188,12 @@ namespace Vendor\DAO {
                     SET   `nom` = :lastname, 
                           `prenom` = :firstname,
                           `username` = :username,
+                          `password` = :password,
                           `mail` = :mail,
                           `gmail` = :gmail,
-                          `password` = :password,
                           `isAdmin` = :isAdmin,
                           `statutParticipation` = :statutParticipation,
+                          `accepte` = :accepte,
                           `nbreCroissantAmene` = :nbreCroissant
                     WHERE `idPersonne` = '$idPersonne';";
 
