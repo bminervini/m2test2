@@ -1,11 +1,11 @@
 <?php
 
 namespace Vendor\Gestion;
-    require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
-    //require_once("../src/main/Vendor/DAO/DAO.php");   
+    //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
+    require_once("../src/main/Vendor/DAO/DAO.php");   
     use \DAO\DAO;
-    require_once("../../htdocs/m2test2/src/main/Vendor/Models/Personne.php");// use for Atoum
-    //require_once("../src/main/Vendor/Models/Personne.php");
+    //require_once("../../htdocs/m2test2/src/main/Vendor/Models/Personne.php");// use for Atoum
+    require_once("../src/main/Vendor/Models/Personne.php");
     use \Vendor\Models\Personne;
 
     class Registration{
