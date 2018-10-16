@@ -1,19 +1,12 @@
 <html>
 
-<<<<<<< HEAD
     <!-- used to redirect if the user is not connected -->
     <?php include_once 'session.php' ?>
-=======
->>>>>>> origin/Calendrier_GoogleAPI
     <?php include 'head.php';?>
   
     <body class="cs_body">
         
-<<<<<<< HEAD
         <?php include 'navbaruser.php';?>
-=======
-        <?php include 'navbar.php';?>
->>>>>>> origin/Calendrier_GoogleAPI
 
         
         <div class="container">

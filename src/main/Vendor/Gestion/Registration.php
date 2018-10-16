@@ -1,12 +1,11 @@
 <?php
 
-
 namespace Vendor\Gestion;
-    require_once( __DIR__ . "/../DAO/DAO.php"); // use for Atoum
-    //require_once("../src/main/Vendor/DAO/DAO.php");   
+    //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
+    require_once("../src/main/Vendor/DAO/DAO.php");   
     use \DAO\DAO;
-    require_once(__DIR__ . "/../Models/Personne.php");// use for Atoum
-    //require_once("../src/main/Vendor/Models/Personne.php");
+    //require_once("../../htdocs/m2test2/src/main/Vendor/Models/Personne.php");// use for Atoum
+    require_once("../src/main/Vendor/Models/Personne.php");
     use \Vendor\Models\Personne;
 
     class Registration{
@@ -51,17 +50,6 @@ namespace Vendor\Gestion;
             }else{
                 return true;
             }
-            $this->dao = new DAO();
-        }
-
-        public function registered($nom, $prenom, $username, $password, $mail, $admin){
-        
-            echo "nom : ".$nom."| prenom : ".$prenom."| username : ".$username."| password : ".$password."| mail : ".$mail."| admin : ".$admin;
-            //$person = new Personne($nom, $prenom, $username, $password, $mail, $admin);
-        }
-
-        private function isAlreadyUse($username){
-            //$query = "SELECT * FROM personne WHERE username='$username' AND password='$cryptedPassword'LIMIT 1";
         }
     }
 
