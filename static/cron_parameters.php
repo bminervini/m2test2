@@ -22,20 +22,62 @@
 
     <body>
 
+        <?php include 'navbaradmin.php'; ?>
+
+
         
-        <form action="" method="POST" role="form">
-            <legend>Form title</legend>
         
-            <div class="form-group">
-                <label for="">label</label>
-                <input type="text" class="form-control" id="" placeholder="Input field">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <form action="cron_parameters.php" method="GET" role="form">
+                    <legend>Form title</legend>
+                
+                    <div class="form-group">
+                        <label for="">Nom de la configuration</label>
+                        <input type="text" class="form-control text-center" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Jour de la semaine</label>
+                        <select class="form-control text-center" name="day">
+                            <option value="0">Lundi</option>
+                            <option value="1">Mardi</option>
+                            <option>Mercredi</option>
+                            <option>Jeudi</option>
+                            <option>Vendredi</option>
+                            <option>Samedi</option>
+                            <option>Dimanche</option>
+                        </select> 
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Heure</label>
+                        <input type="time" class="form-control text-center" name="time">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>      
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    
+                </div>
+                
             </div>
+        </div>
         
-            
+
+        <?php
         
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        
+            if (isset($_GET['time']))
+            {
+                echo $_GET['time'];
+            }
+
+        ?>
         
     </body>
 </html>
