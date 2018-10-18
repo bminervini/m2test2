@@ -36,22 +36,25 @@
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <form action="cron_parameters.php" method="GET" role="form">
-                    <legend>Form title</legend>
-                
-                    <div class="form-group">
+                    <legend>Configurer l'envoi de mails</legend>
+
+                    <p>L'envoi de mail au prochain responsable des croissants est envoyé périodiquement.
+                    Cette configuration permet de choisir quel jour, et à quelle heure le mail devra être envoyé</p>
+
+                    <!-- <div class="form-group">
                         <label for="">Nom de la configuration</label>
                         <input type="text" class="form-control text-center" name="name">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="sel1">Jour de la semaine</label>
                         <select class="form-control text-center" name="day">
                             <option value="0">Lundi</option>
                             <option value="1">Mardi</option>
-                            <option>Mercredi</option>
-                            <option>Jeudi</option>
-                            <option>Vendredi</option>
-                            <option>Samedi</option>
-                            <option>Dimanche</option>
+                            <option value="2">Mercredi</option>
+                            <option value="3">Jeudi</option>
+                            <option value="4">Vendredi</option>
+                            <option value="5">Samedi</option>
+                            <option value="6">Dimanche</option>
                         </select> 
                     </div>
                     <div class="form-group">
@@ -74,8 +77,10 @@
         
             if (isset($_GET['time']))
             {
-                // explode()
-                echo $_GET['time'];
+                $time = explode(":" , $_GET['time']);
+                echo "Heure : " . $time[0] . ' | Minute : ' . $time[1];
+                echo $_GET['day'];
+                
             }
 
         ?>

@@ -18,6 +18,7 @@
 		<a class="nav-item nav-link active" href="dashboard.php" style="color:white">Dashboard</a>
 		<a class="nav-item nav-link active" href="calendar.php" style="color:white">Calendrier</a>
 		<a class="nav-item nav-link" href="participants.php" style="color:white">Participants</a>
+		<a class="nav-item nav-link" href="cron_parameters.php" style="color:white">Cron</a>
 		<div class="dropdown">
 			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Modifier Participation<span class="caret"></span></button>
 			
