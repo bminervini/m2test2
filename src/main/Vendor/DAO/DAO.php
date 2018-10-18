@@ -264,7 +264,7 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function getActivedOrNotPersons($isActive){
-            $req = $this->connexion->prepare("SELECT * FROM personne WHERE 'personne.accepte' = ?");
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE accepte = ?");
             $req->execute(array($isActive));
 
             return $req;

@@ -46,6 +46,7 @@
 					<td><a href="#" onClick="javascript:return confirm('Voulez-vous vraiment supprimer cet élément ?')"><img src="i/supprimer.png" width="2%" alt="delete" title="Supprimer" /></a></td>
 					<td><a href="#"><img src="i/update.png" width="2%" alt="edit" title="Editer XXX" /></a></td>
 				</tr>
+			<?php } ?>
 			
 			</table>
                 

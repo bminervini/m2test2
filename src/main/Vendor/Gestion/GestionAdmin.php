@@ -32,7 +32,11 @@ namespace Vendor\Gestion;
         }
 
         function getAllActiveUser(){
+            $req = $this->dao->getActivedOrNotPersons(1);
+            $result = $req->fetchAll();
+            $req->closeCursor();
 
+            return $result;
         }
 
         function deleteActiveUser(){
