@@ -2,7 +2,8 @@
 
     <div class="nav navbar">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="dashboard.php" style="color:white">Dashboard</a>
+            <a class="navbar-brand" href="#">Croissant Show</a>
+            <!--<a class="nav-item nav-link active" href="dashboard.php" style="color:white">Dashboard</a>-->
             <a class="nav-item nav-link active" href="calendar.php" style="color:white">Calendrier</a>
             <a class="nav-item nav-link" href="#" style="color:white">Participants</a>
             <a class="nav-item nav-link" href="#" style="color:white">Parametres</a>
