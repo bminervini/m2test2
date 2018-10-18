@@ -3,5 +3,11 @@
 **/target
 cache.properties
 \.vscode/tasks\.json
+<<<<<<< HEAD
 ./build/logs
 **/*.iml
+=======
+./build/logs/*
+
+m2test2_acceptance/
+>>>>>>> origin/design

@@ -1,1 +1,0 @@
-That file represent a test resource available in the test context.
