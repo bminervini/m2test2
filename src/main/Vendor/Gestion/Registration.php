@@ -17,7 +17,7 @@ namespace Vendor\Gestion;
         }
 
         /**
-         * Registers a new user form the data passed in param. Only if the username is not used
+         * Register a new user form the data passed in param. Only if the username is not used
          * @return string return error message if the registration fails
          */
         public function registration($nom, $prenom, $username, $password, $mail, $gmail, $admin){
@@ -26,14 +26,8 @@ namespace Vendor\Gestion;
             $edu = "@edu.univ-fcomte.fr";
             $google = "@gmail.com";
 
-            $isOK = true;
-
-            // Mail Edu Verif is : "firstname.lastname"
-            if(preg_match('/^[a-z]+\.{1}[a-z]+$/',$mail) != 1){
-                $isOK = false;
-                return 3;
-            }
-            
+            /* Set some variables */
+            $isOK = true;            
             $mail = $mail.$edu;
             $gmail = $gmail.$google;
     
@@ -43,18 +37,18 @@ namespace Vendor\Gestion;
                 return 2;
             }
 
-            if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                $isOK = false;
-                return 3;
-            }
-
             //-- Gmail Verif --//
             if(!$this->gmailNotUsed($gmail)){
                 $isOk = false;
                 return 4;
             }
 
-            if (!filter_var($gmail, FILTER_VALIDATE_EMAIL)) {
+            if(!Registration::mailIsCorrect($mail)){
+                $isOK = false;
+                return 3;
+            }
+
+            if (!Registration::gmailIsCorrect($gmail)) {
                 $isOK = false;
                 return 5;
             }
@@ -73,6 +67,30 @@ namespace Vendor\Gestion;
                 $this->dao->addPersonne($person,"personne");
                 
                 return 0;
+            }
+        }
+
+        /**
+         * Used to check if the mail edu adress is correct
+         * @return boolean return true if the adress is correct
+         */
+        public static function mailIsCorrect($mail){
+            if(preg_match('/^[a-z]{1,15}\.{1}[a-z]{1,15}(@edu\.univ-fcomte\.fr)$/',$mail) != 1){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        /**
+         * Used to check if the gmail adress is correct
+         * @return boolean return true if the adress is correct
+         */
+        public static function gmailIsCorrect($gmail){
+            if (!filter_var($gmail, FILTER_VALIDATE_EMAIL)) {
+                return false;
+            }else{
+                return true;
             }
         }
 
@@ -113,7 +131,7 @@ namespace Vendor\Gestion;
          */
         function gmailNotUsed($gmail){
             $req = $this->dao->getPersonByGmail($gmail);
-            $result = $req->fecth();
+            $result = $req->fetch();
 
             if($result){
                 return false;

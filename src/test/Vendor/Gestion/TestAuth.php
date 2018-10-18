@@ -31,6 +31,7 @@ namespace Vendor\Gestion\test\units
         }
 
         function testConnectionOK(){
+            
             $auth = new \Vendor\Gestion\Auth();
             $this
                 ->given($auth->connection("admin","admin"))

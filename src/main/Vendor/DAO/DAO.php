@@ -298,8 +298,8 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function getPersonByGmail($gmail){
-            $req = $this->connexion->prepare("SELECT * FROM personn WHERE gmail= ?");
-            $req->execute(array($mail));
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE gmail= ?");
+            $req->execute(array($gmail));
 
             return $req;
         }
