@@ -10,7 +10,6 @@
 
 <?php $title = "log page"; ?>
 
-<!-- Start of storage -->
 <html>
 
     <!-- Include head html -->
@@ -70,5 +69,3 @@
         
     </body>
 </html>
-
-<!-- End of Storage -->

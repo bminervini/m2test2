@@ -6,7 +6,6 @@
   
     <body class="cs_body">
         
-<<<<<<< HEAD
         <?php 
             if(isset($_SESSION['isAdmin']) || 1)
 
@@ -17,9 +16,6 @@
                 include 'navbaruser.php';
             }
         ?>
-=======
-        <?php include 'navbar.php';?>
->>>>>>> origin/design
         
         <div class="container">
             

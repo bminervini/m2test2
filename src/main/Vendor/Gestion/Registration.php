@@ -1,10 +1,10 @@
 <?php
 
 namespace Vendor\Gestion;
-    //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
+
     require_once(__DIR__ ."/../DAO/DAO.php");  
     use \DAO\DAO;
-    //require_once("../../htdocs/m2test2/src/main/Vendor/Models/Personne.php");// use for Atoum
+
     require_once(__DIR__."/../Models/Personne.php");
     use \Vendor\Models\Personne;
 

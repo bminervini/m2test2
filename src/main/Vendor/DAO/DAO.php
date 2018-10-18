@@ -251,7 +251,7 @@ namespace Vendor\DAO {
         }
 
         function getPersonne($id, $nomTable){
-            $sql = "SELECT * FROM $nomTable WHERE 'personne.id' = $id;";
+            $sql = "SELECT * FROM $nomTable WHERE 'personne.accepte' = $id;";
             $cursor = $this->connexion->prepare($sql);
             $cursor->execute();
             $personne = $cursor->fetchAll();
@@ -260,7 +260,18 @@ namespace Vendor\DAO {
         }
 
         /**
-         * Used to retrieve a person from their username and password
+         * Used to retrieve a person acitved or not
+         * @return request return the PDO object of the request
+         */
+        function getActivedOrNotPersons($isActive){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE 'personne.accepte' = ?");
+            $req->execute(array($isActive));
+
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person with their username and password
          * @return request return the PDO object of the request
          */
         function getPersonToAuth($username, $password){
@@ -272,7 +283,7 @@ namespace Vendor\DAO {
         }
 
         /**
-         * Used to retrieve a person with their username
+         * Used to retrieve a person from their username
          * @return request return the PDO object of the request
          */
         function getPersonByUsername($username){
