@@ -28,7 +28,7 @@ namespace Vendor\Calendar\test\units
 
             $day = $this->getTime();
             $fred = $this->mockPerson(1, 1);
-            $fab = $this->mockPerson(2, 2);
+            $fab = $this->mockPerson(2, 2);	
             $jub = $this->mockPerson(3, 3);
             $clang = $this->mockPerson(4, 4);
 

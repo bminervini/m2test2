@@ -11,7 +11,6 @@ class quickstart
 {
  function __construct()
      {
-		$ms = getClient(); 
      }
  
  
@@ -41,9 +40,7 @@ function getClient()
             // Request authorization from the user.
 			
             $authUrl = $client->createAuthUrl();
-			print $authUrl; 
 			$ms = new MailSender("m2test2.croissant.show@gmail.com","pas2pitiepourlescroissants!");
-			
 			$test = $ms->sendMail(new Mail("m2test2.croissant.show@gmail.com" , "thexanoide@gmail.com" , "Ceci est un test" , "Bonjour utilisateur ! Voici le lien pour pouvoir vous inscrire à l'application Croissant Show ! :) ".$authUrl));
             print 'Enter verification code: ';
             $authCode = trim(fgets(STDIN));
@@ -66,44 +63,5 @@ function getClient()
     return $client;
 }
 
-/*
-
-// Get the API client and construct the service object.
-$client = getClient();
-$service = new Google_Service_Calendar($client);
-
-
-$event = new Google_Service_Calendar_Event(array(
-  'summary' => 'Google I/O 2018',
-  'location' => '800 Howard St., San Francisco, CA 94103',
-  'description' => 'A chance to hear more about Google\'s developer products.',
-  'start' => array(
-    'dateTime' => '2018-10-02T09:00:00-07:00',
-    'timeZone' => 'Europe/Paris',
-  ),
-  'end' => array(
-    'dateTime' => '2018-10-02T17:00:00-07:00',
-    'timeZone' => 'Europe/Paris',
-  ),
-  'recurrence' => array(
-    'RRULE:FREQ=DAILY;COUNT=2'
-  ),
-  'attendees' => array(
-    array('email' => 'lpage@example.com'),
-    array('email' => 'sbrin@example.com'),
-  ),
-  'reminders' => array(
-    'useDefault' => FALSE,
-    'overrides' => array(
-      array('method' => 'email', 'minutes' => 24 * 60),
-      array('method' => 'popup', 'minutes' => 10),
-    ),
-  ),
-));
-
-$calendarId = 'primary';
-$event = $service->events->insert($calendarId, $event);
-printf('Event created: %s\n', $event->htmlLink);
-*/
 }
 ?>
