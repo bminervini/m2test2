@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-	<mapGenerator terrain="terre" graine="13" />
-	<mapGenerator terrain="roche" graine="1" />
-	<mapGenerator terrain="sable" graine="15" />
-	<mapGenerator terrain="infranchissable" graine="80" />
-    <mapGenerator terrain="boue" graine="3" />
-</dataset>
