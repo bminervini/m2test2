@@ -231,13 +231,11 @@ namespace Vendor\DAO {
             }
         }
 
-        function deletePersonne($idPersonne, $nomTable){
-            $sql = "DELETE FROM table_name
-                    WHERE `idPersonne` = :idPersonne;";
+        function deletePersonne($id){
+            $sql = "DELETE FROM personne WHERE idPersonne = ?";
             $req = $this->connexion->prepare($sql);
-            $req->bindParam(':idPersonne', $idPersonne);
             try {
-                if($req->exec($sql)){
+                if($req->execute(array($id))){
                     return true;
                 }else{
                     return false;
@@ -257,6 +255,40 @@ namespace Vendor\DAO {
             $personne = $cursor->fetchAll();
             $cursor->closeCursor();
             return $personne;
+        }
+
+
+        /**
+         * Used to set participation
+         * @return request return the PDO object of the request
+         */
+        function setParticipation($id){
+            $sql = "UPDATE personne SET statutParticipation = 0 WHERE idPersonne = ?";
+            $req = $this->connexion->prepare($sql);
+
+            $req->execute(array($id));
+        }
+
+        /**
+         * Used to accept new account
+         * @return request return the PDO object of the request
+         */
+        function acceptUserAccount($id){
+            $sql = "UPDATE personne SET accepte = 1 WHERE idPersonne = ?";
+            $req = $this->connexion->prepare($sql);
+
+            $req->execute(array($id));
+        }
+
+        /**
+         * Used to retrieve a participant
+         * @return request return the PDO object of the request
+         */
+        function getAllParticipants($statut){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE statutParticipation = ?");
+            $req->execute(array($statut));
+
+            return $req;
         }
 
         /**

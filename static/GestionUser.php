@@ -2,9 +2,19 @@
     require_once("../src/main/Vendor/Gestion/GestionAdmin.php");
 
     $gestion = new \Vendor\Gestion\GestionAdmin();
-    $actif = $gestion->getAllInactiveUser();
 
-    $inactif = $gestion->getAllActiveUser();
+    
+    if(isset($_POST['add'])){
+        $gestion->acceptInactiveUser(base64_decode($_POST['add']));
+    }
+
+    if(isset($_POST['delete'])){
+        $gestion->deleteUser(base64_decode($_POST['delete']));
+    }
+
+    $inactif = $gestion->getAllInactiveUser();
+    $actif = $gestion->getAllActiveUser();
+      
 ?>
 
 <html>
@@ -19,56 +29,21 @@
         
         <br/><br/>
         <div class="container">
-            <h3>Liste des comptes Inactifs :</h3><br/>
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prenom</th>
-                    <th scope="col">Edumail</th>
-                    <th scope="col">Gmail</th>
-                    <th scope="col">isAdmin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <?php
-                        $cnt = 0;
+            <h3 style="text-align:center;">Liste des comptes <strong>Inactif</strong></h3><br/>
+            <table class="table table-striped table-bordered">        
+                <?php
+                    \Vendor\Gestion\GestionAdmin::displayTable($inactif,true);         
+                ?>
+            </table>
 
-                        if(empty($actif)){
-                            echo '<tr>
-                                 <th scope="row"></th>
-                                 <td>No users to display</td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                                 </tr>'; 
-                        }
-
-                        foreach($actif as $val)
-                        { 
-                            echo '<tr>
-                                 <th scope="row">'.$cnt.'</th>
-                                 <td>'.$val['username'].'</td>
-                                 <td>'.$val['nom'].'</td>
-                                 <td>'.$val['prenom'].'</td>
-                                 <td>'.$val['mail'].'</td>
-                                 <td>'.$val['gmail'].'</td>
-                                 <td>'.$val['isAdmin'].'</td>
-                                 </tr>';
-
-                            $cnt++;
-                        }
-                    ?>
-                </tbody>
+            <br/>
+            <h3 style="text-align:center;">Liste des comptes <strong>Actif</strong></h3><br/>
+            <table class="table table-striped table-bordered">        
+                <?php
+                    \Vendor\Gestion\GestionAdmin::displayTable($actif, false);
+                ?>
             </table>
             
-           
-           
         </div>
         
         <?php include 'bottom.php';?>

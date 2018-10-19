@@ -7,10 +7,6 @@ namespace Vendor\Gestion\test\units
 
     class Registration extends atoum {
 
-        function testRegistration(){
-        
-        }
-
         function testUsernameNotUsed(){
             $registration = new \Vendor\Gestion\Registration();
             $this
