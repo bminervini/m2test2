@@ -5,3 +5,4 @@ cache.properties
 \.vscode/tasks\.json
 ./build/logs
 **/*.iml
+m2test2_acceptance

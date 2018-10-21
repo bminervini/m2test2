@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-	<BlackBoard ligne="boue" />
-	<BlackBoard ligne="infranchissable" />
-	<BlackBoard ligne="roche" />
-	<BlackBoard ligne="sable" />
-	<BlackBoard ligne="terre" />
-</dataset>
