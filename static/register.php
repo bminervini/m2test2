@@ -1,5 +1,5 @@
 <!-- used to redirect if the user is not connected -->
-<?php include_once 'session.php' ?>
+<?php //include_once 'session.php' ?>
 
 <?php 
     require_once("../src/main/Vendor/Gestion/Registration.php");
@@ -8,14 +8,9 @@
     if(isset($_POST['submit']))
     { 
         $register = new Registration();
-        $result = $register->registration($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'], $_POST['mail'], (empty($_POST['admin']))? "0": $_POST['admin']);
+        $res = $register->registration($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'], $_POST['mailedu'], $_POST['gmail'], (empty($_POST['admin']))? "0": $_POST['admin']);
         
-        if($result){
-            $success = "User successfully registered !";
-            $_POST = array();
-        }else{
-            $error = "Username already used ! ";
-        }
+        $msg = $register->errorMsg($res);
     }
 ?>
 
@@ -28,15 +23,8 @@
 
     <body class="cs_body">
 
-        <?php
-            if(isset($_SESSION['isAdmin']) || 1)
-            {
-                include 'navbaradmin.php';
-            }else 
-            {
-                include 'navbaruser.php';
-            }
-        ?>
+        <!-- Include jumbotron -->
+        <?php include 'jumbotron.php';?>
 
         <div class="container">
             
@@ -63,7 +51,16 @@
 
                             <div class="form-group">
                                 <label for="">Mail</label>
-                                <input type="mail" class="form-control" id="" placeholder="tonyletruand@exemple.com" name="mail" value="<?php echo isset($_POST['mail']) ? $_POST['mail'] : '' ?>" required="required">
+                                <div class="form-inline">
+                                    <input type="mail" class="form-control" id="" placeholder="tony.letruand" name="mailedu" value="<?php echo isset($_POST['mailedu']) ? $_POST['mailedu'] : '' ?>" required="required">@edu.univ-fcomte.fr
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Mail</label>
+                                <div class="form-inline">
+                                    <input type="mail" class="form-control" id="" placeholder="tonyletruand" name="gmail" value="<?php echo isset($_POST['gmail']) ? $_POST['gmail'] : '' ?>" required="required">@gmail.com
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -83,16 +80,16 @@
                         </div>
 
                         <?php
-                            if(isset($error)) { echo '<div class="alert alert-danger" role="alert">'.$error.'</div>'; }
-                            if(isset($success)) { echo '<div class="alert alert-success" role="alert">'.$success.'</div>'; }
+                            if(isset($msg) && isset($res) && $res != 0) { echo '<div class="alert alert-danger" role="alert">'.$msg.'</div>'; }
+                            if(isset($msg) && isset($res) && $res == 0) { echo '<div class="alert alert-success" role="alert">'.$msg.'</div>'; }
                         ?>
 
                         <button type="submit" class="btn btn-default center-block" name="submit">Envoyez les croissants ! </button>  
+                        <a class="btn btn-default center-block" href="login.php">Back to Login</a>
                     </form>
                     
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-
             </div>
             
         </div>
