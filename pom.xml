@@ -11,7 +11,6 @@
 
 
     <build>
-        <testSourceDirectory>m2test2_acceptance/src/squashTA/resources/selenium/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
