@@ -52,14 +52,14 @@
                             <div class="form-group">
                                 <label for="">Mail</label>
                                 <div class="form-inline">
-                                    <input type="mail" class="form-control" id="" placeholder="tony.letruand" name="mailedu" value="<?php echo isset($_POST['mailedu']) ? $_POST['mailedu'] : '' ?>" required="required">@edu.univ-fcomte.fr
+                                    <input type="text" class="form-control" id="" placeholder="tony.letruand" name="mailedu" value="<?php echo isset($_POST['mailedu']) ? $_POST['mailedu'] : '' ?>" required="required">@edu.univ-fcomte.fr
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="">Mail</label>
                                 <div class="form-inline">
-                                    <input type="mail" class="form-control" id="" placeholder="tonyletruand" name="gmail" value="<?php echo isset($_POST['gmail']) ? $_POST['gmail'] : '' ?>" required="required">@gmail.com
+                                    <input type="text" class="form-control" id="" placeholder="tonyletruand" name="gmail" value="<?php echo isset($_POST['gmail']) ? $_POST['gmail'] : '' ?>" required="required">@gmail.com
                                 </div>
                             </div>
 
