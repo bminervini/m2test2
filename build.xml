@@ -22,7 +22,7 @@
 </target>
  <target name="atoum" description="Test unitaire calendar">
   <exec failonerror="false" executable="php">
-   <arg line="${basedir}/applis/atoum/atoum.phar -c ${basedir}/src/test/.atoum.php -d ${basedir}/src/test/" />
+   <arg line="${basedir}/applis/atoum/atoum.phar -c ${basedir}/src/test/.atoum.php ++verbose -d ${basedir}/src/test/" />
   </exec>
  </target>
 </project>
