@@ -15,15 +15,15 @@ class ShowEvents {
 
 function __construct(){
 		echo "Bouyah"; 
-		setup(); 
-		add_events(); 
+		$this->setup();
+		$this->add_events();
 }
 
 	function setup(){
 		$this->qs = New quickstart(); 
 		$this->sublist = new SubscribersList(); 
 		$this->dao = new \Vendor\DAO\DAO(); 
-		$this->client = $qs->getClient();
+		$this->client = $this->qs->getClient();
 	}
 
 	function add_events(){
