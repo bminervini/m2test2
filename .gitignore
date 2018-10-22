@@ -3,18 +3,6 @@
 **/target
 cache.properties
 \.vscode/tasks\.json
-<<<<<<< HEAD
-<<<<<<< HEAD
-./build/logs
-**/*.iml
-=======
-./build/logs/*
-
-m2test2_acceptance/
->>>>>>> design
-=======
 ./build/logs
 **/*.iml
 m2test2_acceptance
-
->>>>>>> origin/authentication

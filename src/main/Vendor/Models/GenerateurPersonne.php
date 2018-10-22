@@ -18,7 +18,7 @@ namespace Vendor\Models
     var $username = array("PigeonDetraque", "CascadeurFou", "HyeneEnrage", "CastorDupe", "LoupMalFame", "HibouMalin");
     var $distriMail = array("edu.univ-fcomte.fr");
     var $admin = array(0, 1);
-    var $statutParticipation = array(0, 1, 2);
+    var $statutParticipation = array(0, 1);
     var $accepte = array(0, 1);
 
     var $listPersonnes = [];
@@ -39,7 +39,7 @@ namespace Vendor\Models
         $aleaUsername = rand(0 , sizeof($this->username)-1 );
         $aleaDistriMail = rand(0 , sizeof($this->distriMail)-1 );
         $aleaAdmin = rand(0, 1);
-        $aleaStatutParticipation = rand(0, 2);
+        $aleaStatutParticipation = rand(0, 1);
         $aleaAccepte = rand(0, 1);
 
         $pers = new Personne(

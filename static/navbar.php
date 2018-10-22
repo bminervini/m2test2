@@ -27,6 +27,11 @@
 				</ul>
 			</div>
 			<a class="nav-item nav-link" href="logout.php"><i class="fas fa-power-off"></i></a>
+            <span class="navbar-text">
+                <?php
+                    $_SESSION['username'];
+                ?>
+            </span>
 		</div>
 	</div>
 </nav>
