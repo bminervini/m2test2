@@ -40,6 +40,10 @@ namespace Vendor\DAO\tests\units
                 ->integer($nbreTable)->isEqualTo(6)
                 ->and()
                 ->integer($nbrePersonne)->isEqualTo(11)
+                ->executeOnFailure(
+                    function () use ($dao) {
+                        var_dump($dao);
+                    })
             ;
 
             //drop bdd test
