@@ -34,7 +34,6 @@ public class webRobotTerrain {
         System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.NoOpLog");
     }
 
-    @Test
     public void testRobot2SelTerrain() throws Exception {
 
         driver.get(baseUrl + "/webRobot/Accueil.php");

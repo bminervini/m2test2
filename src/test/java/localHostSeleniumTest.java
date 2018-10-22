@@ -21,7 +21,6 @@ public class localHostSeleniumTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-    @Test
     public void test2() throws Exception {
         driver.get("http://localhost:3030/static/login.php");
         driver.findElement(By.name("username")).click();

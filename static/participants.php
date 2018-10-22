@@ -1,29 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+	<?php include 'head.php';?>
+	<?php
+		require_once("../src/main/Vendor/DAO/DAO.php");    
+		use \DAO\DAO;
+   
+	?>
 
-    <?php include 'head.php';?>
-  
-    <body class="cs_body">
+<body class="cs_body">
         
-        <?php include 'jumbotron.php';?>
-        
-        <?php include 'navBarAdmin.php';?>
+	<?php include 'navbar.php';?>
 
-        
-        <div class="Dtable">
-            <table>
-				<thead>
-				
-				</thead>
-				<tbody>
-				
-				</tbody>
+	
+	<div class="container">
+	
+		
+		
 			
-			</table>
-            
-        </div>
-        
-        
-        <?php include 'bottom.php';?>
-
-    </body>
+	</div> 
+	<?php include 'bottom.php';?>
+</body>
 </html>

@@ -10,7 +10,6 @@
 
 <?php $title = "log page"; ?>
 
-<!-- Start of storage -->
 <html>
 
     <!-- Include head html -->
@@ -53,6 +52,7 @@
                         ?>
 
                         <button type="submit" class="btn btn-default center-block" name="submit">Envoyez les croissants ! </button>
+                        <a class="btn btn-default center-block" href="register.php">S'inscrire</a>
                     </form>
                     
                 </div>
@@ -69,5 +69,3 @@
         
     </body>
 </html>
-
-<!-- End of Storage -->

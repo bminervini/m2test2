@@ -3,8 +3,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
- 	<groupId>webRobot</groupId>
-	<artifactId>testRobotA</artifactId>
+ 	<groupId>m2test2_acceptace</groupId>
+	<artifactId>testSelenium</artifactId>
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	
@@ -99,11 +99,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>2.53.1</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
