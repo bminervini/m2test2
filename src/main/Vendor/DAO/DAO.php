@@ -446,7 +446,7 @@ namespace Vendor\DAO {
         {
             $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
                `idCalendrier` int(11) NOT NULL AUTO_INCREMENT,
-               `jour` date NOT NULL,
+               `jour` varchar(40) NOT NULL,
                PRIMARY KEY (idCalendrier)
                );";
             $create = $this->connexion->prepare($sql);
