@@ -11,7 +11,7 @@ namespace Vendor\Calendar\test\units
 
         function mockPerson($id = 0, $croissant = 0, $disponible = true)
         {
-            $person = new \Mock\Vendor\Models\Personne("", "", "", "", "", 1);
+            $person = new \Mock\Vendor\Models\Personne("", "", "", "", "", "", 1, "", "");
             $this->calling($person)->getId = $id;
             $this->calling($person)->getNombreCroissantAmene = $croissant;
             $this->calling($person)->isDisponible = $disponible;
