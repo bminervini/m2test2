@@ -28,7 +28,11 @@
 
     <body class="cs_body">
 
+<<<<<<< HEAD
         <?php
+=======
+        <?php 
+>>>>>>> design
             if(isset($_SESSION['isAdmin']) || 1)
             {
                 include 'navbaradmin.php';
@@ -92,7 +96,11 @@
                     
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> design
             </div>
             
         </div>
