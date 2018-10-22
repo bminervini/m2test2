@@ -82,6 +82,7 @@ namespace Vendor\Gestion;
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                      </tr>'; 
             }
             
