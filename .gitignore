@@ -4,6 +4,7 @@
 cache.properties
 \.vscode/tasks\.json
 <<<<<<< HEAD
+<<<<<<< HEAD
 ./build/logs
 **/*.iml
 =======
@@ -11,3 +12,9 @@ cache.properties
 
 m2test2_acceptance/
 >>>>>>> design
+=======
+./build/logs
+**/*.iml
+m2test2_acceptance
+
+>>>>>>> origin/authentication

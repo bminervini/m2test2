@@ -14,7 +14,7 @@
 		$utilisateurConnecte = $req->fetch();
 		$update = $dao->updateStatusPersonne($utilisateurConnecte, $_POST['status']);
 		
-		<!-- a faire fonction getUserById et fonction update statut personne dans dao et en cliquand sur un bouton envoyer le statut en meme temps-->
+		//<!-- a faire fonction getUserById et fonction update statut personne dans dao et en cliquand sur un bouton envoyer le statut en meme temps -->
 	?>
   
     <body class="cs_body">

@@ -7,18 +7,28 @@ namespace Vendor\Gestion\test\units
 
     class Registration extends atoum {
 
-        function testRegistration(){
-            /*$registration = new \Vendor\Gestion\Registration();
+        /* Mail edu */
+
+        function testMailIsCorrectOK(){
             $this
-                ->if($registration->usernameNotUsed("admin"))
-                ->then
-                ->*/
+                ->variable(\Vendor\Gestion\Registration::mailIsCorrect("brand.brand@edu.univ-fcomte.fr"))->isEqualTo(true);
         }
 
-        function testUsernameNotUsed(){
-            $registration = new \Vendor\Gestion\Registration();
+        function testMailIsCorrectKO(){
             $this
-                ->variable($registration->usernameNotUsed("admin"))->isEqualTo(false);
+                ->variable(\Vendor\Gestion\Registration::mailIsCorrect("brandbrand@edu.univ-fcomte.fr"))->isEqualTo(false);
+        }
+
+        /* Gmail */
+
+        function testGmailIsCorrectOK(){
+            $this
+                ->variable(\Vendor\Gestion\Registration::gmailIsCorrect("brand@gmail.com"))->isEqualTo(true);
+        }
+
+        function testGmailIsCorrectKO(){
+            $this
+                ->variable(\Vendor\Gestion\Registration::gmailIsCorrect(".brand@gmail.com"))->isEqualTo(false);
         }
     }
 }

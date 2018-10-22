@@ -231,13 +231,11 @@ namespace Vendor\DAO {
             }
         }
 
-        function deletePersonne($idPersonne, $nomTable){
-            $sql = "DELETE FROM table_name
-                    WHERE `idPersonne` = :idPersonne;";
+        function deletePersonne($id){
+            $sql = "DELETE FROM personne WHERE idPersonne = ?";
             $req = $this->connexion->prepare($sql);
-            $req->bindParam(':idPersonne', $idPersonne);
             try {
-                if($req->exec($sql)){
+                if($req->execute(array($id))){
                     return true;
                 }else{
                     return false;
@@ -251,7 +249,7 @@ namespace Vendor\DAO {
         }
 
         function getPersonne($id, $nomTable){
-            $sql = "SELECT * FROM $nomTable WHERE 'personne.id' = $id;";
+            $sql = "SELECT * FROM $nomTable WHERE 'personne.accepte' = $id;";
             $cursor = $this->connexion->prepare($sql);
             $cursor->execute();
             $personne = $cursor->fetchAll();
@@ -259,13 +257,58 @@ namespace Vendor\DAO {
             return $personne;
         }
 
+
         /**
-         * Used to retrieve a person from their username and password
+         * Used to set participation
+         * @return request return the PDO object of the request
+         */
+        function setParticipation($id){
+            $sql = "UPDATE personne SET statutParticipation = 0 WHERE idPersonne = ?";
+            $req = $this->connexion->prepare($sql);
+
+            $req->execute(array($id));
+        }
+
+        /**
+         * Used to accept new account
+         * @return request return the PDO object of the request
+         */
+        function acceptUserAccount($id){
+            $sql = "UPDATE personne SET accepte = 1 WHERE idPersonne = ?";
+            $req = $this->connexion->prepare($sql);
+
+            $req->execute(array($id));
+        }
+
+        /**
+         * Used to retrieve a participant
+         * @return request return the PDO object of the request
+         */
+        function getAllParticipants($statut){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE statutParticipation = ?");
+            $req->execute(array($statut));
+
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person acitved or not
+         * @return request return the PDO object of the request
+         */
+        function getActivedOrNotPersons($isActive){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE accepte = ?");
+            $req->execute(array($isActive));
+
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person with their username and password
          * @return request return the PDO object of the request
          */
         function getPersonToAuth($username, $password){
             $password = md5($password);
-            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ? AND password= ? LIMIT 1");
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username=? AND password=? LIMIT 1");
             $req->execute(array($username, $password));
             
             return $req;
@@ -278,6 +321,28 @@ namespace Vendor\DAO {
         function getPersonByUsername($username){
             $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ?");
             $req->execute(array($username));
+
+            return $req; 
+        }
+
+        /**
+         * Used to retrieve a person with their mail
+         * @return request return the PDO object of the request 
+         */
+        function getPersonByMailEdu($mail){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE mail= ?");
+            $req->execute(array($mail));
+
+            return $req;
+        }
+
+        /**
+         * Used to retrieve a person with their gmail
+         * @return request return the PDO object of the request
+         */
+        function getPersonByGmail($gmail){
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE gmail= ?");
+            $req->execute(array($gmail));
 
             return $req;
         }

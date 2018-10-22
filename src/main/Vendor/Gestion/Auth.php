@@ -2,8 +2,8 @@
 // back
 namespace Vendor\Gestion;
     
-    require_once("../src/main/Vendor/DAO/DAO.php");
-    //require_once("../../htdocs/m2test2/src/main/Vendor/DAO/DAO.php"); // use for Atoum
+    require_once(__DIR__ ."/../DAO/DAO.php");
+    
     use \DAO\DAO;
 
     class Auth{
