@@ -6,6 +6,6 @@
     <link rel="stylesheet" href="../static/style/croissantshow.css">
 	
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="../lib/fontawesome/fontawesome.css">
+    <link rel="stylesheet" href="../lib/fontawesome/css/all.css">
 
 </head>
