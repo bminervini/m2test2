@@ -51,7 +51,7 @@ namespace Vendor\Calendar
             {
                 $current = $person->getNombreCroissantAmene();
 
-                if (!isset($min) || $current < $min && $person->isDisponible($day))
+                if ((!isset($min) || $current < $min) && $person->isDisponible($day))
                 {
                     $min = $current;
                     $choosen = $person;

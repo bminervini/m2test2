@@ -7,6 +7,7 @@
     <?php
 
     require_once("../src/main/Vendor/DAO/DAO.php");
+    require_once("../src/main/Vendor/Calendar/SubscribersList.php");
 
     $dao = new \Vendor\DAO\DAO();
     $personne = $dao->getPersonneByUsername($_SESSION["username"], "personne");
@@ -18,6 +19,8 @@
         {
             $statutParticipation = !$statutParticipation;
             $dao->setParticipationByUsername($_SESSION["username"], $statutParticipation);
+            $calendrier = new \Vendor\Calendar\SubscribersList($dao->getListParticipant("personne"));
+
         }
 
         if ($statutParticipation == 0) {

@@ -84,6 +84,7 @@ namespace Vendor\DAO {
             $this->createTablePersonne("personne");
             $this->createTableCalendrier("calendrier");
             $this->createTableDisponibilite("disponibilite");
+            $this->createTableTournee("tournee");
 
             $this->addAdmin("personne");
 
@@ -173,9 +174,11 @@ namespace Vendor\DAO {
 
         function getListParticipant($nomTable)
         {
-            $sql = "SELECT * FROM $nomTable WHERE $nomTable.statutParticipation = 1;";
+            $sql = "SELECT * FROM $nomTable WHERE statutParticipation = 1;";
             $cursor = $this->connexion->prepare($sql);
-            return $cursor->execute();
+            $nbre = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return $nbre;
         }
 
         function updatePersonne($personne, $nomTable){
@@ -304,11 +307,11 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function getAllParticipants($statut){
-            $req = $this->connexion->prepare("SELECT * FROM personne WHERE statutParticipation = ?");
+            $req = $this->connexion->prepare("SELECT * FROM personne INNER JOIN tournee WHERE personne.statutParticipation = ? AND personne.idPersonne = tournee.idPersonne");
             $req->execute(array($statut));
-
             return $req;
         }
+
 
         /**
          * Used to retrieve a person acitved or not
@@ -421,7 +424,6 @@ namespace Vendor\DAO {
                `idPersonne` int NOT NULL,
                `idCalendrier` int NOT NULL,
                `disponible` int (1) NOT NULL,
-               `amenCroissant` int(1) NOT NULL, 
                FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne),
                FOREIGN KEY (idCalendrier) REFERENCES calendrier(idCalendrier), 
                CONSTRAINT PK_Person PRIMARY KEY (idPersonne,idCalendrier))
@@ -431,6 +433,24 @@ namespace Vendor\DAO {
                 //echo " Table calendrier créé \n";
             } else {
                //print_r($create->errorInfo());
+            }
+        }
+
+        function createTableTournee($nomTable)
+        {
+            $sql = "CREATE TABLE IF NOT EXISTS `$nomTable`(
+               `idPersonne` int NOT NULL,
+               `idCalendrier` int NOT NULL,
+               `ameneCroissant` int(1) NOT NULL, 
+               FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne),
+               FOREIGN KEY (idCalendrier) REFERENCES calendrier(idCalendrier), 
+               CONSTRAINT PK_Person PRIMARY KEY (idPersonne,idCalendrier))
+               ;";
+            $create = $this->connexion->prepare($sql);
+            if ($create->execute()) {
+                //echo " Table calendrier créé \n";
+            } else {
+                //print_r($create->errorInfo());
             }
         }
 
