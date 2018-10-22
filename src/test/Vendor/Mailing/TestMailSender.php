@@ -8,31 +8,18 @@ namespace Vendor\Mailing\tests\units
     class MailSender extends atoum
     {
 
-        public function testBadSender()
+        public function testGoodPort()
         {
-            $sLogin = "m2test2uneadressemailquinexistepas@domainequinexistepas.com";
-            $sPassword = "unmotedepassequinexistepas";
+            $sFrom = "m2test2.croissant.show@edu.univ-fcomte.fr";
+            $sTo = "m2test2.croissant.show@gmail.com";
+            $sSubject = "Je suis un mail généré par un test";
+            $sBody = "Voilà je corps du mail, c'est un peu nul, mais je fais ce que je peux !";
 
             $this
-                ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword))
-
-                ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("65m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
+                ->if($oResult = \Vendor\Mailing\MailSender::SendMail($sFrom , $sTo , $sSubject , $sBody))
                     ->boolean($oResult)
-                        ->isEqualTo(false)
+                        ->isEqualTo(true)
             ;
-        }
-
-        public function testBadCredentials()
-        {
-            $sLogin = "m2test2.croissant.show@gmail.com";
-            $sPassword = "mauvaismotdepasse";
-
-            $this
-            ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword))
-            ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("65m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
-                ->boolean($oResult)
-                    ->isEqualTo(false)
-        ;
         }
     }
 }

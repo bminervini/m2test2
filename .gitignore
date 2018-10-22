@@ -6,3 +6,5 @@ cache.properties
 ./build/logs
 **/*.iml
 m2test2_acceptance
+
+m2test2_acceptance/
