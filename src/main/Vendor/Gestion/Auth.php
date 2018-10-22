@@ -28,10 +28,13 @@ namespace Vendor\Gestion;
                 $result = $req->fetch();
  
                 if($result){
-                    /* create session and redirects the user to the dashboard */
-                    $this->createSession($username, $result['isAdmin']);
-                    header("Location: dashboard.php");
-                
+                    if($result['accepte'] == 1){
+                        /* create session and redirects the user to the dashboard */
+                        $this->createSession($username, $result['isAdmin']);
+                        header("Location: dashboard.php");
+                    }else{
+                        return "Compte Inactif !";
+                    }
                 }else{
                     /* return error message */
                     return "Invalid username or password !";
