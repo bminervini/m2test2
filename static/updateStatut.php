@@ -5,10 +5,10 @@
     <?php include 'head.php';?>
 	<?php
 
-		require_once("../src/main/Vendor/DAO/DAO.php");
-		use \DAO\DAO;
+    require_once("../src/main/Vendor/DAO/DAO.php");
+    use \DAO\DAO;
 
-		$dao = new DAO\DAO();
+		$dao = new \Vendor\DAO\DAO();
 		$idUserConnecte = $_SESSION['idPersonne'];
 		$req = $dao->getPersonById($idUserConnecte);
 		$utilisateurConnecte = $req->fetch();
@@ -29,7 +29,6 @@
                 </div>
 
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center">
-                    <h1>Bienvenue sur le dashboard de Croissant Show'</h1>
 					<h2>Votre demande de changement de status sera traitee dans les meilleurs delai'</h2>
                 </div>
 
