@@ -12,11 +12,12 @@ namespace Vendor\Mailing\tests\units
         {
             $sLogin = "m2test2uneadressemailquinexistepas@domainequinexistepas.com";
             $sPassword = "unmotedepassequinexistepas";
+            $sSender = "expediteur@univ-fcomte.fr";
 
             $this
-                ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword))
+                ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword , $sSender))
 
-                ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("65m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
+                ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
                     ->boolean($oResult)
                         ->isEqualTo(false)
             ;
@@ -26,12 +27,27 @@ namespace Vendor\Mailing\tests\units
         {
             $sLogin = "m2test2.croissant.show@gmail.com";
             $sPassword = "mauvaismotdepasse";
+            $sSender = "expediteur@univ-fcomte.fr";
 
             $this
-            ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword))
-            ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("65m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
+            ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword , $sSender))
+            ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
                 ->boolean($oResult)
                     ->isEqualTo(false)
+        ;
+        }
+
+        public function testSendMailSuccess()
+        {
+            $sLogin = "ybeaux";
+            $sPassword = "Cestpasfaux!120";
+            $sSender = "m2test2.croissant.show@edu.univ-fcomte.fr";
+
+            $this
+            ->given($oInstance = new \Vendor\Mailing\MailSender($sLogin , $sPassword , $sSender))
+            ->if($oResult = $oInstance->sendMail(new \Vendor\Mailing\Mail("m2test2.croissant.show@gmail.com" , "Sujet" , "Corps")))
+                ->boolean($oResult)
+                    ->isEqualTo(true)
         ;
         }
     }
