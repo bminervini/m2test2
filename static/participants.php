@@ -9,7 +9,7 @@
 
 <body class="cs_body">
         
-	<?php include 'navbaruser.php';?>
+	<?php include 'navbar.php';?>
 
 	
 	<div class="container">

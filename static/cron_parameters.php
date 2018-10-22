@@ -22,7 +22,7 @@
 
     <body>
 
-        <?php include 'navbaradmin.php'; ?>
+        <?php include 'navbar.php'; ?>
 
 
         

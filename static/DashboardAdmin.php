@@ -6,7 +6,7 @@
         
         <?php include 'jumbotron.php';?>
         
-        <?php include 'navBarAdmin.php';?>
+        <?php include 'navBar.php';?>
 
         
         <div class="container">
