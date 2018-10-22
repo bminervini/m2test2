@@ -100,8 +100,13 @@ namespace Vendor\Gestion;
 
                 if($addBtn) echo '<td style="text-align:center;"><button type="submit" name="add" class="btn btn-success" value="'.base64_encode($val['idPersonne']).'"><i class="fas fa-plus"></i></button></td>'; 
 
-                echo  '<td style="text-align:center;"><button type="sumbit" name="delete" class="btn btn-danger" value="'.base64_encode($val['idPersonne']).'"><i class="fas fa-trash-alt"></i></button></td>
-                     </tr>';
+                if($val['isAdmin'] == 0){ 
+                    echo '<td style="text-align:center;"><button type="submit" name="delete" class="btn btn-danger" value="'.base64_encode($val['idPersonne']).'"><i class="fas fa-trash-alt"></i></button></td>';
+                }else{
+                    echo '<td></td>';
+                }
+
+                echo '</tr>';
 
                 $cnt++;
             }
