@@ -57,7 +57,7 @@
                     <div class="container">
                         <table class="table table-striped table-bordered">
                             <?php
-                            \Vendor\Gestion\GestionAdmin::displayTable($participants,false);
+                            \Vendor\Gestion\GestionAdmin::displayParticipant($participants);
                             ?>
                         </table>
                     </div>

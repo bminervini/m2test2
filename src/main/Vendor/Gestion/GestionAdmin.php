@@ -60,7 +60,7 @@ namespace Vendor\Gestion;
             
             echo '<form method="post"><thead>
                     <tr style="text-align:center;">
-                        <th scope="col"></th>
+                        <th scope="col">#</th>
                         <th scope="col">Username</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prenom</th>
@@ -100,7 +100,7 @@ namespace Vendor\Gestion;
 
                 if($addBtn) echo '<td style="text-align:center;"><button type="submit" name="add" class="btn btn-success" value="'.base64_encode($val['idPersonne']).'"><i class="fas fa-plus"></i></button></td>'; 
 
-                if($val['isAdmin'] == 0){ 
+                if($val['isAdmin'] == 0 && $delBtn){
                     echo '<td style="text-align:center;"><button type="submit" name="delete" class="btn btn-danger" value="'.base64_encode($val['idPersonne']).'"><i class="fas fa-trash-alt"></i></button></td>';
                 }else{
                     echo '<td></td>';
@@ -112,7 +112,45 @@ namespace Vendor\Gestion;
             }
 
             echo '</tbody>
-            </from>';
+                  </from>';
+        }
+
+        public static function displayParticipant($table){
+
+            echo '<form method="post"><thead>
+                    <tr style="text-align:center;">
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+
+            if(empty($table)){
+                echo '<tr>
+                        <th scope="row"></th>
+                        <td>No users to display</td>
+                        <td></td>
+                        <td></td>
+                     </tr>';
+            }
+
+            $cnt = 1;
+            foreach($table as $val)
+            {
+                echo '<tr style="text-align:center;">
+                        <th style="text-align:center;" scope="row">'.$cnt.'</th>
+                        <td>'.$val['username'].'</td>
+                        <td>'.$val['nom'].'</td>
+                        <td>'.$val['prenom'].'</td>
+                      </tr>';
+
+                $cnt++;
+            }
+
+            echo '</tbody>';
         }
       
     }

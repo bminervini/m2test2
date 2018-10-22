@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="/">Croissant Show</a>
+	<a class="navbar-brand" href="""#">Croissant Show</a>
 	<div class="nav navbar">
 		<div class="navbar-nav">
 			<a class="nav-item nav-link active" href="dashboard.php" style="color:white">Dashboard</a>
@@ -12,8 +12,6 @@
 						  <a class="nav-item nav-link" href="GestionAdminParticipants.php" style="color:white">Participants</a>
 						  <a class="nav-item nav-link" href="cron_parameters.php" style="color:white">Cron</a>';
 				
-				}else{ 
-					echo   '<a class="nav-item nav-link" href="participants.php" style="color:white">Participants</a>';			
 				}
 			?>
 

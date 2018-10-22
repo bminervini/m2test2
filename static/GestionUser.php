@@ -32,7 +32,7 @@
             <h3 style="text-align:center;">Liste des comptes <strong>Inactif</strong></h3><br/>
             <table class="table table-striped table-bordered">        
                 <?php
-                    \Vendor\Gestion\GestionAdmin::displayTable($inactif,true);         
+                    \Vendor\Gestion\GestionAdmin::displayTable($inactif,true, true);
                 ?>
             </table>
 
@@ -40,7 +40,7 @@
             <h3 style="text-align:center;">Liste des comptes <strong>Actif</strong></h3><br/>
             <table class="table table-striped table-bordered">        
                 <?php
-                    \Vendor\Gestion\GestionAdmin::displayTable($actif, false);
+                    \Vendor\Gestion\GestionAdmin::displayTable($actif, false, true);
                 ?>
             </table>
             

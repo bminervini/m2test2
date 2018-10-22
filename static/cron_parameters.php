@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <html>
 
+    <?php include_once 'session.php' ?>
     <?php include 'head.php'?>
 
     <body>
@@ -25,9 +26,6 @@
         <?php include 'navbar.php'; ?>
 
 
-        
-        
-        
         <div class="container">
             <div class="row">
                 
@@ -35,6 +33,7 @@
                     
                 </div>
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <br/>
                 <form action="cron_parameters.php" method="GET" role="form">
                     <legend>Configurer l'envoi de mails</legend>
 

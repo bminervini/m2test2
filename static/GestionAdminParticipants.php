@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once("../src/main/Vendor/Gestion/GestionAdmin.php");
 
     $gestion = new \Vendor\Gestion\GestionAdmin();
@@ -25,7 +25,7 @@
             <h3 style="text-align:center;">Liste des <strong>Participants</strong></h3><br/>
             <table class="table table-striped table-bordered">        
                 <?php
-                    \Vendor\Gestion\GestionAdmin::displayTable($participants,false);
+                    \Vendor\Gestion\GestionAdmin::displayTable($participants,false, true);
                 ?>
             </table>
         </div>
