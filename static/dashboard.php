@@ -20,7 +20,7 @@
             $statutParticipation = !$statutParticipation;
             $dao->setParticipationByUsername($_SESSION["username"], $statutParticipation);
             $calendrier = new \Vendor\Calendar\SubscribersList($dao->getListParticipant("personne"));
-
+            $calendrier->chooseOne("");
         }
 
         if ($statutParticipation == 0) {

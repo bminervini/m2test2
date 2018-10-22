@@ -113,11 +113,42 @@ namespace Vendor\DAO {
 
         }
 
+        function addEvent($jour){
+            $sql = "INSERT INTO `m2test2`.`calendrier` (`idCalendrier`, `jour`)
+                    VALUES (NULL, :jour);";
+            try {
+
+                $req = $this->connexion->prepare($sql);
+
+                $req->bindParam(':jour', $jour);
+
+                $idCalendrier = $req->execute();
+
+                if ($idCalendrier == null){
+                    return null;
+                }else{
+                    return $idCalendrier;
+                }
+            }
+            catch(PDOException $e)
+            {
+                echo $sql . "<br>" . $e->getMessage();
+                return null;
+            }
+        }
+
+        function getIdCalendrier($jour){
+            $sql = "SELECT idCalendrier FROM calendrier WHERE jour = $jour;";
+            $req = $this->connexion->prepare($sql);
+            return $req->execute();
+        }
+
         //ajoute une personne dans la base de données
         //si l'ajout est possible, retourne la personne avec l'idPersonne renseigné
         //sinon retourne null
         function addPersonne($personne, $nomTable)
         {
+
             $nom = $personne->getNom();
             $prenom = $personne->getPrenom();
             $username = $personne->getUsername();
@@ -269,6 +300,17 @@ namespace Vendor\DAO {
             return $personne;
         }
 
+
+
+        /**
+         * Used to set amenCroissant
+         * @return request return the PDO object of the request
+         */
+        function setPersonneAmeneCroissant($idPersonne, $idCalendrier){
+            $sql = "UPDATE tournee SET idPersonne = '$idPersonne' WHERE idCalendrier = '$idCalendrier'";
+            $req = $this->connexion->prepare($sql);
+            $req->execute();
+        }
 
         /**
          * Used to set participation
@@ -460,6 +502,7 @@ namespace Vendor\DAO {
                 $sql = $this->connexion->prepare("
                 DROP TABLE IF EXISTS `disponibiliteTest`;
                 DROP TABLE IF EXISTS `calendrierTest`;
+                DROP TABLE IF EXISTS `tourneeTest`;
                 DROP TABLE IF EXISTS `personneTest`;
                 ");
                 if ($sql->execute()) {
@@ -471,6 +514,7 @@ namespace Vendor\DAO {
                 $sql = $this->connexion->prepare("
                 DROP TABLE IF EXISTS `disponibilite`;
                 DROP TABLE IF EXISTS `calendrier`;
+                DROP TABLE IF EXISTS `tournee`;
                 DROP TABLE IF EXISTS `personne`;
                 ");
                 if ($sql->execute()) {
