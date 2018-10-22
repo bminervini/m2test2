@@ -7,20 +7,25 @@ require_once __DIR__ . '/SubscribersList.php';
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/../DAO/DAO.php'; 
 
-//echo $createdEvent->getId();
-	$qs = New quickstart(); 
-	$sublist = new SubscribersList(); 
-	$dao = new \Vendor\DAO\DAO(); 
-	
-	$results = $dao->getListPersonne('personne'); 
-					
-	$sublist->addSubscribers($results); 
+public $qs; 
+public $sublist; 
+public $dao; 
+public $client; 
 
-	// Get the API client and construct the service object.
-		$client = $qs->getClient();
-	//	echo $client; 
+function __construct(){
+}
+
+function setup(){
+	$this->qs = New quickstart(); 
+	$this->sublist = new SubscribersList(); 
+	$this->dao = new \Vendor\DAO\DAO(); 
+	$this->client = $qs->getClient();
+}
+
+function add_events(){
+	setup(); 
 	if(isset($client)){
-		$service = new \Google_Service_Calendar($client);
+		$service = new \Google_Service_Calendar($this->client); 
 		
 		// Print the next 4 events on the user's calendar.
 		$calendarId = 'primary';
@@ -32,16 +37,19 @@ require_once __DIR__ . '/../DAO/DAO.php';
 		);
 		$results = $service->events->listEvents($calendarId, $optParams);
 		$events = $results->getItems();
-
+		
+		
 		if (empty($events)) {
 			print "No upcoming events found.\n";
 		} else {
+			/*
 			echo "<table border=\"1\">
 					<tr>
 						<th>Mercredi</th>
 						<th>L'&eacutelu</th>
 						<th>Participants : </th>
 					</tr>"; 
+			*/
 			foreach ($events as $event) {
 				$start = $event->start->dateTime;
 				if (empty($start)) {
@@ -49,9 +57,21 @@ require_once __DIR__ . '/../DAO/DAO.php';
 				}
 				$croissant = "Croissant"; 
 				if(strpos($event->getSummary(), $croissant) !== false){
-				
+					$this->dao->$event->getStart()->dateTime; 
 					
-					
+				}
+			}
+		//	echo "</table>";
+			//var_dump($dao->getListPersonne('personne')); 
+		}
+		
+	}
+}
+	$results = $dao->getListPersonne('personne'); 
+	$sublist->addSubscribers($results); 
+}
+
+					/*
 					$results = $dao->getListPersonne('personne'); 
 					$participants = 0; 
 					
@@ -61,6 +81,7 @@ require_once __DIR__ . '/../DAO/DAO.php';
 						}
 					}; 
 					$choosed = $sublist->chooseOne($participants);
+					$dao->
 					echo "
 						<tr>
 							<td><center>".$event->getStart()->dateTime."</center></td>
@@ -69,12 +90,5 @@ require_once __DIR__ . '/../DAO/DAO.php';
 					echo "
 							<td><center>".$participants."</center></td>
 						</tr>"
-						; 
-					
-				}
-			}
-			echo "</table>";
-			//var_dump($dao->getListPersonne('personne')); 
-		}
-	}
+						; */ 
 ?>

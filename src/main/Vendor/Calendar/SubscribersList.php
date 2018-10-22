@@ -57,6 +57,7 @@ namespace Vendor\Calendar
 					$choosed = $person; 
                 }
             }
+			var_dump($choosed); 
             return $choosed;
         }
 
