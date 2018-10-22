@@ -6,7 +6,7 @@
 			<a class="nav-item nav-link active" href="calendar.php" style="color:white">Calendrier</a>
 
 			<?php
-				if(true)//isset($_SESSION['admin']))
+				if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1)
 				{
 					echo '<a class="nav-item nav-link" href="GestionUser.php" style="color:white">Utilisateurs</a>
 						  <a class="nav-item nav-link" href="GestionAdminParticipants.php" style="color:white">Participants</a>

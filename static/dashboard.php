@@ -7,7 +7,6 @@
     <body class="cs_body">
         
         <?php include 'navbar.php';?>
-        
         <div class="container">
             
             <div class="row">

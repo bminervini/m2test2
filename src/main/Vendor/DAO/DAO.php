@@ -308,7 +308,7 @@ namespace Vendor\DAO {
          */
         function getPersonToAuth($username, $password){
             $password = md5($password);
-            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username= ? AND password= ? LIMIT 1");
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE username=? AND password=? LIMIT 1");
             $req->execute(array($username, $password));
             
             return $req;

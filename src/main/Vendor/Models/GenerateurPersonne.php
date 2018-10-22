@@ -16,7 +16,7 @@ namespace Vendor\Models
     var $prenom = array("John", "Baptiste", "Yannis", "Awa", "Brandon", "Lucas");
     var $nom = array("test", "test2", "test3", "test4", "test5", "test6");
     var $username = array("PigeonDetraque", "CascadeurFou", "HyeneEnrage", "CastorDupe", "LoupMalFame", "HibouMalin");
-    var $distriMail = array("outlook", "gmail", "aol", "yahoo", "hotmail");
+    var $distriMail = array("edu.univ-fcomte.fr");
     var $admin = array(0, 1);
     var $statutParticipation = array(0, 1, 2);
     var $accepte = array(0, 1);
@@ -47,7 +47,7 @@ namespace Vendor\Models
             $this->prenom[$aleaPrenom],
             $this->username[$aleaUsername] . $sel,
             md5($this->username[$aleaUsername]),
-            $this->username[$aleaUsername]  . $sel . "@" . $this->distriMail[$aleaDistriMail] .".com",
+            $this->username[$aleaUsername]  . $sel . "@" . $this->distriMail[$aleaDistriMail],
             $this->username[$aleaUsername]  . $sel . "@gmail.com",
             0,
             $this->statutParticipation[$aleaStatutParticipation],

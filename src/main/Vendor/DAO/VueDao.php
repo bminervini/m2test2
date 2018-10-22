@@ -17,7 +17,7 @@ $dao = new \Vendor\DAO\DAO();
 
 if (isset($_GET["action"]) && ($_GET["action"] == "reset"))
 {
-    $dao->initialisationBD(100);
+    $dao->initialisationBD(10);
 
 }
 

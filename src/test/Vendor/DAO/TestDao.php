@@ -48,17 +48,16 @@ namespace Vendor\DAO\tests\units
         }
 
         //permet de vérifier que toutes les tables sont bien supprimées
-        public function testDropTables()
+        /*public function testDropTables()
         {
             $dao = new \Vendor\DAO\DAO();
             $dao->dropTables(true);
-            //$requete = $dao->querySQL("SELECT count(table_name) FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'm2test2';");
             $nbreTable = $dao->getNombreTable();
             $this
                 ->integer($nbreTable)
                 ->isNotEqualTo(0);
 
-        }
+        }*/
 
         //vérifier le fonctionnement de la fonction addPersonne
         public function testAddPersonne(){

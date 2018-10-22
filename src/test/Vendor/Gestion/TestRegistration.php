@@ -7,12 +7,6 @@ namespace Vendor\Gestion\test\units
 
     class Registration extends atoum {
 
-        function testUsernameNotUsed(){
-            $registration = new \Vendor\Gestion\Registration();
-            $this
-                ->variable($registration->usernameNotUsed("admin"))->isEqualTo(false);
-        }
-
         /* Mail edu */
 
         function testMailIsCorrectOK(){
