@@ -26,7 +26,7 @@ namespace Vendor\Gestion;
         }
 
         function deleteParticipant($id){
-            $this->dao->setParticipation($id);
+            $this->dao->deleteParticipation($id);
             $_POST = array();
         }
 
@@ -56,7 +56,7 @@ namespace Vendor\Gestion;
 
         
 
-        public static function displayTable($table, $addBtn){
+        public static function displayTable($table, $addBtn, $delBtn){
             
             echo '<form method="post"><thead>
                     <tr style="text-align:center;">

@@ -249,7 +249,16 @@ namespace Vendor\DAO {
         }
 
         function getPersonne($id, $nomTable){
-            $sql = "SELECT * FROM $nomTable WHERE 'personne.accepte' = $id;";
+            $sql = "SELECT * FROM $nomTable WHERE idPersonne = '$id';";
+            $cursor = $this->connexion->prepare($sql);
+            $cursor->execute();
+            $personne = $cursor->fetchAll();
+            $cursor->closeCursor();
+            return $personne;
+        }
+
+        function getPersonneByUsername($username, $nomTable){
+            $sql = "SELECT * FROM $nomTable WHERE username = '$username';";
             $cursor = $this->connexion->prepare($sql);
             $cursor->execute();
             $personne = $cursor->fetchAll();
@@ -262,8 +271,18 @@ namespace Vendor\DAO {
          * Used to set participation
          * @return request return the PDO object of the request
          */
-        function setParticipation($id){
-            $sql = "UPDATE personne SET statutParticipation = 0 WHERE idPersonne = ?";
+        function setParticipationByUsername($username, $participation){
+            $sql = "UPDATE personne SET statutParticipation = '$participation' WHERE username = ?";
+            $req = $this->connexion->prepare($sql);
+            $req->execute(array($username));
+        }
+
+        /**
+         * Used to set participation
+         * @return request return the PDO object of the request
+         */
+        function deleteParticipation($id){
+            $sql = "UPDATE personne SET statutParticipation = 0 WHERE username = ?";
             $req = $this->connexion->prepare($sql);
 
             $req->execute(array($id));
