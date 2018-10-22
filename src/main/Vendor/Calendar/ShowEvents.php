@@ -14,7 +14,6 @@ class ShowEvents {
 	public $client; 
 
 function __construct(){
-		echo "Bouyah"; 
 		$this->setup();
 		$this->add_events();
 }

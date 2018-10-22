@@ -1,6 +1,5 @@
 <?php 
     require_once("../src/main/Vendor/Gestion/Auth.php");
-
     if(isset($_POST['submit']))
     {
         $auth = new \Vendor\Gestion\Auth();

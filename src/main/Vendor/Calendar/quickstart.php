@@ -9,9 +9,10 @@ require __DIR__ . '/vendor/autoload.php';
 
 class quickstart 
 {
+	
+	public $authUrl; 
  function __construct()
-     {
-			//$ms = getClient(); 
+     { 
      }
  
  
@@ -23,27 +24,18 @@ function getClient()
     $client->setAuthConfig(__DIR__ . '/credentials.json');
     $client->setAccessType('offline');
     $client->setPrompt('select_account consent');
-	$tokenPath = 'token.json';
-	//echo 'ici'; 
+	return $client; 
+}
+
+function getAuthUrl($client){
+	$authUrl = $client->createAuthUrl();
+	return $authUrl; 
+}
+
+function createToken($pseudo,$code,$client){
+	$tokenPath = __DIR__ . '/token'.$pseudo.'.json';
 	if(!file_exists($tokenPath)){
-					// Request authorization from the user.
-					$authUrl = $client->createAuthUrl();
-					echo 'Voici le lien d\'activation de l\'application : <a href=\''.$authUrl.'\' target="_blank">Ici</a>';
-					echo '
-						<form method="get">
-							<table>
-								<tr>
-									<td>
-										<input name="code_google" type="text">
-									</td>
-									<td>
-										<input type="submit" value="Envoyer">
-									</td>
-								</tr>
-							</table>
-						</form>'; 
-		
-		if(isset($_GET['code_google'])){
+		if(isset($code)){
 			// Load previously authorized token from a file, if it exists.
 			if (file_exists($tokenPath)) {
 				$accessToken = json_decode(file_get_contents($tokenPath), true);
@@ -56,7 +48,7 @@ function getClient()
 				if ($client->getRefreshToken()) {
 					$client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
 				} else {
-						$authCode = $_GET['code_google']; 
+						$authCode = $code; 
 					if($authCode != null){
 					  //  $authCode = trim(fgets(STDIN));
 
@@ -89,7 +81,7 @@ function getClient()
 				if ($client->getRefreshToken()) {
 					$client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
 				} else {
-						$authCode = $_GET['code_google']; 
+						$authCode = $code; 
 					if($authCode != null){
 					  //  $authCode = trim(fgets(STDIN));
 
