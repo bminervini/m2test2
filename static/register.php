@@ -74,9 +74,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="">Association compte gmail</label>
+                                <input type="text" class="form-control" id="" placeholder="Clé Google" name="cleGoogle" required="required">
+                            </div>
+
+                            <div class="form-group">
                                 <input type="checkbox" id="admin" name="admin" value="1"/>
-                                <label for="scales">isAdmin</label>
-                            </div>          
+                                <label for="scales">Administrateur</label>
+                            </div>
+
+
                         </div>
 
                         <?php
