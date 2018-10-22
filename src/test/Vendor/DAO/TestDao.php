@@ -47,7 +47,7 @@ namespace Vendor\DAO\tests\units
             ;
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
 
         }
 
@@ -82,7 +82,7 @@ namespace Vendor\DAO\tests\units
             $this->integer($nbrePersonneDansBdd)->isEqualTo(12);
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
         }
 
 
@@ -99,7 +99,7 @@ namespace Vendor\DAO\tests\units
             ;
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
         }
 
         //vérifier que l'on peut récupérer une liste de personnes
@@ -111,7 +111,7 @@ namespace Vendor\DAO\tests\units
             $this->integer($nbrePersonneDansBdd)->isEqualTo(11);
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
         }
 
         //vérifier qu'un utilisateur avec un username déjà existant ne peut pas être ajouté
@@ -133,7 +133,7 @@ namespace Vendor\DAO\tests\units
                 ->isEqualTo(11);
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
         }
 
 
@@ -159,7 +159,7 @@ namespace Vendor\DAO\tests\units
             $this->string($personne[0][4])->isEqualTo("newAdmin@gmail.com");
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
         }
 
         function initialiserBDDTest($nombreDePersonne){
@@ -198,7 +198,7 @@ namespace Vendor\DAO\tests\units
             $this->boolean($test)->isEqualTo(true);
 
             //drop bdd test
-            //$dao->dropTables(true);
+            $dao->dropTables(true);
         }
 
     }
