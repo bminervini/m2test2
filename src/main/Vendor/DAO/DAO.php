@@ -505,7 +505,7 @@ namespace Vendor\DAO {
                 DROP TABLE IF EXISTS `personneTest`;
                 ");
                 if ($sql->execute()) {
-                    echo " Tables test supprimées ";
+                    //echo " Tables test supprimées ";
                 } else {
                     print_r($sql->errorInfo());
                 };
@@ -517,7 +517,7 @@ namespace Vendor\DAO {
                 DROP TABLE IF EXISTS `personne`;
                 ");
                 if ($sql->execute()) {
-                    echo " Tables supprimées ";
+                    //echo " Tables supprimées ";
                 } else {
                     print_r($sql->errorInfo());
                 };
