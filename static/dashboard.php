@@ -32,11 +32,8 @@
         {
             $statutParticipation = !$statutParticipation;
             $dao->setParticipationByUsername($_SESSION["username"], $statutParticipation);
-            //$calendrier = new \Vendor\Calendar\SubscribersList($dao->getListParticipant("personne"));
-            $events = new \Vendor\Calendar\ShowEvents($_SESSION["username"]);
-			$choosed = $events->chooseSomeone(); 
-			$dao->setPersonneAmeneCroissant($choosed['idPersonne'],1); 
-			//var_dump($choosed); 
+            //$events = new \Vendor\Calendar\ShowEvents($_SESSION["username"]);
+			//$choosed = $events->chooseSomeone();
         }
 		
 		if(!file_exists($tokenPath)){

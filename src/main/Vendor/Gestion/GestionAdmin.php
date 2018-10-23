@@ -124,7 +124,6 @@ namespace Vendor\Gestion;
                         <th scope="col">Username</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prenom</th>
-                        <th scope="col">Croissant</th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -148,7 +147,6 @@ namespace Vendor\Gestion;
                         <td>'.$val['username'].'</td>
                         <td>'.$val['nom'].'</td>
                         <td>'.$val['prenom'].'</td>
-                        <td>'.$val['ameneCroissant'].'</td>
                       </tr>';
 
                 $cnt++;

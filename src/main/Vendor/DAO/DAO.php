@@ -348,7 +348,7 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function getAllParticipants($statut){
-            $req = $this->connexion->prepare("SELECT * FROM personne INNER JOIN tournee WHERE personne.statutParticipation = ? AND personne.idPersonne = tournee.idPersonne");
+            $req = $this->connexion->prepare("SELECT * FROM personne WHERE statutParticipation = ? ");
             $req->execute(array($statut));
             return $req;
         }
