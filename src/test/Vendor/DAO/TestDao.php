@@ -37,7 +37,7 @@ namespace Vendor\DAO\tests\units
             $nbrePersonne = $dao->getNombrePersonne("personneTest");
 
             $this
-                ->integer($nbreTable)->isEqualTo(6)
+                ->integer($nbreTable)->isEqualTo(7)
                 ->and()
                 ->integer($nbrePersonne)->isEqualTo(11)
                 ->executeOnFailure(
@@ -91,10 +91,9 @@ namespace Vendor\DAO\tests\units
             //initialiser bdd test
             $dao = $this->initialiserBDDTest(10);
 
-            $admin = $dao->getPersonne(0, "personneTest");
-
+            $admin = $dao->getPersonneByUsername("admin", "personneTest");
             $this
-                ->string($admin[0][3])->isEqualTo("admin")
+                ->string($admin[0]['username'])->isEqualTo("admin")
                 ->string($admin[0][5])->isEqualTo("admin@gmail.com")
             ;
 
@@ -152,11 +151,11 @@ namespace Vendor\DAO\tests\units
             $this->calling($personne)->getMail = "newAdmin@gmail.com" ;
 
             $dao->updatePersonne($personne, "personneTest");
-            $personne = $dao->getPersonne(0, "personneTest");
+            $personne = $dao->getPersonneByUsername("admin", "personneTest");
 
-            $this->string($personne[0][1])->isEqualTo("NewNomAdmin");
-            $this->string($personne[0][2])->isEqualTo("NewPrenomAdmin");
-            $this->string($personne[0][4])->isEqualTo("newAdmin@gmail.com");
+            $this->string($personne[0]['nom'])->isEqualTo("NewNomAdmin");
+            $this->string($personne[0]['prenom'])->isEqualTo("NewPrenomAdmin");
+            $this->string($personne[0]['gmail'])->isEqualTo("newAdmin@gmail.com");
 
             //drop bdd test
             $dao->dropTables(true);
