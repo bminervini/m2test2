@@ -28,26 +28,29 @@
     if (count($personne) > 0) {
         $statutParticipation = $personne[0]['statutParticipation'];
 
+		
+		if(!file_exists($tokenPath)){
+            if(isset($_POST['cleGoogle'])){
+                $qs->createToken($_SESSION['username'],$_POST['cleGoogle'],$qclient);	
+			}
+		}
+        
         if(isset($_POST['statut']))
         {
             $statutParticipation = !$statutParticipation;
             $dao->setParticipationByUsername($_SESSION["username"], $statutParticipation);
             //$events = new \Vendor\Calendar\ShowEvents($_SESSION["username"]);
-			//$choosed = $events->chooseSomeone();
+            //$choosed = $events->chooseSomeone();
         }
-		
-		if(!file_exists($tokenPath)){
-			if(isset($_POST['cleGoogle'])){
-				$qs->createToken($_SESSION['username'],$_POST['cleGoogle'],$qclient);	
-			}
-		}
 
         if ($statutParticipation == 0) {
-            $texteParticipe = "Je ne participe pas";
-            $classButton = "btn btn-warning";
-        } else {
-            $texteParticipe = "Je participe";
+            $sTexteParticipationEtat = "Je ne participe pas"; 
+            $sTexteBoutonParticipation = "Je participe de nouveau";
             $classButton = "btn btn-success";
+        } else {
+            $sTexteParticipationEtat = "Je participe"; 
+            $sTexteBoutonParticipation = "Je ne participe plus";
+            $classButton = "btn btn-warning";
         }
     }
 
@@ -70,7 +73,8 @@
 
                     <h2>Participation</h2><br/>
                     <form action="dashboard.php" method="POST">
-                        <button type="submit" name="statut" class="<?php echo $classButton?>"><?php echo $texteParticipe ?></button>
+                        <label ><?php echo "<p>" . $sTexteParticipationEtat . "</p>";?></label>
+                        <button type="submit" name="statut" class="<?php echo $classButton?>"><?php echo $sTexteBoutonParticipation ?></button>
                     </form>
 
                 </div>
