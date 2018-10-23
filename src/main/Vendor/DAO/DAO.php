@@ -306,7 +306,7 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function setPersonneAmeneCroissant($idPersonne, $idCalendrier){
-            $sql = "UPDATE tournee SET idPersonne = '$idPersonne' WHERE idCalendrier = '$idCalendrier'";
+            $sql = "INSERT INTO tournee VALUES('$idPersonne', '$idCalendrier', '1')";
             $req = $this->connexion->prepare($sql);
             $req->execute();
         }
