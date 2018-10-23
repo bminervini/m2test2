@@ -9,6 +9,18 @@
     require_once("../src/main/Vendor/DAO/DAO.php");
     require_once("../src/main/Vendor/Calendar/SubscribersList.php");
     require_once("../src/main/Vendor/Calendar/ShowEvents.php");
+	require_once("../src/main/Vendor/Calendar/quickstart.php"); 
+	
+	use \Vendor\Calendar\quickstart; 
+	
+	
+	$tokenPath = '../src/main/Vendor/Calendar/token'.$_SESSION["username"].'.json';
+	
+	if(!file_exists($tokenPath)){
+		$qs = new quickstart(); 
+		$qclient = $qs->getClient($_SESSION["username"]); 
+		$hyperlink = $qs->getAuthUrl($qclient); 
+	}
 
     $dao = new \Vendor\DAO\DAO();
     $personne = $dao->getPersonneByUsername($_SESSION["username"], "personne");
@@ -26,6 +38,12 @@
 			$dao->setPersonneAmeneCroissant($choosed['idPersonne'],1); 
 			//var_dump($choosed); 
         }
+		
+		if(!file_exists($tokenPath)){
+			if(isset($_POST['cleGoogle'])){
+				$qs->createToken($_SESSION['username'],$_POST['cleGoogle'],$qclient);	
+			}
+		}
 
         if ($statutParticipation == 0) {
             $texteParticipe = "Je ne participe pas";
@@ -59,6 +77,7 @@
                     </form>
 
                 </div>
+				
                 <div class="col-sm">
 
                     <h2 style="text-align:center;">Liste des participants</h2><br/>
@@ -74,6 +93,22 @@
                 </div>
                 
             </div>
+			
+				
+				<?php 
+				
+				if(!file_exists($tokenPath)){
+					echo "
+					<div class=\"form-group\">
+						<form action=\"dashboard.php\" method=\"POST\" role=\"form\">
+									<label for=\"\">Association compte gmail -><a href=".$hyperlink." target=\"_blank\">Ici</a></label>
+									<input type=\"text\" class=\"form-control\" id=\"\" placeholder=\"Clé Google\" name=\"cleGoogle\" required=\"required\">
+						<button type=\"submit\" class=\"btn btn-default center-block\" name=\"submit\">Liez mon compte ! </button>
+				
+					</div>"; 
+				}
+				
+				?>
         </div>
         
         
