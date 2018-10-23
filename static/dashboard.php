@@ -46,12 +46,14 @@
         
         <?php include 'navbar.php';?>
         <div class="container">
-            
+            <br/>
+            <h1 style="text-align:center;">Dashboard Croissant Show<h1>
+            <br/>
             <div class="row">
                 
                 <div class="col-sm">
 
-                    <h2>Participation</h2>
+                    <h2>Participation</h2><br/>
                     <form action="dashboard.php" method="POST" role="form">
                         <button type="submit" name="statut" class="<?php echo $classButton?>"> <?php echo $texteParticipe ?></button>
                     </form>
@@ -59,7 +61,7 @@
                 </div>
                 <div class="col-sm">
 
-                    <h2>Liste des participants</h2>
+                    <h2 style="text-align:center;">Liste des participants</h2><br/>
 
                     <div class="container">
                         <table class="table table-striped table-bordered">
