@@ -85,7 +85,7 @@
 
                             <div class="form-group">
                                 <label for="">Association compte gmail -><?php echo "<a href=".$hyperlink." target=\"_blank\">" ?>Ici</a></label>
-                                <input type="text" class="form-control" id="" placeholder="Clé Google" name="cleGoogle" required="required">
+                                <input type="text" class="form-control" id="" placeholder="Clé Google" name="cleGoogle">
 			
                             </div>
 
@@ -93,8 +93,6 @@
                                 <input type="checkbox" id="admin" name="admin" value="1"/>
                                 <label for="scales">Administrateur</label>
                             </div>
-
-
                         </div>
 
                         <?php
