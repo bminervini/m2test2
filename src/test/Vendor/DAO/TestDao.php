@@ -167,9 +167,9 @@ namespace Vendor\DAO\tests\units
             $dao->createTablePersonne("personneTest");
             $dao->createTableCalendrier("calendrierTest");
             $dao->createTableDisponibilite("disponibiliteTest");
+            $dao->createTableTournee("tournee");
 
-            $personne = new \Mock\Vendor\Models\Personne("Administrateur", "Admin", "admin", md5("admin"), "admin@mail.com", "admin@gmail.com", 0, 0, 0 );
-            $dao->addPersonne($personne, "personneTest");
+            $dao->addAdmin("personneTest");
 
             if ($nombreDePersonne > 0){
                 $generator = new \Vendor\Models\GenerateurPersonne($nombreDePersonne);
