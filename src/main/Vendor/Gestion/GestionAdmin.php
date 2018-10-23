@@ -17,7 +17,14 @@ namespace Vendor\Gestion;
 
         function acceptInactiveUser($id){
             $this->dao->acceptUserAccount($id);
+            $this->sendMailToUser($id);
             $_POST = array();
+        }
+
+        function sendMailToUser($id)
+        {
+            $personne = $this->dao->e($id , "personne");
+            \Vendor\Mailing\MailSender::SendMail("m2test2.croissant.show@gmail.com" , $personne['gmail'] , "Waouw" , "oklm");
         }
 
         function deleteUser($id){
