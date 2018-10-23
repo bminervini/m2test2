@@ -82,6 +82,7 @@ namespace Vendor\Gestion;
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                      </tr>'; 
             }
             
@@ -133,6 +134,7 @@ namespace Vendor\Gestion;
                 echo '<tr>
                         <th scope="row"></th>
                         <td>No users to display</td>
+                        <td></td>
                         <td></td>
                         <td></td>
                      </tr>';
