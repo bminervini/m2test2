@@ -9,13 +9,9 @@
     { 
         $register = new Registration();
         $res = $register->registration($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'], $_POST['mailedu'], $_POST['gmail'], (empty($_POST['admin']))? "0": $_POST['admin']);
-  //       
         $msg = $register->errorMsg($res);
     }
-	
-	/*
-                            
-	*/
+
 ?>
 
 <?php $title = "register page"; ?>
@@ -82,8 +78,6 @@
                                 <input type="checkbox" id="admin" name="admin" value="1"/>
                                 <label for="scales">Administrateur</label>
                             </div>
-
-
                         </div>
 
                         <?php

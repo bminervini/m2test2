@@ -37,13 +37,13 @@ namespace Vendor\DAO\tests\units
             $nbrePersonne = $dao->getNombrePersonne("personneTest");
 
             $this
-                ->integer($nbreTable)->isEqualTo(7)
+                ->integer($nbreTable)->isEqualTo(8)
                 ->and()
                 ->integer($nbrePersonne)->isEqualTo(11)
-                ->executeOnFailure(
+                /*->executeOnFailure(
                     function () use ($dao) {
                         var_dump($dao);
-                    })
+                    })*/
             ;
 
             //drop bdd test
@@ -162,14 +162,15 @@ namespace Vendor\DAO\tests\units
         }
 
         function initialiserBDDTest($nombreDePersonne){
+
             $dao = new \Vendor\DAO\DAO();
             $dao->dropTables(true);
             $dao->createTablePersonne("personneTest");
             $dao->createTableCalendrier("calendrierTest");
             $dao->createTableDisponibilite("disponibiliteTest");
+            $dao->createTableTournee("tourneeTest");
 
-            $personne = new \Mock\Vendor\Models\Personne("Administrateur", "Admin", "admin", md5("admin"), "admin@mail.com", "admin@gmail.com", 0, 0, 0 );
-            $dao->addPersonne($personne, "personneTest");
+            $dao->addAdmin("personneTest");
 
             if ($nombreDePersonne > 0){
                 $generator = new \Vendor\Models\GenerateurPersonne($nombreDePersonne);
