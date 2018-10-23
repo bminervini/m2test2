@@ -85,7 +85,6 @@ namespace Vendor\DAO {
             $this->createTableCalendrier("calendrier");
             $this->createTableDisponibilite("disponibilite");
             $this->createTableTournee("tournee");
-
             $this->addAdmin("personne");
 
             if ($nombreDePersonne > 0){
@@ -307,7 +306,7 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function setPersonneAmeneCroissant($idPersonne, $idCalendrier){
-            $sql = "UPDATE tournee SET idPersonne = '$idPersonne' WHERE idCalendrier = '$idCalendrier'";
+            $sql = "INSERT INTO tournee VALUES('$idPersonne', '$idCalendrier', '1')";
             $req = $this->connexion->prepare($sql);
             $req->execute();
         }
@@ -501,26 +500,26 @@ namespace Vendor\DAO {
             if ($test){
                 $sql = $this->connexion->prepare("
                 DROP TABLE IF EXISTS `disponibiliteTest`;
-                DROP TABLE IF EXISTS `calendrierTest`;
                 DROP TABLE IF EXISTS `tourneeTest`;
+                DROP TABLE IF EXISTS `calendrierTest`;
                 DROP TABLE IF EXISTS `personneTest`;
                 ");
                 if ($sql->execute()) {
-                    //echo " Tables supprimées ";
+                    //echo " Tables test supprimées ";
                 } else {
-                    //print_r($sql->errorInfo());
+                    print_r($sql->errorInfo());
                 };
             }else{
                 $sql = $this->connexion->prepare("
                 DROP TABLE IF EXISTS `disponibilite`;
-                DROP TABLE IF EXISTS `calendrier`;
                 DROP TABLE IF EXISTS `tournee`;
+                DROP TABLE IF EXISTS `calendrier`;
                 DROP TABLE IF EXISTS `personne`;
                 ");
                 if ($sql->execute()) {
                     //echo " Tables supprimées ";
                 } else {
-                    //print_r($sql->errorInfo());
+                    print_r($sql->errorInfo());
                 };
             }
 

@@ -50,14 +50,12 @@ namespace Vendor\Calendar
             foreach ($this->subscribers as $key => $person)
             {
                 $current = $person['nbreCroissantAmene'];
-				echo $person['statutParticipation']; 
                 if ((!isset($min) || $current < $min) && strcmp($person['statutParticipation'],"1"))
                 {
                     $min = $current;
 					$choosed = $person; 
                 }
             }
-			var_dump($choosed); 
             return $choosed;
         }
 
