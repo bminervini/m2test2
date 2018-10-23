@@ -21,7 +21,7 @@ namespace Vendor\Calendar
 
         public function addSubscriber($sub)
         {
-            $this->subscribers[$sub['idPersonne']] = $sub;
+            $this->subscribers[$sub->getId()] = $sub;
         }
 
         public function addSubscribers($subs)
@@ -35,10 +35,10 @@ namespace Vendor\Calendar
 
         public function isSub($sub)
         {
-            return isset($this->subscribers[$sub['idPersonne']]);
+            return isset($this->subscribers[$sub->getId()]);
         }
 
-        public function chooseOne($participants)
+        public function chooseOne($day)
         {
             if (count($this->subscribers) == 0)
             {
@@ -49,14 +49,15 @@ namespace Vendor\Calendar
 
             foreach ($this->subscribers as $key => $person)
             {
-                $current = $person['nbreCroissantAmene'];
-                if ((!isset($min) || $current < $min) && strcmp($person['statutParticipation'],"1"))
+                $current = $person->getNombreCroissantAmene();
+
+                if (!isset($min) || $current < $min && $person->isDisponible($day))
                 {
                     $min = $current;
-					$choosed = $person; 
+                    $choosen = $person;
                 }
             }
-            return $choosed;
+            return $choosen;
         }
 
     }
