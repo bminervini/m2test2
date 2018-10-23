@@ -13,18 +13,23 @@ class ShowEvents {
 	public $dao; 
 	public $client; 
 
-function __construct(){
-		$this->setup();
+function __construct($pseudo = null){
+		$this->setup($pseudo);
 		$this->add_events();
 }
 
-	function setup(){
+	function setup($pseudo){
 		$this->qs = New quickstart(); 
-		$this->sublist = new SubscribersList(); 
 		$this->dao = new \Vendor\DAO\DAO(); 
-		$this->client = $this->qs->getClient();
+		$this->sublist = new SubscribersList($this->dao->getListPersonne('personne')); 
+		$this->client = $this->qs->getClient($pseudo);
 	}
 
+	function chooseSomeone(){
+		$res = $this->sublist->chooseOne(""); 
+		return $res; 
+	}
+	
 	function add_events(){
 		if(isset($client)){
 			$service = new \Google_Service_Calendar($this->client); 
@@ -44,14 +49,6 @@ function __construct(){
 			if (empty($events)) {
 				print "No upcoming events found.\n";
 			} else {
-				/*
-				echo "<table border=\"1\">
-						<tr>
-							<th>Mercredi</th>
-							<th>L'&eacutelu</th>
-							<th>Participants : </th>
-						</tr>"; 
-				*/
 				foreach ($events as $event) {
 					$start = $event->start->dateTime;
 					if (empty($start)) {
@@ -62,8 +59,6 @@ function __construct(){
 						$this->dao->addEvent($event->getStart()->dateTime); 
 					}
 				}
-			//	echo "</table>";
-				//var_dump($dao->getListPersonne('personne')); 
 			}
 			
 		}
