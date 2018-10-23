@@ -3,6 +3,7 @@
 namespace Vendor\Gestion;
     
     require_once(__DIR__ ."/../DAO/DAO.php");
+    require_once(__DIR__ ."/../Mailing/MailSender.php");
     
     use \DAO\DAO;
 
@@ -23,8 +24,8 @@ namespace Vendor\Gestion;
 
         function sendMailToUser($id)
         {
-            $personne = $this->dao->e($id , "personne");
-            \Vendor\Mailing\MailSender::SendMail("m2test2.croissant.show@gmail.com" , $personne['gmail'] , "Waouw" , "oklm");
+            $personne = $this->dao->getPersonne($id , "personne");
+            \Vendor\Mailing\MailSender::SendMail("m2test2.croissant.show@gmail.com" , $personne[0]['gmail'] , "Waouw" , "oklm");
         }
 
         function deleteUser($id){
@@ -89,7 +90,6 @@ namespace Vendor\Gestion;
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
                      </tr>'; 
             }
             
@@ -141,7 +141,6 @@ namespace Vendor\Gestion;
                 echo '<tr>
                         <th scope="row"></th>
                         <td>No users to display</td>
-                        <td></td>
                         <td></td>
                         <td></td>
                      </tr>';
