@@ -4,11 +4,6 @@ namespace Vendor\Mailing;
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-    
-    require 'Lib/Exception.php';
-    require 'Lib/PHPMailer.php';
-    require 'Lib/SMTP.php';
-    require 'Mail.php';
 
     class MailSender
     {
