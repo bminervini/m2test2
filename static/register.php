@@ -4,24 +4,30 @@
 <?php 
     require_once("../src/main/Vendor/Gestion/Registration.php");
 	
-	require_once("../src/main/Vendor/Calendar/quickstart.php"); 
+	//require_once("../src/main/Vendor/Calendar/quickstart.php"); 
     use \Vendor\Gestion\Registration;
-	use \Vendor\Calendar\quickstart; 
+	//use \Vendor\Calendar\quickstart; 
 	
-	
+	/*
 	$qs = new quickstart(); 
 	$qclient = $qs->getClient(); 
 	$hyperlink = $qs->getAuthUrl($qclient); 
-	
+	*/
     if(isset($_POST['submit']))
     { 
         $register = new Registration();
         $res = $register->registration($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['password'], $_POST['mailedu'], $_POST['gmail'], (empty($_POST['admin']))? "0": $_POST['admin']);
-        $qs->createToken($_POST['username'],$_POST['cleGoogle'],$qclient); 
+        //$qs->createToken($_POST['username'],$_POST['cleGoogle'],$qclient); 
         $msg = $register->errorMsg($res);
     }
 	
-	
+	/*
+    <div class="form-group">
+        <label for="">Association compte gmail -><?php echo "<a href=".$hyperlink." target=\"_blank\">" ?>Ici</a></label>
+        <input type="text" class="form-control" id="" placeholder="Clé Google" name="cleGoogle" required="required">
+
+    </div>
+	*/
 ?>
 
 <?php $title = "register page"; ?>
@@ -83,11 +89,6 @@
                                 <input type="password" class="form-control" id="" placeholder="Mot de passe" name="password" required="required">
                             </div>
 
-                            <div class="form-group">
-                                <label for="">Association compte gmail -><?php echo "<a href=".$hyperlink." target=\"_blank\">" ?>Ici</a></label>
-                                <input type="text" class="form-control" id="" placeholder="Clé Google" name="cleGoogle">
-			
-                            </div>
 
                             <div class="form-group">
                                 <input type="checkbox" id="admin" name="admin" value="1"/>
