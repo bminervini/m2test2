@@ -37,13 +37,13 @@ namespace Vendor\DAO\tests\units
             $nbrePersonne = $dao->getNombrePersonne("personneTest");
 
             $this
-                ->integer($nbreTable)->isEqualTo(7)
+                ->integer($nbreTable)->isEqualTo(8)
                 ->and()
                 ->integer($nbrePersonne)->isEqualTo(11)
-                ->executeOnFailure(
+                /*->executeOnFailure(
                     function () use ($dao) {
                         var_dump($dao);
-                    })
+                    })*/
             ;
 
             //drop bdd test
@@ -162,12 +162,13 @@ namespace Vendor\DAO\tests\units
         }
 
         function initialiserBDDTest($nombreDePersonne){
+
             $dao = new \Vendor\DAO\DAO();
             $dao->dropTables(true);
             $dao->createTablePersonne("personneTest");
             $dao->createTableCalendrier("calendrierTest");
             $dao->createTableDisponibilite("disponibiliteTest");
-            $dao->createTableTournee("tournee");
+            $dao->createTableTournee("tourneeTest");
 
             $dao->addAdmin("personneTest");
 
