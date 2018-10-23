@@ -25,7 +25,12 @@ namespace Vendor\Gestion;
         function sendMailToUser($id)
         {
             $personne = $this->dao->getPersonne($id , "personne");
-            \Vendor\Mailing\MailSender::SendMail("m2test2.croissant.show@gmail.com" , $personne[0]['gmail'] , "Waouw" , "oklm");
+            \Vendor\Mailing\MailSender::SendMail("m2test2.croissant.show@gmail.com" , $personne[0]['gmail'] , 
+                "Croissant Show - Bienvenue" , 
+                "Bonjour " . $personne[0]['prenom'] . "\n" .
+                "Vous vous êtes inscrit sur le site de Croissant Show et l'administrateur vous a accepté !\n" .
+                "Vous serez averti par mail des que vvous serez choisit pour apporter des croissants !" .
+                "A bientôt !");
         }
 
         function deleteUser($id){
