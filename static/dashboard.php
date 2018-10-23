@@ -72,8 +72,8 @@
                 <div class="col-sm">
 
                     <h2>Participation</h2><br/>
-                    <form action="dashboard.php" method="POST" role="form">
-                        <button type="submit" name="statut" class="<?php echo $classButton?>"> <?php echo $texteParticipe ?></button>
+                    <form action="dashboard.php" method="POST">
+                        <button type="submit" name="statut" class="<?php echo $classButton?>"><?php echo $texteParticipe ?></button>
                     </form>
 
                 </div>
