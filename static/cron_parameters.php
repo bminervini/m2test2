@@ -18,7 +18,8 @@
 <!DOCTYPE html>
 <html>
 
-    <?php include_once 'session.php' ?>
+    <?php include_once 'session.php';?>
+    <?php include 'admin.php';?>
     <?php include 'head.php'?>
 
     <body>
