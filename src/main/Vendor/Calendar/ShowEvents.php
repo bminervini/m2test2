@@ -15,7 +15,7 @@ class ShowEvents {
 
 function __construct($pseudo = null){
 		$this->setup($pseudo);
-		$this->add_events();
+		//$this->add_events();
 }
 
 	function setup($pseudo){
