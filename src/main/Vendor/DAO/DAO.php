@@ -326,7 +326,7 @@ namespace Vendor\DAO {
          * @return request return the PDO object of the request
          */
         function deleteParticipation($id){
-            $sql = "UPDATE personne SET statutParticipation = 0 WHERE username = ?";
+            $sql = "UPDATE personne SET statutParticipation = 0 WHERE idPersonne = ?";
             $req = $this->connexion->prepare($sql);
 
             $req->execute(array($id));

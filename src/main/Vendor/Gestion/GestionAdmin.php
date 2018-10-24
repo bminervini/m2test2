@@ -125,7 +125,7 @@ namespace Vendor\Gestion;
             }
 
             echo '</tbody>
-                  </from>';
+                  </form>';
         }
 
         public static function displayParticipant($table){
